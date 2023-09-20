@@ -6,6 +6,8 @@ export const init = (bdd) => {
         // - Make relation to User
         id_user: {
             type: DataTypes.INTEGER,
+            allowNull: false,
+            required: true,
             references: {
                 model: 'users',
             }

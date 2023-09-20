@@ -1,4 +1,4 @@
-import * as jwt from 'jsonwebtoken';
+import jwt from 'jsonwebtoken';
 import Config from '../Config.js';
 
 export let generateToken = (userInstance) => {
@@ -12,8 +12,4 @@ export let generateToken = (userInstance) => {
 
 export let verifyToken = (token) => {
     return jwt.verify(token, Config.JWK_TOKEN);
-}
-
-export let decodeToken = (token) => {
-    return jwt.decode(token);
 }
