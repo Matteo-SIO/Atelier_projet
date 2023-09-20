@@ -1,7 +1,7 @@
 import {DataTypes} from 'sequelize';
 
 // Define the table Usages
-export default (bdd) => {
+export const init = (bdd) => {
     return bdd.define('usages', {
         // - make relation to User
         id_user: {

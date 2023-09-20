@@ -1,7 +1,7 @@
 import {DataTypes} from 'sequelize';
 
 // Define the table Users
-export default (bdd) => {
+export const init = (bdd) => {
     return bdd.define('users', {
         email: {
             type: DataTypes.STRING,

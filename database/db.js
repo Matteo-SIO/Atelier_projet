@@ -1,5 +1,5 @@
 import {Sequelize} from 'sequelize';
-import {defineTables} from "./tables.js";
+import * as tables from "./Tables.js";
 
 /**
  * Connect to the database
@@ -22,5 +22,5 @@ export let connect = async ({host, post, user, pass, dbName}) => {
     });
 
     await sequelize.authenticate();
-    await defineTables(sequelize);
+    await tables.defineTables(sequelize);
 }
