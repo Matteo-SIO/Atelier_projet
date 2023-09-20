@@ -1,4 +1,4 @@
-export let init = async (bdd) => {
+export let defineTables = async (bdd) => {
 
     // Import all the tables
     (await import('./models/User.js')).default(bdd);

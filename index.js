@@ -1,4 +1,5 @@
 import * as DB from './database/db.js';
+import * as Server from './server/server.js';
 
 // Connect to the database
 DB.connect({
@@ -7,9 +8,11 @@ DB.connect({
     user: 'root',
     pass: '',
     dbName: 'atelier_projet'
-}).then(() => {
+}).then(async () => {
     // The database is connected
 
     // TODO: Start the REST API
+    await Server.start(3000);
+
 
 });
