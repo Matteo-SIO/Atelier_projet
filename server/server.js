@@ -1,9 +1,9 @@
 import fastify from 'fastify'
 import {defineRoutes} from "./routes.js";
 
-export let start = async (port) => {
+export let start = async ({port, debug}) => {
     let server = fastify({
-        // logger: true,
+        logger: debug,
         ignoreTrailingSlash: true
     });
 

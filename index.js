@@ -7,5 +7,5 @@ DB.connect(Config.DB).then(async () => {
     // The database is connected
 
     // Start the REST API server
-    await Server.start(3000);
+    await Server.start(Config.SERVER);
 });
