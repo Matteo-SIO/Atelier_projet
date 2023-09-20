@@ -12,19 +12,15 @@ import * as table from './tables.js';
  * @param dbName
  * @returns {Promise<unknown>}
  */
-export let connect = ({host, post, user, pass, dbName}) => {
-    return new Promise((resolve, reject) => {
-        let sequelize = new Sequelize(dbName, user, pass, {
-            host: host,
-            port: post,
-            dialect: 'mysql',
-            username: user,
-            password: pass,
-        });
-
-        sequelize.authenticate().then(() => {
-            table.init(sequelize);
-            resolve(sequelize);
-        })
+export let connect = async ({host, post, user, pass, dbName}) => {
+    let sequelize = new Sequelize(dbName, user, pass, {
+        host: host,
+        port: post,
+        dialect: 'mysql',
+        username: user,
+        password: pass,
     });
+
+    await sequelize.authenticate();
+    await table.init(sequelize);
 }
