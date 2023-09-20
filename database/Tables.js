@@ -4,7 +4,6 @@ export default Tables;
 export async function defineTables (bdd) {
     // Import all the tables
     Tables.User = (await import('./models/User.js')).init(bdd);
-    Tables.Session = (await import('./models/Session.js')).init(bdd);
 
     Tables.TypeMaterial = (await import('./models/TypeMaterial.js')).init(bdd);
     Tables.Material = (await import('./models/Material.js')).init(bdd);
