@@ -13,8 +13,8 @@ export const init = (bdd) => {
             allowNull: false
         },
         role: {
-            type: DataTypes.INTEGER,
-            defaultValue: 0
+            type: DataTypes.ENUM('ADMIN', 'MANAGER', 'EMPLOYEE'),
+            defaultValue: 'EMPLOYEE'
         }
     });
 }

@@ -14,6 +14,7 @@ export let generateTokenFromCredentials = async (email, password) => {
         return jwt.sign({
             id: user.id,
             email: user.email,
+            role: user.role
         }, Config.JWK_TOKEN, {
             expiresIn: '1h'
         });
@@ -23,18 +24,18 @@ export let generateTokenFromCredentials = async (email, password) => {
 }
 
 export let verifyToken = (token) => {
-    return jwt.verify(token, Config.JWK_TOKEN);
-}
-
-export let getUserFromToken = (token) => {
     try {
-        let decoded = verifyToken(token);
-        return Tables.User.findOne({
-            where: {
-                id: decoded.id
-            }
-        });
+        return jwt.verify(token, Config.JWK_TOKEN);
     } catch (error) {
         return null;
     }
+}
+
+export let getUserFromToken = (token) => {
+    let decoded = verifyToken(token);
+    return decoded ? Tables.User.findOne({
+        where: {
+            id: decoded.id
+        }
+    }) : null;
 }

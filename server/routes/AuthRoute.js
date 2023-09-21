@@ -1,7 +1,4 @@
 import * as SessionUtil from '../../utils/SessionUtil.js';
-import Tables from "../../database/Tables.js";
-import {getUserFromToken} from "../../utils/SessionUtil.js";
-
 
 export default (server, BASE_PATH) => {
 
