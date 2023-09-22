@@ -113,7 +113,13 @@ export default (server, BASE_PATH) => {
         }
 
         try {
-            await Tables.User.create(request.body);
+            await Tables.User.create({
+                firstName: request.body.firstName,
+                lastName: request.body.lastName,
+                email: request.body.email,
+                password: request.body.password,
+                role: request.body.role
+            });
 
             reply.code(200);
             reply.send({success: true});
