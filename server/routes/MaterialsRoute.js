@@ -78,4 +78,48 @@ export default (server, BASE_PATH) => {
         reply.send({success: true});
     });
 
+    // Create a material
+    // Require an authorization with the role 'manager'
+    server.post(BASE_PATH + '/', async (request, reply) => {
+        let token = request.headers.authorization;
+        let decodedToken = verifyToken(token);
+        if (!verifyToken(decodedToken) || decodedToken.role !== 'MANAGER') {
+            reply.code(401);
+            reply.send({error: 'Unauthorized'});
+            return;
+        }
+
+        try {
+            await Tables.Material.create(request.body);
+            reply.code(201);
+        } catch (error) {
+            reply.code(400);
+            reply.send({
+                error: error.errors[0].message
+            });
+            return;
+        }
+    });
+
+    // Update a material by id
+    // Require an authorization with the role 'manager'
+    server.put(BASE_PATH + '/:id', async (request, reply) => {
+        let token = request.headers.authorization;
+        let decodedToken = verifyToken(token);
+        if (!verifyToken(decodedToken) || decodedToken.role !== 'MANAGER') {
+            reply.code(401);
+            reply.send({error: 'Unauthorized'});
+            return;
+        }
+
+        await Tables.Material.update(request.body, {
+            where: {
+                id: request.params.id
+            }
+        });
+
+        reply.code(200);
+        reply.send({success: true});
+    });
+
 }
