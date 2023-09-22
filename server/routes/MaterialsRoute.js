@@ -12,7 +12,7 @@ export default (server, BASE_PATH) => {
             return;
         }
 
-        let existQuery = Boolean(request.query.exist ?? true);
+        let existQuery = request.query.exist
 
         // pagination, get lines from [offset]° to [offset + limit]°
         // example: get [0, 20]° lines, then [20, 40]° lines, etc...
@@ -21,9 +21,7 @@ export default (server, BASE_PATH) => {
 
         let materials = await Tables.Material.findAll({
             where: {
-                exist: {
-                    [existQuery ? '$eq' : '$ne']: false
-                }
+                ...(existQuery !== undefined) ? {exist: Boolean(existQuery)} : {}
             },
             offset: offsetQuery,
             limit: limitQuery
@@ -90,7 +88,11 @@ export default (server, BASE_PATH) => {
         }
 
         try {
-            await Tables.Material.create(request.body);
+            await Tables.Material.create({
+                id_typeMaterial: request.body.id_typeMaterial,
+                name: request.body.name,
+                exist: request.body.exist ?? true,
+            });
             reply.code(201);
         } catch (error) {
             reply.code(400);

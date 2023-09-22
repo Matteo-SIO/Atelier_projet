@@ -4,4 +4,5 @@ export let defineRoutes = async (server) => {
     (await import('./routes/UsersRoute.js')).default(server, '/api/users');
     (await import('./routes/TypeMaterialsRoute.js')).default(server, '/api/type-materials');
     (await import('./routes/OrderRoute.js')).default(server, '/api/orders');
+    (await import('./routes/IncidentRoute.js')).default(server, '/api/incidents');
 }

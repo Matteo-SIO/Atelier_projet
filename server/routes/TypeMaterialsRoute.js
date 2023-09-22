@@ -55,7 +55,9 @@ export default (server, BASE_PATH) => {
         }
 
         try {
-            await Tables.TypeMaterial.create(request.body);
+            await Tables.TypeMaterial.create({
+                name: request.body.name,
+            });
             reply.code(201);
         } catch (error) {
             reply.code(400);

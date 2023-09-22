@@ -4,9 +4,11 @@ import Tables from "../../database/Tables.js";
 export default (server, BASE_PATH) => {
 
     // List all the users
+    // Require an authorization with the role 'manager'
     server.get(BASE_PATH + '/', async (request, reply) => {
         let token = request.headers.authorization;
-        if (!verifyToken(token)) {
+        let decodedToken = verifyToken(token);
+        if (!decodedToken || decodedToken.role !== 'ADMIN') {
             reply.code(401);
             reply.send({error: 'Unauthorized'});
             return;
