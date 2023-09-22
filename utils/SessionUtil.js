@@ -16,7 +16,7 @@ export let generateTokenFromCredentials = async (email, password) => {
             email: user.email,
             role: user.role
         }, Config.JWK_TOKEN, {
-            expiresIn: '1h'
+            expiresIn: '7d'
         });
     }
 
