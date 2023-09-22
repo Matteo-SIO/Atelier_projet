@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "node ./index.js",
     "create-user": "node ./tests/cli_createUser.js"
   },
   "author": "Mattéo, Chams, Raimbaud",
