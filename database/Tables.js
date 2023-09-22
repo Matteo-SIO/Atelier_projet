@@ -22,8 +22,8 @@ export async function defineTables (bdd) {
     Tables.User.hasMany(Tables.Incident, { as: 'incidents', foreignKey: 'id_user' });
     Tables.Incident.belongsTo(Tables.User, { as: 'user', foreignKey: 'id_user' });
 
-    Tables.TypeMaterial.hasMany(Tables.Material, { as: 'materials', foreignKey: 'id_type_material' });
-    Tables.Material.belongsTo(Tables.TypeMaterial, { as: 'type_material', foreignKey: 'id_type_material' });
+    Tables.TypeMaterial.hasMany(Tables.Material, { as: 'materials', foreignKey: 'id_typeMaterial' });
+    Tables.Material.belongsTo(Tables.TypeMaterial, { as: 'type_material', foreignKey: 'id_typeMaterial' });
 
     Tables.Material.hasMany(Tables.Usage, { as: 'usages', foreignKey: 'id_material' });
     Tables.Usage.belongsTo(Tables.Material, { as: 'material', foreignKey: 'id_material' });
