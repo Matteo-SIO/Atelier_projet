@@ -1,4 +1,3 @@
-import * as SessionUtil from '../../utils/SessionUtil.js';
 import {verifyToken} from "../../utils/SessionUtil.js";
 import Tables from "../../database/Tables.js";
 

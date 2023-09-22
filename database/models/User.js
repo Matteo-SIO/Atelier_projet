@@ -12,6 +12,14 @@ export const init = (bdd) => {
             type: DataTypes.TEXT,
             allowNull: false
         },
+        firstname: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        lastname: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         role: {
             type: DataTypes.ENUM('ADMIN', 'MANAGER', 'EMPLOYEE'),
             defaultValue: 'EMPLOYEE'

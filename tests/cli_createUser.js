@@ -3,15 +3,19 @@ import Config from "../config.js";
 import Tables from "../database/Tables.js";
 
 // read arg from command line
-let email = process.argv[2];
-let password = process.argv[3];
+// pattern key=value
+
+let values = {};
+for (let i = 2; i < process.argv.length; i++) {
+    let arg = process.argv[i];
+    let [key, value] = arg.split('=');
+    values[key] = value;
+}
+
 
 // Connect to the database
 DB.connect(Config.DB).then(async () => {
-    let res = await Tables.User.create({
-        email: email,
-        password: password
-    });
+    let res = await Tables.User.create(values);
     console.log(res);
 });
 
