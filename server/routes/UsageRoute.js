@@ -70,7 +70,7 @@ export default (server, BASE_PATH) => {
     });
 
     /**
-     * @api {POST} /api/usages/ Create an usage
+     * @api {POST} /api/usages/ Create a usage
      * @apiPermission manager, employee
      * @apiParam {Number} id_material
      * @apiParam {Date} date_start
@@ -91,8 +91,7 @@ export default (server, BASE_PATH) => {
             id_user: decodedToken.id,
             id_material: request.body.id_material,
             date_start: request.body.date_start,
-            date_end: request.body.date_end,
-            state: request.body.state
+            date_end: request.body.date_end
         });
 
         reply.code(201);
@@ -100,7 +99,7 @@ export default (server, BASE_PATH) => {
     })
 
     /**
-     * @api {PUT} /api/usages/:id/state Update the state of an usage
+     * @api {PUT} /api/usages/:id/state Update the state of a usage
      * @apiPermission manager, employee (only his own usages)
      * @apiParam {String} state
      */
