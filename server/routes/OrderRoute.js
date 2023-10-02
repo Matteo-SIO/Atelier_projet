@@ -85,12 +85,13 @@ export default (server, BASE_PATH) => {
         }
 
         try {
-            await Tables.Order.create({
+            let order = await Tables.Order.create({
                 id_user: decodedToken.id,
                 id_material: request.body.id_material,
                 description: request.body.description,
             });
             reply.code(201);
+            reply.send(order);
         } catch (error) {
             reply.code(400);
             reply.send({

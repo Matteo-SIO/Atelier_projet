@@ -142,7 +142,7 @@ export default (server, BASE_PATH) => {
         }
 
         try {
-            await Tables.User.create({
+            let user = await Tables.User.create({
                 firstName: request.body.firstName,
                 lastName: request.body.lastName,
                 email: request.body.email,
@@ -151,7 +151,7 @@ export default (server, BASE_PATH) => {
             });
 
             reply.code(200);
-            reply.send({success: true});
+            reply.send(user);
         } catch (e) {
             reply.code(400);
             reply.send({error: e.message});

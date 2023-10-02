@@ -107,12 +107,13 @@ export default (server, BASE_PATH) => {
         }
 
         try {
-            await Tables.Material.create({
+            let material = await Tables.Material.create({
                 id_typeMaterial: request.body.id_typeMaterial,
                 name: request.body.name,
                 active: request.body.active ?? true,
             });
             reply.code(201);
+            reply.send(material);
         } catch (error) {
             reply.code(400);
             reply.send({

@@ -56,10 +56,11 @@ export default (server, BASE_PATH) => {
         }
 
         try {
-            await Tables.TypeMaterial.create({
+            let typeMaterial = await Tables.TypeMaterial.create({
                 name: request.body.name,
             });
             reply.code(201);
+            reply.send(typeMaterial);
         } catch (error) {
             reply.code(400);
             reply.send({
