@@ -3,9 +3,12 @@ import Tables from "../../database/Tables.js";
 
 export default (server, BASE_PATH) => {
 
-    // List all the incidents
-    // require role 'manager' for all incidents
-    // Or user_id === decodedToken.id for user's incidents
+    /**
+     * @api {GET} /api/incidents/ List all the incidents
+     * @apiPermission manager, employee (only his own incidents)
+     * @apiParam {Number} [offset=0] Pagination offset
+     * @apiParam {Number} [limit=20] Pagination limit
+     */
     server.get(BASE_PATH + '/', async (request, reply) => {
         let token = request.headers.authorization;
         let decodedToken = verifyToken(token);
@@ -34,10 +37,11 @@ export default (server, BASE_PATH) => {
         reply.send(incidents);
     });
 
-    // Get an incident by id
-    // require role 'manager'
-    // Or, require user_id === decodedToken.id
 
+    /**
+     * @api {GET} /api/incidents/:id Get an incident by id
+     * @apiPermission manager, employee (only his own incidents)
+     */
     server.get(BASE_PATH + '/:id', async (request, reply) => {
         let token = request.headers.authorization;
         let decodedToken = verifyToken(token);
@@ -65,7 +69,13 @@ export default (server, BASE_PATH) => {
         reply.send(incident);
     })
 
-    // Create an incident
+
+    /**
+     * @api {POST} /api/incidents/ Create an incident
+     * @apiPermission manager, employee
+     * @apiParam {Number} id_material
+     * @apiParam {String} description
+     */
     server.post(BASE_PATH + '/', async (request, reply) => {
         let token = request.headers.authorization;
         let decodedToken = verifyToken(token);
@@ -86,7 +96,12 @@ export default (server, BASE_PATH) => {
         reply.send(incident);
     });
 
-    // Change the state of an incident
+
+    /**
+     * @api {PUT} /api/incidents/:id/state Change the state of an incident
+     * @apiPermission manager, employee (only his own incidents)
+     * @apiParam {String} state
+     */
     server.put(BASE_PATH + '/:id/state', async (request, reply) => {
         let token = request.headers.authorization;
         let decodedToken = verifyToken(token);

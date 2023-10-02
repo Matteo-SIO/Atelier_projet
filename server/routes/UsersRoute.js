@@ -3,8 +3,12 @@ import Tables from "../../database/Tables.js";
 
 export default (server, BASE_PATH) => {
 
-    // List all the users
-    // Require an authorization with the role 'manager'
+    /**
+     * @api {GET} /api/users/ List all the users
+     * @apiPermission manager
+     * @apiParam {Number} [offset=0] Pagination offset
+     * @apiParam {Number} [limit=20] Pagination limit
+     */
     server.get(BASE_PATH + '/', async (request, reply) => {
         let token = request.headers.authorization;
         let decodedToken = verifyToken(token);
@@ -31,7 +35,12 @@ export default (server, BASE_PATH) => {
         reply.send(users);
     });
 
-    // Get a user by id
+
+    /**
+     * @api {GET} /api/users/:id Get a user by id
+     * @apiPermission manager, employee (only his own user)
+     * @apiParam {Number} id User id
+     */
     server.get(BASE_PATH + '/:id', async (request, reply) => {
         let token = request.headers.authorization;
         if (!verifyToken(token)) {
@@ -59,8 +68,16 @@ export default (server, BASE_PATH) => {
         reply.send(user);
     });
 
-    // Update a user by id
-    // Require an authorization with the role 'admin'
+
+    /**
+     * @api {PUT} /api/users/:id Update a user by id
+     * @apiPermission admin
+     * @apiParam {Number} id User id
+     * @apiParam {String} [firstName] User first name
+     * @apiParam {String} [lastName] User last name
+     * @apiParam {String} [email] User email
+     * @apiParam {String} [password] User password
+     */
     server.put(BASE_PATH + '/:id', async (request, reply) => {
         let token = request.headers.authorization;
         let decodedToken = verifyToken(token);
@@ -80,8 +97,12 @@ export default (server, BASE_PATH) => {
         reply.send({success: true});
     });
 
-    // Delete a user by id
-    // Require an authorization with the role 'admin'
+
+    /**
+     * @api {DELETE} /api/users/:id Delete a user by id
+     * @apiPermission admin
+     * @apiParam {Number} id User id
+     */
     server.delete(BASE_PATH + '/:id', async (request, reply) => {
         let token = request.headers.authorization;
         let decodedToken = verifyToken(token);
@@ -101,8 +122,16 @@ export default (server, BASE_PATH) => {
         reply.send({success: true});
     });
 
-    // Create a user
-    // Require an authorization with the role 'admin'
+
+    /**
+     * @api {POST} /api/users/ Create a user
+     * @apiPermission admin
+     * @apiParam {String} firstName User first name
+     * @apiParam {String} lastName User last name
+     * @apiParam {String} email User email
+     * @apiParam {String} password User password
+     * @apiParam {String} role User role
+     */
     server.post(BASE_PATH + '/', async (request, reply) => {
         let token = request.headers.authorization;
         let decodedToken = verifyToken(token);

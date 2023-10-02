@@ -4,6 +4,7 @@ import Tables from "../../database/Tables.js";
 export default (server, BASE_PATH) => {
 
     // List all the types materials
+    // Role: employee
     server.get(BASE_PATH + '/', async (request, reply) => {
         let token = request.headers.authorization;
         if (!verifyToken(token)) {
@@ -79,7 +80,9 @@ export default (server, BASE_PATH) => {
             return;
         }
 
-        await Tables.TypeMaterial.update(request.body, {
+        await Tables.TypeMaterial.update({
+            name: request.body.name,
+        }, {
             where: {
                 id: request.params.id
             }

@@ -6,6 +6,7 @@ export const init = (bdd) => {
         // - Make relation to User
         id_user: {
             type: DataTypes.INTEGER,
+            allowNull: false,
             references: {
                 model: 'users',
             }
@@ -14,6 +15,7 @@ export const init = (bdd) => {
         // - Make relation to Material
         id_material: {
             type: DataTypes.INTEGER,
+            allowNull: false,
             references: {
                 model: 'materials',
             }

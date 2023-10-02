@@ -3,9 +3,10 @@ import Tables from "../../database/Tables.js";
 
 export default (server, BASE_PATH) => {
 
-    // List all the orders
-    // require role 'manager' for all orders
-    // Or user_id === decodedToken.id for user's orders
+    /**
+     * @api {GET} /api/orders/ List all the orders
+     * @apiPermission manager, employee (only his own orders)
+     */
     server.get(BASE_PATH + '/', async (request, reply) => {
         let token = request.headers.authorization;
         let decodedToken = verifyToken(token);
@@ -34,9 +35,11 @@ export default (server, BASE_PATH) => {
         reply.send(orders);
     });
 
-    // Get an order by id
-    // require role 'manager'
-    // Or, require user_id === decodedToken.id
+
+    /**
+     * @api {GET} /api/orders/:id Get an order by id
+     * @apiPermission manager, employee (only his own orders)
+     */
     server.get(BASE_PATH + '/:id', async (request, reply) => {
         let token = request.headers.authorization;
         let decodedToken = verifyToken(token);
@@ -67,7 +70,10 @@ export default (server, BASE_PATH) => {
         reply.send({error: 'Unauthorized'});
     });
 
-    // Create an order
+    /**
+     * @api {POST} /api/orders/ Create an order
+     * @apiPermission manager, employee
+     */
     server.post(BASE_PATH + '/', async (request, reply) => {
         let token = request.headers.authorization;
         let decodedToken = verifyToken(token);
@@ -93,8 +99,12 @@ export default (server, BASE_PATH) => {
         }
     });
 
-    // change state of an order
-    server.post(BASE_PATH + '/:id/state', async (request, reply) => {
+
+    /**
+     * @api {PUT} /api/orders/:id/state Change the state of an order
+     * @apiPermission manager, employee (only his own orders, only to CLOSED)
+     */
+    server.put(BASE_PATH + '/:id/state', async (request, reply) => {
         let token = request.headers.authorization;
         let decodedToken = verifyToken(token);
 
@@ -114,7 +124,9 @@ export default (server, BASE_PATH) => {
             return;
         }
 
-        let res = await Tables.Order.update({state: request.body.state}, {
+        let res = await Tables.Order.update({
+            state: request.body.state
+        }, {
             where: {
                 id: request.params.id,
                 ...(decodedToken.role !== 'manager' ? {user_id: decodedToken.id} : {})

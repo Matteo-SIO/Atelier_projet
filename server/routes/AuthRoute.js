@@ -2,7 +2,12 @@ import * as SessionUtil from '../../utils/SessionUtil.js';
 
 export default (server, BASE_PATH) => {
 
-    // Generate a session token with credentials
+    /**
+     * @api {GET} /api/auth/create-token Generate a session token with credentials
+     * @apiParam {String} email User email
+     * @apiParam {String} password User password
+     * @apiPermission none
+     */
     server.get(BASE_PATH + '/create-token', async (request, reply) => {
         let email = request.query.email;
         let password = request.query.password;
@@ -23,7 +28,12 @@ export default (server, BASE_PATH) => {
         reply.send({error: 'Bad Request'});
     });
 
-    // Verify a session token
+
+    /**
+     * @api {GET} /api/auth/verify-token Verify a session token
+     * @apiParam {String} token Session token
+     * @apiPermission none
+     */
     server.get(BASE_PATH + '/verify-token', async (request, reply) => {
         let token = request.query.token;
         if (SessionUtil.getUserFromToken(token)) {

@@ -3,7 +3,13 @@ import Tables from "../../database/Tables.js";
 
 export default (server, BASE_PATH) => {
 
-    // List all the materials
+    /**
+     * @api {GET} /api/materials/ List all the materials
+     * @apiPermission manager, employee
+     * @apiParam {Boolean} [exist=null] Filter by exist
+     * @apiParam {Number} [offset=0] Pagination offset
+     * @apiParam {Number} [limit=20] Pagination limit
+     */
     server.get(BASE_PATH + '/', async (request, reply) => {
         let token = request.headers.authorization;
         if (!verifyToken(token)) {
@@ -31,7 +37,11 @@ export default (server, BASE_PATH) => {
         reply.send(materials);
     })
 
-    // Get a material by id
+
+    /**
+     * @api {GET} /api/materials/:id Get a material by id
+     * @apiPermission manager, employee
+     */
     server.get(BASE_PATH + '/:id', async (request, reply) => {
         let token = request.headers.authorization;
         if (!verifyToken(token)) {
@@ -56,7 +66,10 @@ export default (server, BASE_PATH) => {
         reply.send(material);
     });
 
-    // Delete a material by id
+    /**
+     * @api {DELETE} /api/materials/:id Delete a material by id
+     * @apiPermission manager, employee (only his own orders)
+     */
     server.delete(BASE_PATH + '/:id', async (request, reply) => {
         let token = request.headers.authorization;
         let decodedToken = verifyToken(token);
@@ -76,8 +89,14 @@ export default (server, BASE_PATH) => {
         reply.send({success: true});
     });
 
-    // Create a material
-    // Require an authorization with the role 'manager'
+
+    /**
+     * @api {POST} /api/materials/ Create a material
+     * @apiPermission manager
+     * @apiBody {Number} id_typeMaterial
+     * @apiBody {String} name
+     * @apiBody {Boolean} [exist=true]
+     */
     server.post(BASE_PATH + '/', async (request, reply) => {
         let token = request.headers.authorization;
         let decodedToken = verifyToken(token);
@@ -103,8 +122,14 @@ export default (server, BASE_PATH) => {
         }
     });
 
-    // Update a material by id
-    // Require an authorization with the role 'manager'
+
+    /**
+     * @api {PUT} /api/materials/:id Update a material by id
+     * @apiPermission manager
+     * @apiBody {Number} id_typeMaterial
+     * @apiBody {String} name
+     * @apiBody {Boolean} [exist=true]
+     */
     server.put(BASE_PATH + '/:id', async (request, reply) => {
         let token = request.headers.authorization;
         let decodedToken = verifyToken(token);
@@ -114,7 +139,11 @@ export default (server, BASE_PATH) => {
             return;
         }
 
-        await Tables.Material.update(request.body, {
+        await Tables.Material.update({
+            id_typeMaterial: request.body.id_typeMaterial,
+            name: request.body.name,
+            exist: request.body.exist ?? true,
+        }, {
             where: {
                 id: request.params.id
             }
