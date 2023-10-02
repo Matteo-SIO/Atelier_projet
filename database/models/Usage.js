@@ -31,8 +31,8 @@ export const init = (bdd) => {
             required: true
         },
         state: {
-            type: DataTypes.INTEGER,
-            defaultValue: 0
+            type: DataTypes.ENUM('OPENED', 'CLOSED', 'CANCELED'),
+            defaultValue: 'OPENED'
         }
     });
 }

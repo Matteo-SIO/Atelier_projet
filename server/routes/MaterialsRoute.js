@@ -6,7 +6,7 @@ export default (server, BASE_PATH) => {
     /**
      * @api {GET} /api/materials/ List all the materials
      * @apiPermission manager, employee
-     * @apiParam {Boolean} [exist=null] Filter by exist
+     * @apiParam {Boolean} [active=null] Filter by active
      * @apiParam {Number} [offset=0] Pagination offset
      * @apiParam {Number} [limit=20] Pagination limit
      */
@@ -18,7 +18,7 @@ export default (server, BASE_PATH) => {
             return;
         }
 
-        let existQuery = request.query.exist
+        let activeQuery = request.query.active
 
         // pagination, get lines from [offset]° to [offset + limit]°
         // example: get [0, 20]° lines, then [20, 40]° lines, etc...
@@ -27,7 +27,7 @@ export default (server, BASE_PATH) => {
 
         let materials = await Tables.Material.findAll({
             where: {
-                ...(existQuery !== undefined) ? {exist: Boolean(existQuery)} : {}
+                ...(activeQuery !== undefined) ? {active: Boolean(activeQuery)} : {}
             },
             offset: offsetQuery,
             limit: limitQuery
@@ -95,7 +95,7 @@ export default (server, BASE_PATH) => {
      * @apiPermission manager
      * @apiBody {Number} id_typeMaterial
      * @apiBody {String} name
-     * @apiBody {Boolean} [exist=true]
+     * @apiBody {Boolean} [active=true]
      */
     server.post(BASE_PATH + '/', async (request, reply) => {
         let token = request.headers.authorization;
@@ -110,7 +110,7 @@ export default (server, BASE_PATH) => {
             await Tables.Material.create({
                 id_typeMaterial: request.body.id_typeMaterial,
                 name: request.body.name,
-                exist: request.body.exist ?? true,
+                active: request.body.active ?? true,
             });
             reply.code(201);
         } catch (error) {
@@ -128,7 +128,7 @@ export default (server, BASE_PATH) => {
      * @apiPermission manager
      * @apiBody {Number} id_typeMaterial
      * @apiBody {String} name
-     * @apiBody {Boolean} [exist=true]
+     * @apiBody {Boolean} [active=true]
      */
     server.put(BASE_PATH + '/:id', async (request, reply) => {
         let token = request.headers.authorization;
@@ -142,7 +142,7 @@ export default (server, BASE_PATH) => {
         await Tables.Material.update({
             id_typeMaterial: request.body.id_typeMaterial,
             name: request.body.name,
-            exist: request.body.exist ?? true,
+            active: request.body.active ?? true,
         }, {
             where: {
                 id: request.params.id

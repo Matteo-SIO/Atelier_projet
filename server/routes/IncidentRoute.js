@@ -86,14 +86,21 @@ export default (server, BASE_PATH) => {
             return;
         }
 
-        let incident = await Tables.Incident.create({
-            id_user: decodedToken.id,
-            id_material: request.body.id_material,
-            description: request.body.description
-        });
+        try {
+            let incident = await Tables.Incident.create({
+                id_user: decodedToken.id,
+                id_material: request.body.id_material,
+                description: request.body.description
+            });
 
-        reply.code(201);
-        reply.send(incident);
+            reply.code(201);
+            reply.send(incident);
+        } catch (e) {
+            reply.code(400);
+            reply.send({error: 'Bad Request'});
+        }
+
+
     });
 
 

@@ -10,6 +10,7 @@ export default {
     },
     SERVER: {
         debug: true,
+        special_routes: true,
         port: 3000
     }
 }

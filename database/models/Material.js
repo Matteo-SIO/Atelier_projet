@@ -17,7 +17,7 @@ export const init = (bdd) => {
             allowNull: false,
             unique: true
         },
-        exist: {
+        active: {
             type: DataTypes.BOOLEAN,
             defaultValue: false
         }
