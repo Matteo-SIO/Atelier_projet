@@ -5,6 +5,8 @@ import Form from "../../components/Form.svelte";
 import Submit from "../../components/Submit.svelte";
 import FieldData from "../../components/FieldData";
 import * as API from "./../../lib/API";
+import FormLine from "../../components/FormLine.svelte";
+import FieldGroup from "../../components/FieldGroup.svelte";
 
 let fields = {
     pseudo: new FieldData(),
@@ -66,14 +68,16 @@ function callback () {
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 
-<Form>
-    <div>
-        <h2>Connectez-vous</h2>
-        <p>Vous n'avez pas de compte ? <mark>Contactez un admin</mark></p>
-    </div>
+<Form size={4} offset={4}>
+    <h2>Connectez-vous</h2>
+    <p>Vous n'avez pas de compte ? <mark>Contactez un admin</mark></p>
 
-    <Field placeholder="Pseudo" type='text' data={fields.pseudo}></Field>
-    <Field placeholder="Mot de passe" type='password' data={fields.password}></Field>
+    <FieldGroup>
+        <!--<FormLine gap={10}>-->
+            <Field placeholder="Pseudo" type='text' data={fields.pseudo}></Field>
+            <Field placeholder="Mot de passe" type='password' data={fields.password}></Field>
+        <!--</FormLine>-->
+    </FieldGroup>
 
-    <Submit name="Se connecter" callback={callback}></Submit>
+    <Submit name="Se connecter" primary medium callback={callback}></Submit>
 </Form>

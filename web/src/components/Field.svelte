@@ -16,7 +16,6 @@
             {data.error}
         </div>
     {/if}
-
 </div>
 
 <style>
