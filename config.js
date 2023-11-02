@@ -12,5 +12,9 @@ export default {
         debug: true,
         special_routes: true,
         port: 3000
+    },
+    SVELTE: {
+        api_url: 'http://localhost:3000/api/',
+        debug: true
     }
 }

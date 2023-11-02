@@ -1,9 +1,10 @@
-<script>
+<script lang="ts">
 
 import Field from "../../components/Field.svelte";
 import Form from "../../components/Form.svelte";
 import Submit from "../../components/Submit.svelte";
 import FieldData from "../../components/FieldData";
+import * as API from "./../../lib/API";
 
 let fields = {
     pseudo: new FieldData(),
@@ -25,6 +26,36 @@ function callback () {
         fields.password.setError("Le mot de passe ne peut pas être vide");
         canceled = true;
     }
+
+    if (!canceled) {
+
+        let data = {
+            pseudo: fields.pseudo.getValue(),
+            password: fields.password.getValue()
+        }
+
+        API.GET('auth/create-token', {
+            query: {
+                // TODO: replace email by pseudo
+                email: data.pseudo,
+                password: data.password
+            }
+        }).then((res : any) => {
+            console.log(res);
+
+            console.log(res.token)
+            localStorage.setItem('token', res.token);
+            //window.location.href = "/";
+
+        }).catch((err) => {
+            if (err.status === 400 || err.status === 401) {
+                fields.pseudo.setError("Pseudo ou mot de passe incorrect");
+                fields.password.setError("Pseudo ou mot de passe incorrect");
+            }
+            fields = fields;
+        })
+    }
+
 
     fields = fields;
 }
