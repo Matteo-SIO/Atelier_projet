@@ -4,7 +4,7 @@
 -->
 
 <script>
-    import {buildStyle} from "$lib/DataBuilder";
+    import {buildStyle} from "$lib/DataBuilder.js";
 
     export let gap;
 

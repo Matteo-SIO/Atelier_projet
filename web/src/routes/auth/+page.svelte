@@ -1,12 +1,11 @@
 <script lang="ts">
 
-import Field from "../../components/Field.svelte";
-import Form from "../../components/Form.svelte";
-import Submit from "../../components/Submit.svelte";
-import FieldData from "../../components/FieldData";
+import Field from "../../components/Field/Field.svelte";
+import Form from "../../components/Form/Form.svelte";
+import Submit from "../../components/Button.svelte";
+import FieldData from "../../components/Field/FieldData.ts";
 import * as API from "./../../lib/API";
-import FormLine from "../../components/FormLine.svelte";
-import FieldGroup from "../../components/FieldGroup.svelte";
+import FieldGroup from "../../components/Field/FieldGroup.svelte";
 
 let fields = {
     pseudo: new FieldData(),
@@ -51,8 +50,8 @@ function callback () {
 
         }).catch((err) => {
             if (err.status === 400 || err.status === 401) {
-                fields.pseudo.setError("Pseudo ou mot de passe incorrect");
-                fields.password.setError("Pseudo ou mot de passe incorrect");
+                fields.pseudo.setError("Le pseudo est incorrect");
+                fields.password.setError("Le mot de passe est incorrect");
             }
             fields = fields;
         })
