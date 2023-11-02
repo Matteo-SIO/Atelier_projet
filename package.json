@@ -6,9 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "node ./index.js",
+    "web": "cd web && npm run dev",
     "create-user": "node ./tests/cli_createUser.js"
   },
-  "author": "Mattéo, Chams, Raimbaud",
+  "author": "Mattéo, Raimbaud",
   "license": "ISC",
   "type": "module",
   "dependencies": {
