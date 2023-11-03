@@ -1,10 +1,5 @@
-<!--
-    block is a row
-    each items is a column
--->
-
-<script>
-    import {buildStyle} from "$lib/DataBuilder.js";
+<script lang="ts">
+    import {buildStyle} from "$lib/utils/DataBuilder";
 
     export let gap;
 

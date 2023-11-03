@@ -1,22 +1,18 @@
-<script lang="ts">
+import {createSession, redirectToHomeIfLoggedIn} from "$lib/Session.ts";
+import {redirect} from "@sveltejs/kit";
+import {browser} from "$app/environment";
+import * as API from "$lib/API.ts";
 
-import Field from "../../components/Field/Field.svelte";
-import Form from "../../components/Form/Form.svelte";
-import Submit from "../../components/Button.svelte";
-
-import FieldData from "$lib/utils/FieldData.ts";
-import * as API from "./../../lib/API";
-import FieldGroup from "../../components/Field/FieldGroup.svelte";
-import {createSession} from "$lib/Session.ts";
-
-let loaded = false;
-
-let fields = {
-    pseudo: new FieldData(),
-    password: new FieldData()
+/** @type {import('./$types').PageData} */
+export async function load () {
+    if (browser) {
+        if (await redirectToHomeIfLoggedIn()) {
+            throw redirect(302, '/');
+        }
+    }
 }
 
-function callback () {
+export function callback (fields : any) {
     console.log(fields);
     let canceled = false;
 
@@ -48,7 +44,7 @@ function callback () {
         }).then((res : any) => {
             console.log(res.token)
             createSession(res.token).then(() => {
-               // window.location.href = "/";
+                // window.location.href = "/";
             }).catch((err) => {
                 console.log(err);
             })
@@ -57,27 +53,9 @@ function callback () {
                 fields.pseudo.setError("Le pseudo est incorrect");
                 fields.password.setError("Le mot de passe est incorrect");
             }
-            fields = fields;
+            fields = structuredClone(fields);
         })
     }
 
-    fields = fields;
+    fields = structuredClone(fields);
 }
-</script>
-
-
-{#if loaded}
-    <Form size={3} offset={4}>
-        <h2>Connectez-vous</h2>
-        <p>Vous n'avez pas de compte ? <mark>Contactez un admin</mark></p>
-
-        <FieldGroup>
-            <!--<FormLine gap={10}>-->
-            <Field placeholder="Pseudo" type='text' data={fields.pseudo}></Field>
-            <Field placeholder="Mot de passe" type='password' data={fields.password}></Field>
-            <!--</FormLine>-->
-        </FieldGroup>
-
-        <Submit name="Se connecter" primary medium callback={callback}></Submit>
-    </Form>
-{/if}

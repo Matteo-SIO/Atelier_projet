@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "node ./index.js",
     "web": "cd web && npm run dev",
+    "web-build": "cd web && npm run build && npm run preview",
     "create-user": "node ./tests/cli_createUser.js"
   },
   "author": "Mattéo, Raimbaud",

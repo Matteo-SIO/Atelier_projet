@@ -1,5 +1,5 @@
-<script>
-    import {buildClass} from "$lib/DataBuilder";
+<script lang="ts">
+    import {buildClass} from "$lib/utils/DataBuilder";
 
     export let big = false;
     export let medium = false;

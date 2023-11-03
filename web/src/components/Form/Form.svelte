@@ -1,5 +1,5 @@
-<script>
-    import {buildClass} from "$lib/DataBuilder";
+<script lang="ts">
+    import {buildClass} from "$lib/utils/DataBuilder";
 
     export let offset = 0;
     export let size = 2;
