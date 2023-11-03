@@ -7,7 +7,7 @@
     let classes = buildClass({
         ['form']: true,
         [`col-md-${size}`] : (size !== 0),
-        [`col-md-offset-${offset}`] : (offset !== 0)
+        [`offset-md-${offset}`] : (offset !== 0)
     });
 </script>
 

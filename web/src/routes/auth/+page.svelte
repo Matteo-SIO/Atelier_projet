@@ -36,6 +36,6 @@ onMount(() => {
             <!--</FormLine>-->
         </FieldGroup>
 
-        <Submit name="Se connecter" primary medium callback={authFeedback.callback.bind(null, fields)}></Submit>
+        <Submit primary medium callback={authFeedback.callback.bind(null, fields)}>Se connecter</Submit>
     </Form>
 {/if}

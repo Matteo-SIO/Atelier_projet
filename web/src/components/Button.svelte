@@ -1,31 +1,24 @@
 <script lang="ts">
     import {buildClass} from "$lib/utils/DataBuilder";
 
-    export let name = '';
     export let callback = () => {}
 
     export let big = false;
     export let small = false;
     export let medium = false;
     export let primary = false;
+    export let classes = '';
 
-    let classes = buildClass({
+    classes = buildClass({
         'btn': true,
         'btn-lg': big,
         'btn-sm': small,
         'btn-md': medium,
         'btn-primary': primary
-    })
+    }, classes)
 
 </script>
 
-<div class="button">
-    <button class={classes} type="submit" on:click={callback}>{name}</button>
-</div>
-
-<style>
-    /* same height as input */
-    .button {
-        height: 1rem;
-    }
-</style>
+<button class={classes} type="submit" on:click={callback}>
+    <slot></slot>
+</button>

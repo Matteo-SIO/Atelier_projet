@@ -6,12 +6,12 @@ export function buildStyle (obj : { [key: string]: any }) {
     return res;
 }
 
-export function buildClass (obj : { [key: string]: boolean }) {
+export function buildClass (obj : { [key: string]: boolean }, baseClass: string = '') {
     let res = '';
     for (let key in obj) {
         if (obj[key]) {
             res += `${key} `
         }
     }
-    return res;
+    return res + ' ' + baseClass;
 }
