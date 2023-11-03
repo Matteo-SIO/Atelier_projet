@@ -67,7 +67,7 @@ function callback () {
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 
-<Form size={4} offset={4}>
+<Form size={3} offset={4}>
     <h2>Connectez-vous</h2>
     <p>Vous n'avez pas de compte ? <mark>Contactez un admin</mark></p>
 

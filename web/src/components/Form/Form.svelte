@@ -1,26 +1,23 @@
 <script>
+    import {buildClass} from "$lib/DataBuilder";
 
-    // parameters to define the size of form box
     export let offset = 0;
     export let size = 2;
 
-
-
+    let classes = buildClass({
+        ['form']: true,
+        [`col-md-${size}`] : (size !== 0),
+        [`col-md-offset-${offset}`] : (offset !== 0)
+    });
 </script>
 
 
-<!-- load dynamics fields -->
-<div class="container">
-    <div class="row">
-        <div class="col-md-{size} col-md-offset-{offset}" style="margin-top: 25vh;">
-            <slot></slot>
-        </div>
-    </div>
+<div class={classes} style="margin-top: 25vh;">
+    <slot></slot>
 </div>
 
 <style>
-    .container {
-        width: 100%;
+    .form {
         text-align: center;
     }
 </style>
