@@ -68,6 +68,38 @@ export default (server, BASE_PATH) => {
         reply.send(user);
     });
 
+    /**
+     * @api {GET} /api/users/me Get the current user
+     * @apiPermission manager, employee
+     */
+    server.get(BASE_PATH + '/me', async (request, reply) => {
+        let token = request.headers.authorization;
+        let decodedToken = verifyToken(token);
+        if (!decodedToken) {
+            reply.code(401);
+            reply.send({error: 'Unauthorized'});
+            return;
+        }
+
+        let user = await Tables.User.findOne({
+            where: {
+                id: decodedToken.id
+            },
+            attributes: ['id', 'role', 'firstName', 'lastName']
+            // return only fields 'id', 'role', 'firstName', 'lastName'
+            // don't return the 'password' and 'email' fields
+        });
+
+        if (!user) {
+            reply.code(404);
+            reply.send({error: 'Not Found'});
+            return;
+        }
+
+        reply.code(200);
+        reply.send(user);
+    });
+
 
     /**
      * @api {PUT} /api/users/:id Update a user by id
