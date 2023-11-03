@@ -6,7 +6,6 @@ import {get} from "svelte/store";
 export function callback (store : Writable<any>) {
     let fields = get(store);
 
-    console.log(fields);
     let canceled = false;
 
     fields.pseudo.setError(null);
@@ -34,7 +33,6 @@ export function callback (store : Writable<any>) {
                 password: data.password
             }
         }).then((res : any) => {
-            console.log(res.token)
             createSession(res.token).then(() => {
                 // do redirect
                 window.location.href = '/';
