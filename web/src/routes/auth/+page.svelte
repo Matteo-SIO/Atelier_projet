@@ -3,66 +3,24 @@
 import Field from "../../components/Field/Field.svelte";
 import Form from "../../components/Form/Form.svelte";
 import Submit from "../../components/Button.svelte";
-
-import FieldData from "$lib/utils/FieldData.ts";
-import * as API from "./../../lib/API";
 import FieldGroup from "../../components/Field/FieldGroup.svelte";
-import {createSession} from "$lib/Session.ts";
+
+import * as authFeedback from "./authFeedback.ts";
+import FieldData from "$lib/utils/FieldData.ts";
+import {writable} from "svelte/store";
+import {onMount} from "svelte";
 
 let loaded = false;
 
-let fields = {
+let fields = writable({
     pseudo: new FieldData(),
     password: new FieldData()
-}
+});
 
-function callback () {
-    console.log(fields);
-    let canceled = false;
+onMount(() => {
+    loaded = true;
+})
 
-    fields.pseudo.setError(null);
-    fields.password.setError(null);
-
-    if (fields.pseudo.getValue() === null || fields.pseudo.getValue() === "") {
-        fields.pseudo.setError("Le pseudo ne peut pas être vide");
-        canceled = true;
-    }
-    if (fields.password.getValue() === null || fields.password.getValue() === "") {
-        fields.password.setError("Le mot de passe ne peut pas être vide");
-        canceled = true;
-    }
-
-    if (!canceled) {
-
-        let data = {
-            pseudo: fields.pseudo.getValue(),
-            password: fields.password.getValue()
-        }
-
-        API.GET('auth/create-token', {
-            query: {
-                // TODO: replace email by pseudo
-                email: data.pseudo,
-                password: data.password
-            }
-        }).then((res : any) => {
-            console.log(res.token)
-            createSession(res.token).then(() => {
-               // window.location.href = "/";
-            }).catch((err) => {
-                console.log(err);
-            })
-        }).catch((err) => {
-            if (err.status === 400 || err.status === 401) {
-                fields.pseudo.setError("Le pseudo est incorrect");
-                fields.password.setError("Le mot de passe est incorrect");
-            }
-            fields = fields;
-        })
-    }
-
-    fields = fields;
-}
 </script>
 
 
@@ -73,11 +31,11 @@ function callback () {
 
         <FieldGroup>
             <!--<FormLine gap={10}>-->
-            <Field placeholder="Pseudo" type='text' data={fields.pseudo}></Field>
-            <Field placeholder="Mot de passe" type='password' data={fields.password}></Field>
+            <Field placeholder="Pseudo" type='text' data={$fields.pseudo}></Field>
+            <Field placeholder="Mot de passe" type='password' data={$fields.password}></Field>
             <!--</FormLine>-->
         </FieldGroup>
 
-        <Submit name="Se connecter" primary medium callback={callback}></Submit>
+        <Submit name="Se connecter" primary medium callback={authFeedback.callback.bind(null, fields)}></Submit>
     </Form>
 {/if}
