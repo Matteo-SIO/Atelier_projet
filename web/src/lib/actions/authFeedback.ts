@@ -2,6 +2,7 @@ import * as API from "$lib/API.ts";
 import {createSession} from "$lib/Session.ts";
 import type {Writable} from "svelte/store";
 import {get} from "svelte/store";
+import {goto} from "$app/navigation";
 
 export function callback (store : Writable<any>) {
     let fields = get(store);
@@ -33,9 +34,9 @@ export function callback (store : Writable<any>) {
                 password: data.password
             }
         }).then((res : any) => {
-            createSession(res.token).then(() => {
+            createSession(res.token).then(async () => {
                 // do redirect
-                window.location.href = '/';
+                await goto('/');
             }).catch((err) => {
                 console.log(err);
             })

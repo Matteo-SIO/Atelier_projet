@@ -8,13 +8,8 @@
     onMount(() => {
         loaded = true;
     });
-
-
 </script>
 
 {#if loaded}
-
     <Header />
-
-
 {/if}

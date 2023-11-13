@@ -5,8 +5,8 @@ import Form from "../../components/Form/Form.svelte";
 import Submit from "../../components/Button.svelte";
 import FieldGroup from "../../components/Field/FieldGroup.svelte";
 
-import * as authFeedback from "./authFeedback.ts";
-import FieldData from "$lib/utils/FieldData.ts";
+import * as authFeedback from "$lib/actions/authFeedback";
+import FieldData from "$lib/utils/FieldData";
 import {writable} from "svelte/store";
 import {onMount} from "svelte";
 
