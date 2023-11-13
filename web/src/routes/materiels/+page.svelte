@@ -8,6 +8,8 @@
     import TableField from "../../components/Table/TableField.svelte";
     import TableBody from "../../components/Table/TableBody.svelte";
     import TableItem from "../../components/Table/TableItem.svelte";
+    import TableFieldBadge from "../../components/Table/Field/TableFieldBadge.svelte";
+    import TableFieldText from "../../components/Table/Field/TableFieldText.svelte";
 
     let loaded = false;
 
@@ -33,38 +35,29 @@
             <TableBody>
 
                 <TableItem>
-                    <td>
-                        <span class="badge bg-info">Ordinateur</span>
-                    </td>
-                    <td>Nom du Produit 1</td>
-                    <td>
-                        <span class="badge bg-success">Disponible</span>
-                    </td>
-                    <td>Disponible le 01/01/2023</td>
+                    <TableFieldBadge classes="bg-info">Ordinateur</TableFieldBadge>
+                    <TableFieldText>Nom du Produit 1</TableFieldText>
+                    <TableFieldBadge classes="bg-success">Disponible</TableFieldBadge>
+
+                    <td><code>Disponible le 01/01/2023</code></td>
                     <td class="text-end">
                         <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-primary">Réserver</button>
-                            <button type="button" class="btn btn-sm btn-info">Info</button>
-                            <button type="button" class="btn btn-sm btn-warning">Modifier</button>
-                            <button type="button" class="btn btn-sm btn-danger">Archiver</button>
+                            <button type="button" class="btn btn-sm btn-success">Réserver</button>
+                            <button type="button" class="btn btn-sm ms-1 me-1 btn-secondary">Admin</button>
                         </div>
                     </td>
                 </TableItem>
 
                 <!-- Produit 2 -->
                 <TableItem>
-                    <td>
-                        <span class="badge bg-warning">Souris</span>
-                    </td>
-                    <td>Nom du Produit 2</td>
-                    <td>
-                        <span class="badge bg-danger">Emprunté</span>
-                    </td>
-                    <td>Disponible le 02/01/2023</td>
+                    <TableFieldBadge classes="bg-warning">Souris</TableFieldBadge>
+                    <TableFieldText>Nom du Produit 2</TableFieldText>
+                    <TableFieldBadge classes="bg-danger">Emprunté</TableFieldBadge>
+
+                    <td><code>Disponible le 02/01/2023</code></td>
                     <td class="text-end">
                         <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-info">Info</button>
-                            <button type="button" class="btn btn-sm btn-warning">Modifier</button>
+                            <button type="button" class="btn btn-sm ms-1 me-1 btn-secondary">Admin</button>
                         </div>
                     </td>
                 </TableItem>

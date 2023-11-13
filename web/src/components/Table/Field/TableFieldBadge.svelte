@@ -1,7 +1,7 @@
 <script>
-    import {buildClass} from "$lib/utils/DataBuilder.js";
+    import {buildClass} from "$lib/utils/DataBuilder";
 
-    export let classes = "";
+    export let classes = "bg-warning";
 
     classes = buildClass({
         "badge": true
