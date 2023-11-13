@@ -30,7 +30,7 @@
                         <th>Nom du Produit</th>
                         <th>Statut</th>
                         <th>Date</th>
-                        <th>Actions</th>
+                        <th class="text-end">Actions</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -44,7 +44,7 @@
                             <span class="badge bg-success">Disponible</span>
                         </td>
                         <td>Disponible le 01/01/2023</td>
-                        <td>
+                        <td class="text-end">
                             <div class="btn-group">
                                 <button type="button" class="btn btn-sm btn-primary">Réserver</button>
                                 <button type="button" class="btn btn-sm btn-info">Info</button>
@@ -64,7 +64,7 @@
                             <span class="badge bg-danger">Emprunté</span>
                         </td>
                         <td>Disponible le 02/01/2023</td>
-                        <td>
+                        <td class="text-end">
                             <div class="btn-group">
                                 <button type="button" class="btn btn-sm btn-info">Info</button>
                                 <button type="button" class="btn btn-sm btn-warning">Modifier</button>
