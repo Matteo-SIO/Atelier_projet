@@ -3,6 +3,11 @@
     import {onMount} from "svelte";
     import Header from "../../components/Header/Header.svelte";
     import Panel from "../../components/Panel/Panel.svelte";
+    import Table from "../../components/Table/Table.svelte";
+    import TableHead from "../../components/Table/TableHead.svelte";
+    import TableField from "../../components/Table/TableField.svelte";
+    import TableBody from "../../components/Table/TableBody.svelte";
+    import TableItem from "../../components/Table/TableItem.svelte";
 
     let loaded = false;
 
@@ -16,77 +21,58 @@
 {#if loaded}
     <Header />
 
-    <div class="container mt-5">
-        <div class="card">
-            <div class="card-header bg-primary text-white">
-                Liste des Matériels Informatiques
-            </div>
-            <ul class="list-group list-group-flush">
+    <Panel display="Liste des Matériels Informatiques">
+        <Table>
+            <TableHead>
+                <TableField>Type</TableField>
+                <TableField>Nom du Produit</TableField>
+                <TableField>Statut</TableField>
+                <TableField>Date</TableField>
+                <TableField classes="text-end">Actions</TableField>
+            </TableHead>
+            <TableBody>
 
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Type</th>
-                        <th>Nom du Produit</th>
-                        <th>Statut</th>
-                        <th>Date</th>
-                        <th class="text-end">Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <!-- Produit 1 -->
-                    <tr>
-                        <td>
-                            <span class="badge bg-info">Ordinateur</span>
-                        </td>
-                        <td>Nom du Produit 1</td>
-                        <td>
-                            <span class="badge bg-success">Disponible</span>
-                        </td>
-                        <td>Disponible le 01/01/2023</td>
-                        <td class="text-end">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-primary">Réserver</button>
-                                <button type="button" class="btn btn-sm btn-info">Info</button>
-                                <button type="button" class="btn btn-sm btn-warning">Modifier</button>
-                                <button type="button" class="btn btn-sm btn-danger">Archiver</button>
-                            </div>
-                        </td>
-                    </tr>
+                <TableItem>
+                    <td>
+                        <span class="badge bg-info">Ordinateur</span>
+                    </td>
+                    <td>Nom du Produit 1</td>
+                    <td>
+                        <span class="badge bg-success">Disponible</span>
+                    </td>
+                    <td>Disponible le 01/01/2023</td>
+                    <td class="text-end">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-primary">Réserver</button>
+                            <button type="button" class="btn btn-sm btn-info">Info</button>
+                            <button type="button" class="btn btn-sm btn-warning">Modifier</button>
+                            <button type="button" class="btn btn-sm btn-danger">Archiver</button>
+                        </div>
+                    </td>
+                </TableItem>
 
-                    <!-- Produit 2 -->
-                    <tr>
-                        <td>
-                            <span class="badge bg-warning">Souris</span>
-                        </td>
-                        <td>Nom du Produit 2</td>
-                        <td>
-                            <span class="badge bg-danger">Emprunté</span>
-                        </td>
-                        <td>Disponible le 02/01/2023</td>
-                        <td class="text-end">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-info">Info</button>
-                                <button type="button" class="btn btn-sm btn-warning">Modifier</button>
-                            </div>
-                        </td>
-                    </tr>
+                <!-- Produit 2 -->
+                <TableItem>
+                    <td>
+                        <span class="badge bg-warning">Souris</span>
+                    </td>
+                    <td>Nom du Produit 2</td>
+                    <td>
+                        <span class="badge bg-danger">Emprunté</span>
+                    </td>
+                    <td>Disponible le 02/01/2023</td>
+                    <td class="text-end">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-info">Info</button>
+                            <button type="button" class="btn btn-sm btn-warning">Modifier</button>
+                        </div>
+                    </td>
+                </TableItem>
 
-                    <!-- Ajoutez d'autres produits au besoin -->
-
-                    </tbody>
-                </table>
+            </TableBody>
 
 
-
-
-
-
-
-
-    </ul>
-        </div>
-    </div>
-
+        </Table>
+    </Panel>
 
 {/if}
