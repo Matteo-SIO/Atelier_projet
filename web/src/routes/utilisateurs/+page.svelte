@@ -12,6 +12,10 @@
     import TableFieldText from "../../components/Table/Field/TableFieldText.svelte";
     import TableFieldDate from "../../components/Table/Field/TableFieldDate.svelte";
     import Button from "../../components/Button.svelte";
+    import PanelHead from "../../components/Panel/PanelHead.svelte";
+    import PanelBody from "../../components/Panel/PanelBody.svelte";
+    import EditUserModal from "./templates/EditUserModal.svelte";
+    import UserListPanel from "./templates/UserListPanel.svelte";
 
     let loaded = false;
 
@@ -19,47 +23,14 @@
         loaded = true;
     })
 
+    let showModal = true;
+    let modalData;
+
 </script>
 
 
 {#if loaded}
     <Header activeLabel="Utilisateurs" />
-
-    <Panel display="Liste des Comptes Utilisateurs">
-        <Table>
-            <TableHead>
-                <TableField>Pseudo</TableField>
-                <TableField>Nom de l'employé</TableField>
-                <TableField>Rôle</TableField>
-                <TableField>Date d'inscription</TableField>
-                <TableField classes="text-end">Actions</TableField>
-            </TableHead>
-            <TableBody>
-
-                <TableItem>
-                    <TableFieldText>Mister</TableFieldText>
-                    <TableFieldText>Jean Patrick</TableFieldText>
-                    <TableFieldBadge classes="bg-info">Employé</TableFieldBadge>
-                    <TableFieldDate>01/01/2023</TableFieldDate>
-                    <TableField end>
-                        <Button classes="btn btn-sm ms-1 me-1 btn-secondary">Admin</Button>
-                    </TableField>
-                </TableItem>
-
-                <TableItem>
-                    <TableFieldText>JP</TableFieldText>
-                    <TableFieldText>Jean Permanove</TableFieldText>
-                    <TableFieldBadge classes="bg-warning">Manager</TableFieldBadge>
-                    <TableFieldDate>09/08/2022</TableFieldDate>
-                    <TableField end>
-                        <Button classes="btn btn-sm ms-1 me-1 btn-secondary">Admin</Button>
-                    </TableField>
-                </TableItem>
-
-
-            </TableBody>
-
-        </Table>
-    </Panel>
-
+    <UserListPanel />
+    <EditUserModal showModal={showModal} />
 {/if}

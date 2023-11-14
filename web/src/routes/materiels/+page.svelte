@@ -12,6 +12,8 @@
     import TableFieldText from "../../components/Table/Field/TableFieldText.svelte";
     import TableFieldDate from "../../components/Table/Field/TableFieldDate.svelte";
     import Button from "../../components/Button.svelte";
+    import PanelHead from "../../components/Panel/PanelHead.svelte";
+    import PanelBody from "../../components/Panel/PanelBody.svelte";
 
     let loaded = false;
 
@@ -24,43 +26,44 @@
 
 {#if loaded}
     <Header activeLabel="Matériel" />
+    <Panel>
+        <PanelHead>
+            Liste des Matériels Informatiques
+            <Button classes="btn btn-sm btn-danger float-end">Créer un matériel</Button>
+        </PanelHead>
+        <PanelBody>
+            <Table>
+                <TableHead>
+                    <TableField>Type</TableField>
+                    <TableField>Nom du Produit</TableField>
+                    <TableField>Statut</TableField>
+                    <TableField>Date</TableField>
+                    <TableField classes="text-end">Actions</TableField>
+                </TableHead>
+                <TableBody>
+                    <TableItem>
+                        <TableFieldBadge classes="bg-info">Ordinateur</TableFieldBadge>
+                        <TableFieldText>Nom du Produit 1</TableFieldText>
+                        <TableFieldBadge classes="bg-success">Disponible</TableFieldBadge>
+                        <TableFieldDate>Disponible le 01/01/2023</TableFieldDate>
 
-    <Panel display="Liste des Matériels Informatiques">
-        <Table>
-            <TableHead>
-                <TableField>Type</TableField>
-                <TableField>Nom du Produit</TableField>
-                <TableField>Statut</TableField>
-                <TableField>Date</TableField>
-                <TableField classes="text-end">Actions</TableField>
-            </TableHead>
-            <TableBody>
+                        <TableField end>
+                            <Button classes="btn btn-sm ms-1 me-1 btn-success">Réserver</Button>
+                            <Button classes="btn btn-sm ms-1 me-1 btn-secondary">Admin</Button>
+                        </TableField>
+                    </TableItem>
 
-                <TableItem>
-                    <TableFieldBadge classes="bg-info">Ordinateur</TableFieldBadge>
-                    <TableFieldText>Nom du Produit 1</TableFieldText>
-                    <TableFieldBadge classes="bg-success">Disponible</TableFieldBadge>
-                    <TableFieldDate>Disponible le 01/01/2023</TableFieldDate>
-
-                    <TableField end>
-                        <Button classes="btn btn-sm ms-1 me-1 btn-success">Réserver</Button>
-                        <Button classes="btn btn-sm ms-1 me-1 btn-secondary">Admin</Button>
-                    </TableField>
-                </TableItem>
-
-                <!-- Produit 2 -->
-                <TableItem>
-                    <TableFieldBadge classes="bg-warning">Souris</TableFieldBadge>
-                    <TableFieldText>Nom du Produit 2</TableFieldText>
-                    <TableFieldBadge classes="bg-danger">Emprunté</TableFieldBadge>
-                    <TableFieldDate>Disponible le 02/01/2023</TableFieldDate>
-                    <TableField end>
-                        <Button classes="btn btn-sm ms-1 me-1 btn-secondary">Admin</Button>
-                    </TableField>
-                </TableItem>
-            </TableBody>
-
-        </Table>
+                    <TableItem>
+                        <TableFieldBadge classes="bg-warning">Souris</TableFieldBadge>
+                        <TableFieldText>Nom du Produit 2</TableFieldText>
+                        <TableFieldBadge classes="bg-danger">Emprunté</TableFieldBadge>
+                        <TableFieldDate>Disponible le 02/01/2023</TableFieldDate>
+                        <TableField end>
+                            <Button classes="btn btn-sm ms-1 me-1 btn-secondary">Admin</Button>
+                        </TableField>
+                    </TableItem>
+                </TableBody>
+            </Table>
+        </PanelBody>
     </Panel>
-
 {/if}
