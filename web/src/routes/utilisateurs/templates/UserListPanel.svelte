@@ -11,6 +11,7 @@ import TableField from "../../../components/Table/TableField.svelte";
 import TableHead from "../../../components/Table/TableHead.svelte";
 import TableFieldDate from "../../../components/Table/Field/TableFieldDate.svelte";
 import TableFieldBadge from "../../../components/Table/Field/TableFieldBadge.svelte";
+import UserRow from "./UserRow.svelte";
 </script>
 
 <Panel>
@@ -27,6 +28,15 @@ import TableFieldBadge from "../../../components/Table/Field/TableFieldBadge.sve
                 <TableField classes="text-end">Actions</TableField>
             </TableHead>
             <TableBody>
+
+                <UserRow userData={{
+                    pseudo: '',
+                    id: 10,
+                    firstName: 'Jean',
+                    lastName: 'Patrick',
+                    role: 'EMPLOYEE'
+                }} />
+
                 <TableItem>
                     <TableFieldText>Mister</TableFieldText>
                     <TableFieldText>Jean Patrick</TableFieldText>
