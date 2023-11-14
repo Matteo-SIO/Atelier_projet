@@ -23,41 +23,40 @@
 
 
 {#if loaded}
-    <Header activeLabel="Matériel" />
+    <Header activeLabel="Utilisateurs" />
 
-    <Panel display="Liste des Matériels Informatiques">
+    <Panel display="Liste des Comptes Utilisateurs">
         <Table>
             <TableHead>
-                <TableField>Type</TableField>
-                <TableField>Nom du Produit</TableField>
-                <TableField>Statut</TableField>
-                <TableField>Date</TableField>
+                <TableField>Pseudo</TableField>
+                <TableField>Nom de l'employé</TableField>
+                <TableField>Rôle</TableField>
+                <TableField>Date d'inscription</TableField>
                 <TableField classes="text-end">Actions</TableField>
             </TableHead>
             <TableBody>
 
                 <TableItem>
-                    <TableFieldBadge classes="bg-info">Ordinateur</TableFieldBadge>
-                    <TableFieldText>Nom du Produit 1</TableFieldText>
-                    <TableFieldBadge classes="bg-success">Disponible</TableFieldBadge>
-                    <TableFieldDate>Disponible le 01/01/2023</TableFieldDate>
-
+                    <TableFieldText>Mister</TableFieldText>
+                    <TableFieldText>Jean Patrick</TableFieldText>
+                    <TableFieldBadge classes="bg-info">Employé</TableFieldBadge>
+                    <TableFieldDate>01/01/2023</TableFieldDate>
                     <TableField end>
-                        <Button classes="btn btn-sm ms-1 me-1 btn-success">Réserver</Button>
                         <Button classes="btn btn-sm ms-1 me-1 btn-secondary">Admin</Button>
                     </TableField>
                 </TableItem>
 
-                <!-- Produit 2 -->
                 <TableItem>
-                    <TableFieldBadge classes="bg-warning">Souris</TableFieldBadge>
-                    <TableFieldText>Nom du Produit 2</TableFieldText>
-                    <TableFieldBadge classes="bg-danger">Emprunté</TableFieldBadge>
-                    <TableFieldDate>Disponible le 02/01/2023</TableFieldDate>
+                    <TableFieldText>JP</TableFieldText>
+                    <TableFieldText>Jean Permanove</TableFieldText>
+                    <TableFieldBadge classes="bg-warning">Manager</TableFieldBadge>
+                    <TableFieldDate>09/08/2022</TableFieldDate>
                     <TableField end>
                         <Button classes="btn btn-sm ms-1 me-1 btn-secondary">Admin</Button>
                     </TableField>
                 </TableItem>
+
+
             </TableBody>
 
         </Table>

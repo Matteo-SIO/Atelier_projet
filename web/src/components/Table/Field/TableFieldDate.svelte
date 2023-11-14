@@ -1,18 +1,16 @@
 <script>
     import {buildClass} from "$lib/utils/DataBuilder";
 
-    export let classes = "bg-warning";
+    export let classes = '';
     export let end = false;
 
     classes = buildClass({
-        "badge": true,
         "text-end": end
     }, classes);
-
 </script>
 
-<td>
-    <span class={classes}>
+<td class={classes}>
+    <code>
         <slot></slot>
-    </span>
+    </code>
 </td>
