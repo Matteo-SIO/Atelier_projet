@@ -3,13 +3,13 @@ import type {Writable} from "svelte/store";
 import type {UserData} from "$lib/Session.ts";
 
 export interface Session {
-  token: string|null;
-  user: UserData | null;
+  token: string|undefined;
+  user: UserData | undefined;
 }
 
 const sessionStore = (writable<Session>({
-    token: null,
-    user: null
+    token: undefined,
+    user: undefined
 }) as any);
 
 export default sessionStore as Writable<Session>;

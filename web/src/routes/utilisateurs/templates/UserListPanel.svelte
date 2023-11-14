@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import Table from "../../../components/Table/Table.svelte";
 import Panel from "../../../components/Panel/Panel.svelte";
 import TableBody from "../../../components/Table/TableBody.svelte";
@@ -12,6 +12,18 @@ import TableHead from "../../../components/Table/TableHead.svelte";
 import TableFieldDate from "../../../components/Table/Field/TableFieldDate.svelte";
 import TableFieldBadge from "../../../components/Table/Field/TableFieldBadge.svelte";
 import UserRow from "./UserRow.svelte";
+import type {UserDB} from "$lib/Definitions.ts";
+import EditUserModal from "./EditUserModal.svelte";
+
+let showModal = false;
+let selectedUserRow : UserDB;
+
+let onAdmin = (userRow : UserDB) => {
+    console.log('Touché', userRow);
+    selectedUserRow = userRow;
+    showModal = true;
+}
+
 </script>
 
 <Panel>
@@ -35,7 +47,7 @@ import UserRow from "./UserRow.svelte";
                     firstName: 'Jean',
                     lastName: 'Patrick',
                     role: 'EMPLOYEE'
-                }} />
+                }} {onAdmin} />
 
                 <TableItem>
                     <TableFieldText>Mister</TableFieldText>
@@ -60,3 +72,5 @@ import UserRow from "./UserRow.svelte";
         </Table>
     </PanelBody>
 </Panel>
+
+<EditUserModal bind:showModal={showModal} userRow={selectedUserRow} />

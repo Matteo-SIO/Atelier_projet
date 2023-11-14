@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import Table from "../../../components/Table/Table.svelte";
 import ModalHeader from "../../../components/Modal/ModalHeader.svelte";
 import TableBody from "../../../components/Table/TableBody.svelte";
@@ -10,9 +10,21 @@ import TableField from "../../../components/Table/TableField.svelte";
 import ModalBody from "../../../components/Modal/ModalBody.svelte";
 import TableHead from "../../../components/Table/TableHead.svelte";
 import ModalFooter from "../../../components/Modal/ModalFooter.svelte";
+import type {UserDB} from "$lib/Definitions.ts";
+import UserDeleteConfirmModal from "./UserDeleteConfirmModal.svelte";
 
-export let showModal = false;
-export let dataModal = undefined;
+export let showDeleteConfirmModal : boolean;
+export let showModal : boolean;
+export let userRow : UserDB;
+
+let onDelete = () => {
+    showModal = false;
+    showDeleteConfirmModal = true;
+}
+
+let onSave = () => {
+    // showModal = false;
+}
 
 </script>
 
@@ -45,8 +57,10 @@ export let dataModal = undefined;
             </Table>
         </ModalBody>
         <ModalFooter>
-            <Button classes="btn btn-danger">Supprimer</Button>
-            <Button classes="btn btn-primary">Enregistrer</Button>
+            <Button classes="btn btn-danger" callback={onDelete}>Supprimer</Button>
+            <Button classes="btn btn-primary" callback={onSave}>Enregistrer</Button>
         </ModalFooter>
     </Modal>
 {/if}
+
+<UserDeleteConfirmModal bind:showModal={showDeleteConfirmModal} userID={userRow?.id} />

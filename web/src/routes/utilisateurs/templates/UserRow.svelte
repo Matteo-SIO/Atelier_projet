@@ -8,6 +8,8 @@ import TableFieldBadge from "../../../components/Table/Field/TableFieldBadge.sve
 import type {UserDB} from "$lib/Definitions.ts";
 
 export let userData : UserDB;
+export let onAdmin : (rowAPI : UserDB) => void;
+
 </script>
 
 <TableItem>
@@ -16,6 +18,6 @@ export let userData : UserDB;
     <TableFieldBadge classes="bg-info">{userData.role}</TableFieldBadge>
     <TableFieldDate>-</TableFieldDate>
     <TableField end>
-        <Button classes="btn btn-sm ms-1 me-1 btn-secondary">Admin</Button>
+        <Button classes="btn btn-sm ms-1 me-1 btn-secondary" callback={onAdmin.bind(null, userData)}>Admin</Button>
     </TableField>
 </TableItem>
