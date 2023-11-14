@@ -26,9 +26,9 @@ export default (server, BASE_PATH) => {
         let users = await Tables.User.findAll({
             offset: offsetQuery,
             limit: limitQuery,
-            attributes: ['id', 'role', 'firstName', 'lastName']
-            // return only fields 'id', 'role', 'firstName', 'lastName'
-            // don't return the 'password' and 'email' fields
+            attributes: ['id', 'pseudo', 'role', 'firstName', 'lastName']
+            // return only fields 'id', 'pseudo', 'role', 'firstName', 'lastName'
+            // don't return the 'password' fields
         });
 
         reply.code(200);
@@ -53,9 +53,9 @@ export default (server, BASE_PATH) => {
             where: {
                 id: request.params.id
             },
-            attributes: ['id', 'role', 'firstName', 'lastName']
-            // return only fields 'id', 'role', 'firstName', 'lastName'
-            // don't return the 'password' and 'email' fields
+            attributes: ['id', 'pseudo', 'role', 'firstName', 'lastName']
+            // return only fields 'id', 'pseudo', 'role', 'firstName', 'lastName'
+            // don't return the 'password' fields
         });
 
         if (!user) {
@@ -85,8 +85,8 @@ export default (server, BASE_PATH) => {
             where: {
                 id: decodedToken.id
             },
-            attributes: ['id', 'role', 'firstName', 'lastName']
-            // return only fields 'id', 'role', 'firstName', 'lastName'
+            attributes: ['id', 'pseudo', 'role', 'firstName', 'lastName']
+            // return only fields 'id', 'pseudo', 'role', 'firstName', 'lastName'
             // don't return the 'password' and 'email' fields
         });
 
@@ -119,7 +119,12 @@ export default (server, BASE_PATH) => {
             return;
         }
 
-        await Tables.User.update(request.body, {
+        await Tables.User.update({
+            ...(request.body.firstName ? {firstName: request.body.firstName} : {}),
+            ...(request.body.lastName ? {lastName: request.body.lastName} : {}),
+            ...(request.body.email ? {email: request.body.email} : {}),
+            ...(request.body.password ? {password: request.body.password} : {}),
+        }, {
             where: {
                 id: request.params.id
             }

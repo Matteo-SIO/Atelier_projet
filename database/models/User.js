@@ -3,7 +3,7 @@ import {DataTypes} from 'sequelize';
 // Define the table Users
 export const init = (bdd) => {
     return bdd.define('users', {
-        email: {
+        pseudo: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true
