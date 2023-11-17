@@ -1,5 +1,4 @@
 <script>
-
     import {onMount} from "svelte";
     import Header from "../../components/Header/Header.svelte";
     import UserListPanel from "./templates/UserListPanel.svelte";
@@ -9,7 +8,6 @@
     onMount(() => {
         loaded = true;
     })
-
 </script>
 
 

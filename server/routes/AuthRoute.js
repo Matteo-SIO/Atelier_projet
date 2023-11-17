@@ -4,16 +4,16 @@ export default (server, BASE_PATH) => {
 
     /**
      * @api {GET} /api/auth/create-token Generate a session token with credentials
-     * @apiParam {String} email User email
+     * @apiParam {String} pseudo User pseudo
      * @apiParam {String} password User password
      * @apiPermission none
      */
     server.get(BASE_PATH + '/create-token', async (request, reply) => {
-        let email = request.query.email;
+        let pseudo = request.query.pseudo;
         let password = request.query.password;
 
-        if (email && password) {
-            let token = await SessionUtil.generateTokenFromCredentials(email, password);
+        if (pseudo && password) {
+            let token = await SessionUtil.generateTokenFromCredentials(pseudo, password);
             if (token) {
                 reply.code(200);
                 reply.send({token: token});

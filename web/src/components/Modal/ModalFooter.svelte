@@ -1,3 +1,3 @@
-<div class="modal-footer">
+<div class="modal-footer {$$props.class}">
     <slot></slot>
 </div>

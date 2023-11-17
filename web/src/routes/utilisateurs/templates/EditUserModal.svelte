@@ -13,12 +13,13 @@ import ModalFooter from "../../../components/Modal/ModalFooter.svelte";
 import type {UserDB} from "$lib/Definitions.ts";
 import UserDeleteConfirmModal from "./UserDeleteConfirmModal.svelte";
 
-export let showDeleteConfirmModal : boolean;
-export let showModal : boolean;
+export let show : boolean;
+let showDeleteConfirmModal : boolean;
+
 export let userRow : UserDB;
 
 let onDelete = () => {
-    showModal = false;
+    show = false;
     showDeleteConfirmModal = true;
 }
 
@@ -28,11 +29,11 @@ let onSave = () => {
 
 </script>
 
-{#if showModal}
-    <Modal bind:show={showModal}>
-        <ModalHeader>
+{#if show}
+    <Modal bind:show={show}>
+        <ModalHeader class="modal-header-info">
             <h5 class="modal-title">Paramètrage de l'utilisateur</h5>
-            <button type="button" class="btn-close" aria-label="Close" on:click={() => showModal = false}></button>
+            <button type="button" class="btn-close" aria-label="Close" on:click={() => show = false}></button>
         </ModalHeader>
         <ModalBody>
             <Table>
@@ -57,8 +58,8 @@ let onSave = () => {
             </Table>
         </ModalBody>
         <ModalFooter>
-            <Button classes="btn btn-danger" callback={onDelete}>Supprimer</Button>
-            <Button classes="btn btn-primary" callback={onSave}>Enregistrer</Button>
+            <Button class="button-delete" callback={onDelete}>Supprimer</Button>
+            <Button class="button-save" callback={onSave}>Enregistrer</Button>
         </ModalFooter>
     </Modal>
 {/if}

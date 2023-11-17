@@ -38,17 +38,16 @@
 
 {#if showModal}
     <Modal bind:show={showModal}>
-        <ModalHeader>
+        <ModalHeader class="modal-header-warning">
             <h5 class="modal-title">Confirmation de suppression</h5>
-            <button type="button" class="btn-close" aria-label="Close" on:click={() => showModal = false}></button>
         </ModalHeader>
         <ModalBody>
             <p>Êtes-vous sûr de supprimer l'utilisateur ?</p>
             <p>Cette opération est irréversible</p>
         </ModalBody>
         <ModalFooter>
-            <Button classes="btn btn-danger" callback={cancel}>Non</Button>
-            <Button classes="btn btn-primary" callback={deleteUser}>Oui</Button>
+            <Button class="button-no" callback={cancel}>Non</Button>
+            <Button class="button-yes" callback={deleteUser}>Oui</Button>
         </ModalFooter>
     </Modal>
 {/if}
@@ -57,3 +56,7 @@
     <p>Une erreur est survenue lors de la suppression de l'utilisateur</p>
     <p>Veuillez réessayer plus tard</p>
 </ErrorModal>
+
+<style lang="scss">
+    @import "../../../../static/common.scss";
+</style>

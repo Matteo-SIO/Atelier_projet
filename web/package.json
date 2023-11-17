@@ -26,6 +26,7 @@
   "type": "module",
   "dependencies": {
     "bootstrap": "^5.3.2",
-    "pnpm": "^8.8.0"
+    "pnpm": "^8.8.0",
+    "svelte-preprocess": "^5.1.0"
   }
 }

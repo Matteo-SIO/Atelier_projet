@@ -30,7 +30,7 @@ export function callback (store : Writable<any>) {
         API.GET('auth/create-token', {
             query: {
                 // TODO: replace email by pseudo
-                email: data.pseudo,
+                pseudo: data.pseudo,
                 password: data.password
             }
         }).then((res : any) => {

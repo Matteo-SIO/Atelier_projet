@@ -18,6 +18,15 @@ export let onAdmin : (rowAPI : UserDB) => void;
     <TableFieldBadge classes="bg-info">{userData.role}</TableFieldBadge>
     <TableFieldDate>-</TableFieldDate>
     <TableField end>
-        <Button classes="btn btn-sm ms-1 me-1 btn-secondary" callback={onAdmin.bind(null, userData)}>Admin</Button>
+        <Button class="button-action" callback={onAdmin.bind(null, userData)}>Admin</Button>
     </TableField>
 </TableItem>
+
+<style lang="scss">
+  :global(.button-action) {
+    // use tailwind, color gray-500
+    @apply bg-gray-500 hover:bg-gray-400 rounded-md border-none;
+    @apply px-2 py-1;
+    @apply text-white;
+  }
+</style>

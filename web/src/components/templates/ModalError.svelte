@@ -16,6 +16,6 @@
         <slot></slot>
     </ModalBody>
     <ModalFooter>
-        <Button classes="btn btn-secondary" callback={() => {showModal = false;}}>Fermer</Button>
+        <Button class="button-close" callback={() => {showModal = false;}}>Fermer</Button>
     </ModalFooter>
 </Modal>
