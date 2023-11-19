@@ -4,6 +4,13 @@
   @apply py-2 px-4 inline-flex items-center;
 }
 
+:global(.button-submit) {
+    @apply bg-blue-500 hover:bg-blue-700 rounded border-none;
+    @apply text-white font-bold;
+    @apply py-2 px-4;
+
+}
+
 :global(.button-no) {
   @apply bg-red-500 hover:bg-red-700 rounded border-none;
   @apply text-white font-bold ;
@@ -29,4 +36,10 @@
   @apply bg-blue-500 hover:bg-blue-700 rounded border-none;
   @apply text-white font-bold;
   @apply py-2 px-4;
+}
+
+:global(.button-disconnect) {
+  @apply bg-red-500 hover:bg-red-700 rounded border-none;
+  @apply text-white font-bold;
+  @apply py-1 px-1 ml-6;
 }

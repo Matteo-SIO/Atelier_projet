@@ -33,9 +33,13 @@ function getColorClass (label) {
                 </ul>
                 <div>
                     <b>Bonjour, {$sessionStore.user.firstName}</b>
-                    <Button classes="m-2 ms-5 btn-danger" primary callback={headerFeedback.disconnect}>Me déconnecter</Button>
+                    <Button class="button-disconnect" primary callback={headerFeedback.disconnect}>Me déconnecter</Button>
                 </div>
             </div>
         </div>
     </header>
 {/if}
+
+<style rel="stylesheet" lang="scss">
+  @import "../../../static/common.scss";
+</style>

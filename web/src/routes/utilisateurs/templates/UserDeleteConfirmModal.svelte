@@ -56,7 +56,3 @@
     <p>Une erreur est survenue lors de la suppression de l'utilisateur</p>
     <p>Veuillez réessayer plus tard</p>
 </ErrorModal>
-
-<style lang="scss">
-    @import "../../../../static/common.scss";
-</style>

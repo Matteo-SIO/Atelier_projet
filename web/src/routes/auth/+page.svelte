@@ -2,7 +2,7 @@
 
 import Field from "../../components/Field/Field.svelte";
 import Form from "../../components/Form/Form.svelte";
-import Submit from "../../components/Button.svelte";
+import Button from "../../components/Button.svelte";
 import FieldGroup from "../../components/Field/FieldGroup.svelte";
 
 import * as authFeedback from "$lib/actions/authFeedback";
@@ -36,6 +36,10 @@ onMount(() => {
             <!--</FormLine>-->
         </FieldGroup>
 
-        <Submit primary medium callback={authFeedback.callback.bind(null, fields)}>Se connecter</Submit>
+        <Button class="button-submit" callback={authFeedback.callback.bind(null, fields)}>Se connecter</Button>
     </Form>
 {/if}
+
+<style rel="stylesheet" lang="scss">
+  @import "../../../static/common.scss";
+</style>
