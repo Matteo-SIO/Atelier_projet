@@ -1,15 +1,15 @@
 <script lang="ts">
-import Table from "../../../components/Table/Table.svelte";
-import ModalHeader from "../../../components/Modal/ModalHeader.svelte";
-import TableBody from "../../../components/Table/TableBody.svelte";
-import TableItem from "../../../components/Table/TableItem.svelte";
-import TableFieldText from "../../../components/Table/Field/TableFieldText.svelte";
-import Button from "../../../components/Button.svelte";
-import Modal from "../../../components/Modal/Modal.svelte";
-import TableField from "../../../components/Table/TableField.svelte";
-import ModalBody from "../../../components/Modal/ModalBody.svelte";
-import TableHead from "../../../components/Table/TableHead.svelte";
-import ModalFooter from "../../../components/Modal/ModalFooter.svelte";
+import Table from "../../../../components/Table/Table.svelte";
+import ModalHeader from "../../../../components/Modal/ModalHeader.svelte";
+import TableBody from "../../../../components/Table/TableBody.svelte";
+import TableItem from "../../../../components/Table/TableItem.svelte";
+import TableFieldText from "../../../../components/Table/Field/TableFieldText.svelte";
+import Button from "../../../../components/Button.svelte";
+import Modal from "../../../../components/Modal/Modal.svelte";
+import TableField from "../../../../components/Table/TableField.svelte";
+import ModalBody from "../../../../components/Modal/ModalBody.svelte";
+import TableHead from "../../../../components/Table/TableHead.svelte";
+import ModalFooter from "../../../../components/Modal/ModalFooter.svelte";
 import type {UserDB} from "$lib/Definitions.ts";
 import UserDeleteConfirmModal from "./UserDeleteConfirmModal.svelte";
 

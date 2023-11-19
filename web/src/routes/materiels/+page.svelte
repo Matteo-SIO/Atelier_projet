@@ -28,8 +28,11 @@
     <Header activeLabel="Matériel" />
     <Panel>
         <PanelHead>
-            Liste des Matériels Informatiques
-            <Button classes="btn btn-sm btn-danger float-end">Créer un matériel</Button>
+            <div class="panel-head-grid">
+                <h4>Liste des matériels informatiques</h4>
+                <div />
+                <Button class="button-create">Créer un matériel</Button>
+            </div>
         </PanelHead>
         <PanelBody>
             <Table>
@@ -48,8 +51,8 @@
                         <TableFieldDate>Disponible le 01/01/2023</TableFieldDate>
 
                         <TableField end>
-                            <Button classes="btn btn-sm ms-1 me-1 btn-success">Réserver</Button>
-                            <Button classes="btn btn-sm ms-1 me-1 btn-secondary">Admin</Button>
+                            <Button class="button-order">Réserver</Button>
+                            <Button class="button-action">Admin</Button>
                         </TableField>
                     </TableItem>
 
@@ -59,7 +62,7 @@
                         <TableFieldBadge classes="bg-danger">Emprunté</TableFieldBadge>
                         <TableFieldDate>Disponible le 02/01/2023</TableFieldDate>
                         <TableField end>
-                            <Button classes="btn btn-sm ms-1 me-1 btn-secondary">Admin</Button>
+                            <Button class="button-action">Admin</Button>
                         </TableField>
                     </TableItem>
                 </TableBody>
@@ -67,3 +70,25 @@
         </PanelBody>
     </Panel>
 {/if}
+
+<style lang="scss">
+  @import "../../../static/common.scss";
+
+  :global(.button-order) {
+    @apply legacy-button;
+    @apply bg-purple-500 hover:bg-purple-400 rounded-md border-none;
+    @apply px-2 py-1;
+  }
+
+  :global(.panel-head-grid) {
+    @apply grid grid-cols-3 gap-4;
+  }
+
+    :global(.button-create) {
+        @apply legacy-button;
+        @apply bg-green-500 hover:bg-green-400 rounded-md border-none;
+        @apply px-2 py-1;
+        @apply ml-auto;
+    }
+
+</style>

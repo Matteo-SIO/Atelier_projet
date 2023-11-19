@@ -1,13 +1,13 @@
 <script lang="ts">
-    import ModalHeader from "../../../components/Modal/ModalHeader.svelte";
-    import Button from "../../../components/Button.svelte";
-    import Modal from "../../../components/Modal/Modal.svelte";
-    import ModalBody from "../../../components/Modal/ModalBody.svelte";
-    import ModalFooter from "../../../components/Modal/ModalFooter.svelte";
+    import ModalHeader from "../../../../components/Modal/ModalHeader.svelte";
+    import Button from "../../../../components/Button.svelte";
+    import Modal from "../../../../components/Modal/Modal.svelte";
+    import ModalBody from "../../../../components/Modal/ModalBody.svelte";
+    import ModalFooter from "../../../../components/Modal/ModalFooter.svelte";
     import * as API from "$lib/API.ts"
     import SessionStore from "$lib/stores/SessionStore.ts";
     import {get} from "svelte/store";
-    import ErrorModal from "../../../components/templates/ModalError.svelte";
+    import ErrorModal from "../../../../components/templates/ModalError.svelte";
 
     let showErrorModal = false;
 

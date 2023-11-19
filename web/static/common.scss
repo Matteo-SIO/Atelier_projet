@@ -1,45 +1,49 @@
+.legacy-button {
+  @apply text-white font-bold;
+  @apply py-2 px-4;
+  @apply rounded border-none;
+}
+
 :global(.button-close) {
-  @apply bg-gray-300 hover:bg-gray-400 rounded border-none;
+  @apply legacy-button;
+  @apply bg-gray-300 hover:bg-gray-400;
   @apply text-gray-800 font-bold;
-  @apply py-2 px-4 inline-flex items-center;
+  @apply inline-flex items-center;
 }
 
 :global(.button-submit) {
-    @apply bg-blue-500 hover:bg-blue-700 rounded border-none;
-    @apply text-white font-bold;
-    @apply py-2 px-4;
-
+    @apply legacy-button;
+    @apply bg-blue-500 hover:bg-blue-700;
 }
 
 :global(.button-no) {
-  @apply bg-red-500 hover:bg-red-700 rounded border-none;
-  @apply text-white font-bold ;
-  @apply py-2 px-4;
-
+  @apply legacy-button;
+  @apply bg-red-500 hover:bg-red-700;
 }
 
 :global(.button-yes) {
-  @apply bg-green-500 hover:bg-green-700 rounded border-none;
-  @apply text-white font-bold ;
-  @apply py-2 px-4;
+  @apply legacy-button;
+  @apply bg-green-500 hover:bg-green-700;
 }
 
 :global(.button-delete) {
-  // use tailwind
-  @apply bg-red-500 hover:bg-red-700 rounded border-none;
-  @apply text-white font-bold;
-  @apply py-2 px-4;
+  @apply legacy-button;
+  @apply bg-red-500 hover:bg-red-700;
 }
 
 :global(.button-save) {
-  // use tailwind
-  @apply bg-blue-500 hover:bg-blue-700 rounded border-none;
-  @apply text-white font-bold;
-  @apply py-2 px-4;
+  @apply legacy-button;
+  @apply bg-blue-500 hover:bg-blue-700;
 }
 
 :global(.button-disconnect) {
-  @apply bg-red-500 hover:bg-red-700 rounded border-none;
-  @apply text-white font-bold;
-  @apply py-1 px-1 ml-6;
+  @apply legacy-button;
+  @apply bg-red-500 hover:bg-red-700;
+  @apply py-2 px-2 ml-6;
+}
+
+:global(.button-action) {
+  @apply legacy-button;
+  @apply bg-gray-500 hover:bg-gray-400 rounded-md border-none;
+  @apply px-2 py-1;
 }
