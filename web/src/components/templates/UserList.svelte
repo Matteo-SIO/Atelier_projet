@@ -1,15 +1,15 @@
 <script lang="ts">
-import Table from "../../../components/Table/Table.svelte";
-import Panel from "../../../components/Panel/Panel.svelte";
-import TableBody from "../../../components/Table/TableBody.svelte";
-import PanelBody from "../../../components/Panel/PanelBody.svelte";
-import PanelHead from "../../../components/Panel/PanelHead.svelte";
-import TableField from "../../../components/Table/TableField.svelte";
-import TableHead from "../../../components/Table/TableHead.svelte";
-import UserRow from "./UserRow.svelte";
+import Table from "../../components/Table/Table.svelte";
+import Panel from "../../components/Panel/Panel.svelte";
+import TableBody from "../../components/Table/TableBody.svelte";
+import PanelBody from "../../components/Panel/PanelBody.svelte";
+import PanelHead from "../../components/Panel/PanelHead.svelte";
+import TableField from "../../components/Table/TableField.svelte";
+import TableHead from "../../components/Table/TableHead.svelte";
+import UserRow from "./UserLine.svelte";
 import type {UserDB} from "$lib/Definitions.ts";
 import EditUserModal from "./modals/EditUserModal.svelte";
-import Button from "../../../components/Button.svelte";
+import Button from "../../components/Button.svelte";
 
 let showAdminModal = false;
 let selectedUserRow : UserDB;
@@ -64,7 +64,7 @@ let onAdmin = (userRow : UserDB) => {
 <EditUserModal bind:show={showAdminModal} userRow={selectedUserRow} />
 
 <style lang="scss">
-  @import "../../../../static/common.scss";
+  @import "../../../static/common.scss";
 
   :global(.button-order) {
     @apply legacy-button;

@@ -1,7 +1,7 @@
 <script>
     import {onMount} from "svelte";
     import Header from "../../components/Header/Header.svelte";
-    import UserListPanel from "./templates/UserListPanel.svelte";
+    import UserListPanel from "../../components/templates/UserList.svelte";
 
     let loaded = false;
 
