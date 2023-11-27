@@ -7,7 +7,7 @@
     import * as API from "$lib/API.ts"
     import SessionStore from "$lib/stores/SessionStore.ts";
     import {get} from "svelte/store";
-    import ErrorModal from "../../../components/Modal/ModalError.svelte";
+    import ErrorModal from "./ModalError.svelte";
 
     let showErrorModal = false;
 

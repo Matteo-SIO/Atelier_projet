@@ -1,4 +1,6 @@
-@import "./field.scss";
+:global(.h1, .h2, .h3, .h4, .h5, .h6) {
+  @apply mt-0;
+}
 
 .legacy-button {
   @apply text-white font-bold;

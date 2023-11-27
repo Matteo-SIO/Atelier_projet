@@ -1,5 +1,4 @@
 <script>
-
 import sessionStore from "$lib/stores/SessionStore";
 import * as headerFeedback from "$lib/actions/headerFeedback";
 import Button from "../Button.svelte";
@@ -12,34 +11,54 @@ const navItems = [
 
 export let activeLabel = "Matériel";
 
-function getColorClass (label) {
-    return label === activeLabel ? "text-white" : "text-secondary";
-}
-
 </script>
 
 {#if $sessionStore.user}
-    <header class="p-2 bg-dark text-white">
-        <div class="container">
-            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+    <nav class="navbar">
+        <ul class="navbar-links">
+            {#each navItems as navItem}
+                <li><a href={navItem.href}>{navItem.label}</a></li>
+            {/each}
+        </ul>
 
-                    {#each navItems as navItem}
-                        <li class="nav-item">
-                            <a href={navItem.href} class="nav-link px-2 {getColorClass(navItem.label)}">{navItem.label}</a>
-                        </li>
-                    {/each}
-
-                </ul>
-                <div>
-                    <b>Bonjour, {$sessionStore.user.firstName}</b>
-                    <Button class="button-disconnect" primary callback={headerFeedback.disconnect}>Me déconnecter</Button>
-                </div>
-            </div>
+        <div class="right-content">
+            <b>Bonjour, {$sessionStore.user.firstName}</b>
+            <Button class="button-disconnect" primary callback={headerFeedback.disconnect}>Me déconnecter</Button>
         </div>
-    </header>
+
+
+    </nav>
 {/if}
 
 <style rel="stylesheet" lang="scss">
   @import "../../../static/common.scss";
+
+    .right-content {
+        @apply flex flex-row items-center;
+        @apply pr-4;
+    }
+
+    .navbar {
+        @apply bg-gray-800 text-white;
+        @apply flex flex-row justify-between items-center;
+        @apply px-4 py-2;
+        @apply fixed top-0 left-0 right-0;
+    }
+
+    .navbar-links {
+        @apply flex flex-row;
+        @apply list-none;
+        @apply uppercase;
+    }
+
+  .navbar-links li {
+    @apply mr-4;
+    a {
+      @apply px-4 py-2;
+      @apply transition-colors duration-300;
+      @apply no-underline;
+      @apply text-gray-100 hover:bg-gray-700 font-semibold text-sm;
+    }
+  }
+
 </style>

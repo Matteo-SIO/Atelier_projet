@@ -1,23 +1,18 @@
 <script lang="ts">
-    import {buildClass} from "$lib/utils/DataBuilder";
 
-    export let offset = 0;
-    export let size = 2;
-
-    let classes = buildClass({
-        ['form']: true,
-        [`col-md-${size}`] : (size !== 0),
-        [`offset-md-${offset}`] : (offset !== 0)
-    });
 </script>
 
 
-<div class={classes} style="margin-top: 25vh;">
-    <slot></slot>
+<div class="form-wrapper {$$props.class}">
+    <slot class="form-content"></slot>
 </div>
 
-<style>
-    .form {
-        text-align: center;
+<style lang="scss">
+    .form-wrapper {
+      // center all the content
+      @apply flex flex-col items-center;
+      @apply bg-stone-50 shadow-md rounded;
+      @apply border border-gray-200;
+      @apply p-4;
     }
 </style>
