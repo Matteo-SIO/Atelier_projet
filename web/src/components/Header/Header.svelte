@@ -52,13 +52,16 @@ export let activeLabel = "Matériel";
     }
 
   .navbar-links li {
-    @apply mr-4;
     a {
-      @apply px-4 py-2;
+      @apply px-4 py-4;
       @apply transition-colors duration-300;
       @apply no-underline;
       @apply text-gray-100 hover:bg-gray-700 font-semibold text-sm;
     }
   }
 
+  // vertical line between links
+  .navbar-links > *:not(:last-child) {
+    border-right: 3px solid #bbb;
+  }
 </style>
