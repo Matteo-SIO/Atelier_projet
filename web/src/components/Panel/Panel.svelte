@@ -1,7 +1,5 @@
 <div class="panel-container mt-5">
-    <div class="card">
-        <slot></slot>
-    </div>
+    <slot></slot>
 </div>
 
 <style lang="scss">

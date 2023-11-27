@@ -14,7 +14,7 @@ export let activeLabel = "Matériel";
 </script>
 
 {#if $sessionStore.user}
-    <nav class="navbar">
+    <nav class="navbar-wrapper">
         <ul class="navbar-links">
             {#each navItems as navItem}
                 <li><a href={navItem.href}>{navItem.label}</a></li>
@@ -33,16 +33,10 @@ export let activeLabel = "Matériel";
 <style rel="stylesheet" lang="scss">
   @import "../../../static/common.scss";
 
-    .right-content {
-        @apply flex flex-row items-center;
-        @apply pr-4;
-    }
-
-    .navbar {
+    .navbar-wrapper {
         @apply bg-gray-800 text-white;
         @apply flex flex-row justify-between items-center;
-        @apply px-4 py-2;
-        @apply fixed top-0 left-0 right-0;
+        @apply mt-0 pt-0;
     }
 
     .navbar-links {
@@ -63,5 +57,10 @@ export let activeLabel = "Matériel";
   // vertical line between links
   .navbar-links > *:not(:last-child) {
     border-right: 3px solid #bbb;
+  }
+
+  .right-content {
+    @apply flex flex-row items-center;
+    @apply pr-4;
   }
 </style>
