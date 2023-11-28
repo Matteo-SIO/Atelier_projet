@@ -7,7 +7,7 @@
     import * as API from "$lib/API.ts"
     import SessionStore from "$lib/stores/SessionStore.ts";
     import {get} from "svelte/store";
-    import ErrorModal from "../../../components/templates/ModalError.svelte";
+    import ErrorModal from "./ModalError.svelte";
 
     let showErrorModal = false;
 
@@ -56,7 +56,3 @@
     <p>Une erreur est survenue lors de la suppression de l'utilisateur</p>
     <p>Veuillez réessayer plus tard</p>
 </ErrorModal>
-
-<style lang="scss">
-    @import "../../../../static/common.scss";
-</style>

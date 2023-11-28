@@ -11,7 +11,7 @@ import ModalBody from "../../../components/Modal/ModalBody.svelte";
 import TableHead from "../../../components/Table/TableHead.svelte";
 import ModalFooter from "../../../components/Modal/ModalFooter.svelte";
 import type {UserDB} from "$lib/Definitions.ts";
-import UserDeleteConfirmModal from "./UserDeleteConfirmModal.svelte";
+import UserDeleteConfirmModal from "./DeleteUserModal.svelte";
 
 export let show : boolean;
 let showDeleteConfirmModal : boolean;

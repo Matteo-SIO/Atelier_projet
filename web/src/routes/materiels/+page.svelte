@@ -2,18 +2,8 @@
 
     import {onMount} from "svelte";
     import Header from "../../components/Header/Header.svelte";
-    import Panel from "../../components/Panel/Panel.svelte";
-    import Table from "../../components/Table/Table.svelte";
-    import TableHead from "../../components/Table/TableHead.svelte";
-    import TableField from "../../components/Table/TableField.svelte";
-    import TableBody from "../../components/Table/TableBody.svelte";
-    import TableItem from "../../components/Table/TableItem.svelte";
-    import TableFieldBadge from "../../components/Table/Field/TableFieldBadge.svelte";
-    import TableFieldText from "../../components/Table/Field/TableFieldText.svelte";
-    import TableFieldDate from "../../components/Table/Field/TableFieldDate.svelte";
-    import Button from "../../components/Button.svelte";
-    import PanelHead from "../../components/Panel/PanelHead.svelte";
-    import PanelBody from "../../components/Panel/PanelBody.svelte";
+    import Listing from "../../components/Listing/Listing.svelte";
+    import Page from "../../components/Page.svelte";
 
     let loaded = false;
 
@@ -25,45 +15,38 @@
 
 
 {#if loaded}
-    <Header activeLabel="Matériel" />
-    <Panel>
-        <PanelHead>
-            Liste des Matériels Informatiques
-            <Button classes="btn btn-sm btn-danger float-end">Créer un matériel</Button>
-        </PanelHead>
-        <PanelBody>
-            <Table>
-                <TableHead>
-                    <TableField>Type</TableField>
-                    <TableField>Nom du Produit</TableField>
-                    <TableField>Statut</TableField>
-                    <TableField>Date</TableField>
-                    <TableField classes="text-end">Actions</TableField>
-                </TableHead>
-                <TableBody>
-                    <TableItem>
-                        <TableFieldBadge classes="bg-info">Ordinateur</TableFieldBadge>
-                        <TableFieldText>Nom du Produit 1</TableFieldText>
-                        <TableFieldBadge classes="bg-success">Disponible</TableFieldBadge>
-                        <TableFieldDate>Disponible le 01/01/2023</TableFieldDate>
+    <div class="page">
 
-                        <TableField end>
-                            <Button classes="btn btn-sm ms-1 me-1 btn-success">Réserver</Button>
-                            <Button classes="btn btn-sm ms-1 me-1 btn-secondary">Admin</Button>
-                        </TableField>
-                    </TableItem>
+    </div>
 
-                    <TableItem>
-                        <TableFieldBadge classes="bg-warning">Souris</TableFieldBadge>
-                        <TableFieldText>Nom du Produit 2</TableFieldText>
-                        <TableFieldBadge classes="bg-danger">Emprunté</TableFieldBadge>
-                        <TableFieldDate>Disponible le 02/01/2023</TableFieldDate>
-                        <TableField end>
-                            <Button classes="btn btn-sm ms-1 me-1 btn-secondary">Admin</Button>
-                        </TableField>
-                    </TableItem>
-                </TableBody>
-            </Table>
-        </PanelBody>
-    </Panel>
+    <Page>
+        <Header slot="header" activeLabel="Matériel" />
+        <svelte:fragment slot="content">
+            <Listing class="own-list" />
+            <Listing class="available-list" />
+            <Listing class="some" />
+
+        </svelte:fragment>
+    </Page>
+
+
 {/if}
+
+<style lang="scss">
+    @import "../../../static/common.scss";
+
+    :global(.own-list) {
+      @apply list-red;
+    }
+
+    :global(.available-list) {
+      @apply list-green;
+    }
+
+    :global(.some) {
+      @apply list-blue;
+    }
+
+
+
+</style>
