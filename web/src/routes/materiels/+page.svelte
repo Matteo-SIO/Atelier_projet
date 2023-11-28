@@ -3,6 +3,7 @@
     import {onMount} from "svelte";
     import Header from "../../components/Header/Header.svelte";
     import Listing from "../../components/Listing/Listing.svelte";
+    import Page from "../../components/Page.svelte";
 
     let loaded = false;
 
@@ -14,8 +15,16 @@
 
 
 {#if loaded}
-    <Header activeLabel="Matériel" />
-    <Listing />
+    <div class="page">
+
+    </div>
+
+    <Page>
+        <Header slot="header" activeLabel="Matériel" />
+        <Listing slot="content" />
+    </Page>
+
+
 {/if}
 
 <style lang="scss">
@@ -27,9 +36,6 @@
     @apply px-2 py-1;
   }
 
-  :global(.panel-head-grid) {
-    @apply grid grid-cols-3 gap-4;
-  }
 
     :global(.button-create) {
         @apply legacy-button;

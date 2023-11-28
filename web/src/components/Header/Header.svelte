@@ -14,7 +14,7 @@ export let activeLabel = "Matériel";
 </script>
 
 {#if $sessionStore.user}
-    <nav class="navbar-wrapper">
+    <nav class="navbar-wrapper slot-{$$props.slot}">
         <ul class="navbar-links">
             {#each navItems as navItem}
                 <li><a href={navItem.href}>{navItem.label}</a></li>
@@ -43,6 +43,7 @@ export let activeLabel = "Matériel";
         @apply flex flex-row;
         @apply list-none;
         @apply uppercase;
+        @apply pl-0;
     }
 
   .navbar-links li {
@@ -61,6 +62,6 @@ export let activeLabel = "Matériel";
 
   .right-content {
     @apply flex flex-row items-center;
-    @apply pr-4;
+    @apply pr-0;
   }
 </style>

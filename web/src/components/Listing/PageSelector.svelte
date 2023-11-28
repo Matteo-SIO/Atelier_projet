@@ -10,9 +10,22 @@
 
     function recalc () {
         pages = [];
-        for (let i = current-4; i <= current+4; i++) {
-            if (i < 1) continue;
-            if (i > total) break;
+
+        let start = 1;
+        let end = total;
+
+        if (total > 9) {
+            if (current <= 5) {
+                end = 9;
+            } else if (current >= total - 4) {
+                start = total - 8;
+            } else {
+                start = current - 4;
+                end = current + 4;
+            }
+        }
+
+        for (let i = start; i <= end; i++) {
             pages = [...pages, i];
         }
     }
@@ -48,15 +61,15 @@
 
 <style lang="scss">
     .wrapper {
-      @apply flex items-center justify-center py-10 lg:px-0 sm:px-6 px-4;
+      @apply flex items-center justify-center lg:px-0 lg:py-0;
     }
 
     .content {
-      @apply lg:w-3/5 w-full  flex items-center justify-between border-t border-gray-200;
+      @apply lg:w-3/6 w-full  flex items-center justify-between border-t border-gray-200;
     }
 
     .ps-button {
-      @apply flex items-center pt-3 text-gray-600 hover:text-indigo-700 cursor-pointer;
+      @apply flex items-center text-gray-600 hover:text-indigo-700 cursor-pointer;
     }
 
     .ps-previous {
@@ -72,7 +85,8 @@
     }
 
     .ps-item {
-      @apply text-sm font-medium leading-none cursor-pointer pt-3 mr-4 px-2;
+      @apply text-sm font-medium leading-none cursor-pointer py-2 mx-2 px-2;
+      @apply my-0;
     }
 
     .ps-item-default {
@@ -81,5 +95,6 @@
 
     .ps-item-selected {
         @apply text-indigo-700 border-t border-indigo-400;
+        @apply bg-gray-100 rounded-full;
     }
 </style>
