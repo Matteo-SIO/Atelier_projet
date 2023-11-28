@@ -33,8 +33,8 @@
     $: recalc();
 </script>
 
-<div class="wrapper {$$props.class}">
-    <div class="content">
+<div class="ps-selector {$$props.class}">
+    <div class="wrapper">
         <div class="ps-button">
             <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1.1665 4H12.8332" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
@@ -60,11 +60,11 @@
 </div>
 
 <style lang="scss">
-    .wrapper {
+    .ps-selector {
       @apply flex items-center justify-center lg:px-0 lg:py-0;
     }
 
-    .content {
+    .wrapper {
       @apply lg:w-3/6 w-full  flex items-center justify-between border-t border-gray-200;
     }
 

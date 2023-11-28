@@ -43,7 +43,7 @@ export let activeLabel = "Matériel";
         @apply flex flex-row;
         @apply list-none;
         @apply uppercase;
-        @apply pl-0;
+        @apply py-4 m-0;
     }
 
   .navbar-links li {

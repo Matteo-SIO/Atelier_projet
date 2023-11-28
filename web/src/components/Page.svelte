@@ -15,4 +15,8 @@
     .page-content {
       @apply px-16 py-4;
     }
+
+    .page-content > :global(*) {
+      @apply p-2;
+    }
 </style>

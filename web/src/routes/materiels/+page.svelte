@@ -21,27 +21,32 @@
 
     <Page>
         <Header slot="header" activeLabel="Matériel" />
-        <Listing slot="content" />
+        <svelte:fragment slot="content">
+            <Listing class="own-list" />
+            <Listing class="available-list" />
+            <Listing class="some" />
+
+        </svelte:fragment>
     </Page>
 
 
 {/if}
 
 <style lang="scss">
-  @import "../../../static/common.scss";
+    @import "../../../static/common.scss";
 
-  :global(.button-order) {
-    @apply legacy-button;
-    @apply bg-purple-500 hover:bg-purple-400 rounded-md border-none;
-    @apply px-2 py-1;
-  }
-
-
-    :global(.button-create) {
-        @apply legacy-button;
-        @apply bg-green-500 hover:bg-green-400 rounded-md border-none;
-        @apply px-2 py-1;
-        @apply ml-auto;
+    :global(.own-list) {
+      @apply list-red;
     }
+
+    :global(.available-list) {
+      @apply list-green;
+    }
+
+    :global(.some) {
+      @apply list-blue;
+    }
+
+
 
 </style>

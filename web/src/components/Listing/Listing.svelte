@@ -6,8 +6,7 @@
     export let title = "Liste";
 </script>
 
-
-<div class="list-container">
+<div class="list-container {$$props.class}">
     <div class="header">
         <p>Liste des chaussures portées par le méchant loup</p>
         <!-- TODO -->
@@ -29,8 +28,6 @@
 
     .list-container {
         //box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
-
-
 
         .header {
             @apply bg-blue-200 text-blue-700;
@@ -61,15 +58,17 @@
         //center tailwind
         @apply flex justify-between items-center text-blue-700;
 
-        & :global(.ps-item), :global(.ps-button) {
+        /*& :global(.ps-item), :global(.ps-button) {
           @apply text-blue-700;
           @apply text-base;
         }
 
         & :global(.ps-item-selected) {
           @apply bg-blue-100 rounded-full;
-        }
+        }*/
 
     }
+
+
 
 </style>
