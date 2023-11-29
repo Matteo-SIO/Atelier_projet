@@ -3,7 +3,7 @@
 @tailwind utilities;
 @layer utilities {
 
-  // create dynamic utilities for each color
+  // create listing box for each color
   @each $color, $value in ["green", "blue", "red", "yellow"] {
     .list-#{$color} {
       :global(.page-selector) {
@@ -24,10 +24,19 @@
         @apply bg-#{$color}-200 #{!important};
         @apply text-#{$color}-800 #{!important};
         @apply uppercase text-white;
+        @apply rounded-t-[30px];
+        @apply py-0.5 px-10;
+        @apply flex flex-col items-center;
+      }
+
+      :global(.header p) {
+        @apply text-lg font-bold;
+        @apply my-1.5;
       }
 
       :global(.body) {
         @apply bg-#{$color}-50 #{!important};
+        @apply px-8;
       }
 
       :global(.footer) {

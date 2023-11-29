@@ -26,39 +26,4 @@
 <style lang="scss">
   @import "../../../static/common.scss";
 
-    .list-container {
-        //box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
-
-        .header {
-            @apply bg-blue-200 text-blue-700;
-            @apply rounded-t-[30px];
-            @apply py-0.5 px-10;
-            @apply flex flex-col items-center;
-
-          p {
-            @apply text-xl font-bold;
-            @apply my-1.5;
-          }
-        }
-
-        .body {
-            padding: 20px;
-            @apply bg-gray-100;
-            //overflow-y: auto;
-        }
-
-        .footer {
-         // @apply bg-gray-100 text-blue-700;
-          @apply rounded-b-[30px];
-          @apply bg-gray-100;
-        }
-    }
-
-    :global(.page-selector) {
-        //center tailwind
-       // @apply flex justify-between items-center text-blue-700;
-    }
-
-
-
 </style>
