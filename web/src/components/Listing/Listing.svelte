@@ -56,17 +56,7 @@
 
     :global(.page-selector) {
         //center tailwind
-        @apply flex justify-between items-center text-blue-700;
-
-        /*& :global(.ps-item), :global(.ps-button) {
-          @apply text-blue-700;
-          @apply text-base;
-        }
-
-        & :global(.ps-item-selected) {
-          @apply bg-blue-100 rounded-full;
-        }*/
-
+       // @apply flex justify-between items-center text-blue-700;
     }
 
 

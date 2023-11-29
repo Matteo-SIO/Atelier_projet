@@ -65,7 +65,7 @@
     }
 
     .wrapper {
-      @apply lg:w-3/6 w-full  flex items-center justify-between border-t border-gray-200;
+      @apply lg:w-3/6 w-full  flex items-center justify-between border-t;
     }
 
     .ps-button {

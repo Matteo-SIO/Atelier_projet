@@ -8,6 +8,7 @@
     .list-#{$color} {
       :global(.page-selector) {
         @apply bg-#{$color}-100 text-#{$color}-700;
+        @apply rounded-b-[30px];
 
         :global(.ps-item), :global(.ps-button) {
           @apply text-#{$color}-600;
@@ -27,6 +28,10 @@
 
       :global(.body) {
         @apply bg-#{$color}-50 #{!important};
+      }
+
+      :global(.footer) {
+        @apply rounded-b-[30px];
       }
     }
   }
