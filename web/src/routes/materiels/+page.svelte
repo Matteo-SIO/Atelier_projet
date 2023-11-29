@@ -11,6 +11,12 @@
         loaded = true;
     })
 
+    let CAN_CREATE_MATERIAL = true;
+
+    let modalCreateMaterial = !CAN_CREATE_MATERIAL ? null : () => {
+
+    };
+
 </script>
 
 
@@ -22,9 +28,8 @@
     <Page>
         <Header slot="header" activeLabel="Matériel" />
         <svelte:fragment slot="content">
-            <Listing class="own-list" />
-            <Listing class="available-list" />
-            <Listing class="some" />
+            <Listing class="own-list" title="Mes commandes" />
+            <Listing class="available-list" title="Matériels disponibles" createModal={modalCreateMaterial} />
 
         </svelte:fragment>
     </Page>
@@ -36,14 +41,10 @@
     @import "../../../static/common.scss";
 
     :global(.own-list) {
-      @apply list-red;
-    }
-
-    :global(.available-list) {
       @apply list-green;
     }
 
-    :global(.some) {
+    :global(.available-list) {
       @apply list-blue;
     }
 
