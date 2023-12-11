@@ -29,7 +29,7 @@
         @apply flex flex-col items-center;
       }
 
-      :global(.header p) {
+      :global(.header .header-title) {
         @apply text-lg font-bold;
         @apply my-1.5;
       }

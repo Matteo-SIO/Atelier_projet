@@ -2,6 +2,7 @@
 <!-- List.svelte -->
 <script lang="ts">
     import PageSelector from "./PageSelector.svelte";
+    import Button from "../Button.svelte";
 
     export let title = "Titre par défaut";
     export let createModal : null | Function = null;
@@ -9,10 +10,11 @@
 
 <div class="list-container {$$props.class}">
     <div class="header">
-        <p>{title}</p>
-        {#if createModal}
-            <button on:click={createModal}>Créer</button>
-        {/if}
+
+        <div class="header-create">
+            <div class="header-title">{title}</div>
+            <!--<button class="button-create" on:click={createModal}>Créer</button>-->
+        </div>
     </div>
     <div class="body">
         <slot></slot> <!-- TODO -->

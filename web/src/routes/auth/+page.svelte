@@ -30,10 +30,14 @@ onMount(() => {
             <p>Vous n'avez pas de compte ? <mark>Contactez un admin</mark></p>
         </div>
 
-
-
+        <div class="auth-form-fields">
             <Field required autofocus placeholder="Pseudo" type='text' data={$fields.pseudo}></Field>
             <Field required placeholder="Mot de passe" type='password' data={$fields.password}></Field>
+        </div>
+
+
+
+
 
 
         <Button class="auth-button-submit button-submit" callback={authFeedback.callback.bind(null, fields)}>Se connecter</Button>
@@ -45,12 +49,12 @@ onMount(() => {
 
   :global(.auth-form) {
     // use 2/4 of the screen
-    @apply w-1/4;
+    @apply w-1/3;
     @apply mx-auto;
     @apply mt-20;
 
     // define size of high
-    @apply h-60;
+    @apply h-80;
   }
 
     :global(.auth-form-header) {
@@ -58,9 +62,13 @@ onMount(() => {
         @apply flex flex-col items-center;
     }
 
+    :global(.auth-form-fields) {
+      @apply py-5;
+    }
+
     :global(.auth-form-header h2) {
         @apply text-2xl;
-        @apply mb-1;
+        //@apply mb-1;
 
         // beautiful font, big size, underlined
         @apply font-bold;
