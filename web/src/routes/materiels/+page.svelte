@@ -1,41 +1,32 @@
 <script>
 
-    import {onMount} from "svelte";
-    import Header from "../../components/Header/Header.svelte";
-    import Listing from "../../components/Listing/Listing.svelte";
-    import Page from "../../components/Page.svelte";
 
-    let loaded = false;
 
-    onMount(() => {
-        loaded = true;
-    })
+import Listing from "../../components/Listing/Listing.svelte";
+import TableView from "../../components/Table/TableView.svelte";
+import {ListingField} from "../../components/Listing/ListingField";
+import DisplayField from "../../components/Listing/ViewField.svelte";
 
-    let CAN_CREATE_MATERIAL = true;
-
-    let modalCreateMaterial = !CAN_CREATE_MATERIAL ? null : () => {
-
-    };
+const fields = {
+    name: new ListingField("name", "Name", "text"),
+    description: new ListingField("description", "Description", "text"),
+}
 
 </script>
 
 
-{#if loaded}
-    <div class="page">
-
-    </div>
-
-    <Page>
-        <Header slot="header" activeLabel="Matériel" />
-        <svelte:fragment slot="content">
-            <Listing class="own-list" title="Mes commandes" />
-            <Listing class="available-list" title="Matériels disponibles" createModal={modalCreateMaterial} />
-
+<Listing class="own-list" path="/">
+    <TableView def={fields}>
+        <svelte:fragment slot="item" let:row>
+            <DisplayField field={fields.name} value={row.name} />
+            <DisplayField field={fields.description} value={row.description} />
         </svelte:fragment>
-    </Page>
+    </TableView>
+</Listing>
 
 
-{/if}
+<Listing class="available-list" />
+
 
 <style lang="scss">
     @import "../../../static/common.scss";

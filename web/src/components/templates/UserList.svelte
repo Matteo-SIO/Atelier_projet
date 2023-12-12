@@ -1,9 +1,9 @@
 <script lang="ts">
 import Table from "../../components/Table/Table.svelte";
-import Panel from "../../components/Panel/Panel.svelte";
+import Panel from "../Panel/Panel.svelte";
 import TableBody from "../../components/Table/TableBody.svelte";
-import PanelBody from "../../components/Panel/PanelBody.svelte";
-import PanelHead from "../../components/Panel/PanelHead.svelte";
+import PanelBody from "../Panel/PanelBody.svelte";
+import PanelHead from "../Panel/PanelHead.svelte";
 import TableField from "../../components/Table/TableField.svelte";
 import TableHead from "../../components/Table/TableHead.svelte";
 import UserRow from "./UserLine.svelte";

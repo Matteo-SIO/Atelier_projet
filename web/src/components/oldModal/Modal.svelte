@@ -1,4 +1,4 @@
-<!-- Modal -->
+<!-- oldModal -->
 
 <script>
     export let classes = '';

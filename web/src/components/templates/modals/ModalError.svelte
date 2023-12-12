@@ -1,9 +1,9 @@
 <script lang="ts">
-    import Modal from "../../Modal/Modal.svelte";
-    import ModalHeader from "../../Modal/ModalHeader.svelte";
-    import ModalFooter from "../../Modal/ModalFooter.svelte";
+    import Modal from "../../oldModal/Modal.svelte";
+    import ModalHeader from "../../oldModal/ModalHeader.svelte";
+    import ModalFooter from "../../oldModal/ModalFooter.svelte";
     import Button from "../../Button.svelte";
-    import ModalBody from "../../Modal/ModalBody.svelte";
+    import ModalBody from "../../oldModal/ModalBody.svelte";
 
     export let showModal : boolean;
 </script>
