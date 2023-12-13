@@ -13,12 +13,17 @@
         }
     ]
 
+    let head : string[] = [];
+    for (const field of Object.values(def)) {
+        head = [...head, field.getLabel()];
+    }
+
 </script>
 
 <table>
     <th>
-        {#each Object.values(def) as fieldName}
-            <td>{fieldName.getLabel()}</td>
+        {#each head as name}
+            <td>{name}</td>
         {/each}
     </th>
 
@@ -29,3 +34,14 @@
         </tr>
     {/each}
 </table>
+
+<style lang="scss">
+    //table > th > td {
+      //@apply px-8;
+    //}
+
+    /*
+         padding: 0.5rem;
+        border-bottom: 1px solid #ddd;
+     */
+</style>

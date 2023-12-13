@@ -3,6 +3,6 @@
     export let value;
 </script>
 
-<code class="view-field">
+<td class="view-field">
     {value}
-</code>
+</td>
