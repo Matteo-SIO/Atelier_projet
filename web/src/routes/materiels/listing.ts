@@ -1,25 +1,35 @@
-import {ListingController} from "../../components/Listing/ListingController.ts";
-import {CreateModal, ModalType} from "../../components/Listing/ModalData.ts";
+import {ListingData, ListingPermission} from "../../components/Listing/ListingData.ts";
+import {ListingField} from "../../components/Listing/ListingField.ts";
 
-function modal_create () {
-    let createModalData = new CreateModal();
-    createModalData.setTitle("Modifier le matériel");
-    createModalData.addField({name: 'pseudo', label: 'Pseudo', type: 'text', required: true});
-    return createModalData;
+export function createOwn () {
+    const listingOwnData = new ListingData();
+    listingOwnData.addPermission(ListingPermission.CREATE);
+    listingOwnData.addPermission(ListingPermission.DELETE_OWN);
+
+    const listingOwnField = {
+        name: new ListingField("name", "Name", "text"),
+        description: new ListingField("description", "Description", "text"),
+    }
+
+    return {
+        listingOwnData,
+        listingOwnField,
+    }
 }
 
-export function listing_own () {
-    const ownerMaterial = new ListingController();
-    ownerMaterial.setTitle("Mes commandes passés");
+export function createStore () {
+    const listingStoreData = new ListingData();
+    listingStoreData.addPermission(ListingPermission.CREATE);
+    listingStoreData.addPermission(ListingPermission.EDIT_ALL);
+    listingStoreData.addPermission(ListingPermission.DELETE_ALL);
 
-    ownerMaterial.setModalData(ModalType.CREATE, modal_create());
-    return ownerMaterial;
-}
+    const listingStoreField = {
+        name: new ListingField("name", "Name", "text"),
+        description: new ListingField("description", "Description", "text"),
+    }
 
-export function listing_store () {
-    const ownerMaterial = new ListingController();
-    ownerMaterial.setTitle("Commandes disponibles");
-
-    ownerMaterial.setModalData(ModalType.CREATE, modal_create());
-    return ownerMaterial;
+    return {
+        listingStoreData,
+        listingStoreField,
+    }
 }

@@ -1,6 +1,11 @@
 <script lang="ts">
     import PageSelector from "./PageSelector.svelte";
+    import Button from "../Button.svelte";
+    import type {ListingData} from "./ListingData.ts";
+    import {ListingPermission} from "./ListingData.ts";
     export let path;
+
+    export let data : ListingData;
 </script>
 
 <div class="list-container {$$props.class}">
@@ -8,13 +13,15 @@
 
         <div class="header-create">
             <div class="header-title"> RIP</div>
-            <!--{#if createModal != null}
-                <Button class="button-create" on:click={createModal}>Créer</Button>
-            {/if}-->
+            <div class="header-actions">
+                {#if data.hasPermission(ListingPermission.CREATE)}
+                   <Button class="button-create" on:click={() => {}}>Créer</Button>
+               {/if}
+            </div>
         </div>
     </div>
     <div class="body">
-        <slot></slot>
+        <slot name="table"></slot>
     </div>
     <div class="footer">
         <PageSelector class="page-selector" current={1} total={32} />
