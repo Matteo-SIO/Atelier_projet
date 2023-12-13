@@ -1,14 +1,14 @@
 <script lang="ts">
-import Table from "../../components/Table/Table.svelte";
-import Panel from "../Panel/Panel.svelte";
-import TableBody from "../../components/Table/TableBody.svelte";
-import PanelBody from "../Panel/PanelBody.svelte";
-import PanelHead from "../Panel/PanelHead.svelte";
-import TableField from "../../components/Table/TableField.svelte";
-import TableHead from "../../components/Table/TableHead.svelte";
+import Table from "../oldTable/Table.svelte";
+import Panel from "../oldPanel/Panel.svelte";
+import TableBody from "../oldTable/TableBody.svelte";
+import PanelBody from "../oldPanel/PanelBody.svelte";
+import PanelHead from "../oldPanel/PanelHead.svelte";
+import TableField from "../oldTable/TableField.svelte";
+import TableHead from "../oldTable/TableHead.svelte";
 import UserRow from "./UserLine.svelte";
 import type {UserRow} from "$lib/Definitions.ts";
-import EditUserModal from "./modals/EditUserModal.svelte";
+import EditUserModal from "./oldModals/EditUserModal.svelte";
 import Button from "../../components/Button.svelte";
 
 let showAdminModal = false;

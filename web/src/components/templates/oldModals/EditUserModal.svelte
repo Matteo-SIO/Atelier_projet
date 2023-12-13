@@ -1,14 +1,14 @@
 <script lang="ts">
-import Table from "../../../components/Table/Table.svelte";
+import Table from "../../oldTable/Table.svelte";
 import ModalHeader from "../../oldModal/ModalHeader.svelte";
-import TableBody from "../../../components/Table/TableBody.svelte";
-import TableItem from "../../../components/Table/TableItem.svelte";
-import TableFieldText from "../../../components/Table/Field/TableFieldText.svelte";
+import TableBody from "../../oldTable/TableBody.svelte";
+import TableItem from "../../oldTable/TableItem.svelte";
+import TableFieldText from "../../oldTable/Field/TableFieldText.svelte";
 import Button from "../../../components/Button.svelte";
 import Modal from "../../oldModal/Modal.svelte";
-import TableField from "../../../components/Table/TableField.svelte";
+import TableField from "../../oldTable/TableField.svelte";
 import ModalBody from "../../oldModal/ModalBody.svelte";
-import TableHead from "../../../components/Table/TableHead.svelte";
+import TableHead from "../../oldTable/TableHead.svelte";
 import ModalFooter from "../../oldModal/ModalFooter.svelte";
 import type {UserRow} from "$lib/Definitions.ts";
 import UserDeleteConfirmModal from "./DeleteUserModal.svelte";

@@ -1,10 +1,10 @@
 <script lang="ts">
-import TableFieldText from "../../components/Table/Field/TableFieldText.svelte";
+import TableFieldText from "../oldTable/Field/TableFieldText.svelte";
 import Button from "../../components/Button.svelte";
-import TableItem from "../../components/Table/TableItem.svelte";
-import TableField from "../../components/Table/TableField.svelte";
-import TableFieldDate from "../../components/Table/Field/TableFieldDate.svelte";
-import TableFieldBadge from "../../components/Table/Field/TableFieldBadge.svelte";
+import TableItem from "../oldTable/TableItem.svelte";
+import TableField from "../oldTable/TableField.svelte";
+import TableFieldDate from "../oldTable/Field/TableFieldDate.svelte";
+import TableFieldBadge from "../oldTable/Field/TableFieldBadge.svelte";
 import type {UserRow} from "$lib/Definitions.ts";
 
 export let userData : UserRow;

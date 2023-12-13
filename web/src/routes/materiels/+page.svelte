@@ -1,7 +1,7 @@
 <script>
 
 import Listing from "../../components/Listing/Listing.svelte";
-import TableView from "../../components/Table/TableView.svelte";
+import TableView from "../../components/oldTable/TableView.svelte";
 import DisplayField from "../../components/Listing/tabling/DisplayField.svelte";
 import {createOwn, createOwnView, createStore} from "./listing.ts";
 
@@ -22,7 +22,7 @@ const fields_ownView = createOwnView();
     </svelte:fragment>
 
     <!--
-    <svelte:fragment slot="modals">
+    <svelte:fragment slot="oldModals">
     </svelte:fragment> -->
 </Listing>
 
