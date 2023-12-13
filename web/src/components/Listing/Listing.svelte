@@ -1,11 +1,10 @@
 <script lang="ts">
     import PageSelector from "./PageSelector.svelte";
     import Button from "../Button.svelte";
-    import type {ListingData} from "./ListingData.ts";
-    import {ListingPermission} from "./ListingData.ts";
-    export let path;
+    import type {ListingController} from "./ListingController.ts";
+    import {ListingPermission} from "./ListingController.ts";
 
-    export let data : ListingData;
+    export let data : ListingController;
 </script>
 
 <div class="list-container {$$props.class}">

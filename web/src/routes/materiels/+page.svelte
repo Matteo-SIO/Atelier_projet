@@ -2,27 +2,28 @@
 
 import Listing from "../../components/Listing/Listing.svelte";
 import TableView from "../../components/Table/TableView.svelte";
-import DisplayField from "../../components/Listing/ViewField.svelte";
-import {createOwn, createStore} from "./listing.ts";
+import DisplayField from "../../components/Listing/tabling/DisplayField.svelte";
+import {createOwn, createOwnView, createStore} from "./listing.ts";
 
-const {listingOwnData, listingOwnField} = createOwn();
-const {listingStoreData, listingStoreField} = createStore();
+const listingOwnData = createOwn();
+const fields_ownView = createOwnView();
 
 </script>
 
 
-<Listing class="own-list" path="/" data={listingOwnData}>
+<Listing class="own-list" data={listingOwnData}>
     <svelte:fragment slot="table">
-        <TableView def={listingOwnField}>
+        <TableView def={fields_ownView}>
             <svelte:fragment slot="item" let:row>
-                <DisplayField field={listingOwnField.name} value={row.name} />
-                <DisplayField field={listingOwnField.description} value={row.description} />
+                <DisplayField field={fields_ownView.id} value={row.id} />
+                <DisplayField field={fields_ownView.name} value={row.name} />
             </svelte:fragment>
         </TableView>
     </svelte:fragment>
+
+    <!--
     <svelte:fragment slot="modals">
-        <!-- modals here ? -->
-    </svelte:fragment>
+    </svelte:fragment> -->
 </Listing>
 
 

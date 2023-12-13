@@ -7,14 +7,14 @@ import PanelHead from "../Panel/PanelHead.svelte";
 import TableField from "../../components/Table/TableField.svelte";
 import TableHead from "../../components/Table/TableHead.svelte";
 import UserRow from "./UserLine.svelte";
-import type {UserDB} from "$lib/Definitions.ts";
+import type {UserRow} from "$lib/Definitions.ts";
 import EditUserModal from "./modals/EditUserModal.svelte";
 import Button from "../../components/Button.svelte";
 
 let showAdminModal = false;
-let selectedUserRow : UserDB;
+let selectedUserRow : UserRow;
 
-let onAdmin = (userRow : UserDB) => {
+let onAdmin = (userRow : UserRow) => {
     selectedUserRow = userRow;
     showAdminModal = true;
 }

@@ -5,10 +5,10 @@ import TableItem from "../../components/Table/TableItem.svelte";
 import TableField from "../../components/Table/TableField.svelte";
 import TableFieldDate from "../../components/Table/Field/TableFieldDate.svelte";
 import TableFieldBadge from "../../components/Table/Field/TableFieldBadge.svelte";
-import type {UserDB} from "$lib/Definitions.ts";
+import type {UserRow} from "$lib/Definitions.ts";
 
-export let userData : UserDB;
-export let onAdmin : (rowAPI : UserDB) => void;
+export let userData : UserRow;
+export let onAdmin : (rowAPI : UserRow) => void;
 
 </script>
 

@@ -1,4 +1,4 @@
-export interface UserDB {
+export interface UserRow {
     id: number,
     pseudo: string,
     role: "EMPLOYEE"|'ADMIN'|'ADMIN',

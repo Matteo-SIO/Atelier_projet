@@ -1,35 +1,31 @@
-import {ListingData, ListingPermission} from "../../components/Listing/ListingData.ts";
-import {ListingField} from "../../components/Listing/ListingField.ts";
+import {ListingController, ListingPermission} from "../../components/Listing/ListingController.ts";
+import {ListingFieldData} from "../../components/Listing/tabling/ListingFieldData.ts";
 
 export function createOwn () {
-    const listingOwnData = new ListingData();
+    const listingOwnData = new ListingController("/materiels/?own=true");
     listingOwnData.addPermission(ListingPermission.CREATE);
     listingOwnData.addPermission(ListingPermission.DELETE_OWN);
+    return listingOwnData;
+}
 
-    const listingOwnField = {
-        name: new ListingField("name", "Name", "text"),
-        description: new ListingField("description", "Description", "text"),
-    }
-
+export function createOwnView () {
     return {
-        listingOwnData,
-        listingOwnField,
+        id: new ListingFieldData('id', 'number').withRequired().withLabel('ID'),
+        name: new ListingFieldData('name', 'string').withRequired().withLabel('Nom'),
     }
 }
 
 export function createStore () {
-    const listingStoreData = new ListingData();
+    const listingStoreData = new ListingController("/materiels/?own=false");
     listingStoreData.addPermission(ListingPermission.CREATE);
     listingStoreData.addPermission(ListingPermission.EDIT_ALL);
     listingStoreData.addPermission(ListingPermission.DELETE_ALL);
+    return listingStoreData;
+}
 
-    const listingStoreField = {
-        name: new ListingField("name", "Name", "text"),
-        description: new ListingField("description", "Description", "text"),
-    }
-
+export function createStoreView () {
     return {
-        listingStoreData,
-        listingStoreField,
+        id: new ListingFieldData('id', 'number').withRequired().withLabel('ID'),
+        name: new ListingFieldData('name', 'string').withRequired().withLabel('Nom'),
     }
 }

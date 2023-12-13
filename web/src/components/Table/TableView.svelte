@@ -4,12 +4,12 @@
 
     const datas = [
         {
-            name: 'title 1',
-            description: 'description 1'
+            id: 10,
+            name: 'name_1'
         },
         {
-            name: 'title 2',
-            description: 'description 2'
+            id: 20,
+            name: 'name_2'
         }
     ]
 
@@ -17,8 +17,8 @@
 
 <table>
     <th>
-        {#each Object.keys(def) as fieldName}
-            <td>{fieldName}</td>
+        {#each Object.values(def) as fieldName}
+            <td>{fieldName.getLabel()}</td>
         {/each}
     </th>
 

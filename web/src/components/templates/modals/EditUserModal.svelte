@@ -10,13 +10,13 @@ import TableField from "../../../components/Table/TableField.svelte";
 import ModalBody from "../../oldModal/ModalBody.svelte";
 import TableHead from "../../../components/Table/TableHead.svelte";
 import ModalFooter from "../../oldModal/ModalFooter.svelte";
-import type {UserDB} from "$lib/Definitions.ts";
+import type {UserRow} from "$lib/Definitions.ts";
 import UserDeleteConfirmModal from "./DeleteUserModal.svelte";
 
 export let show : boolean;
 let showDeleteConfirmModal : boolean;
 
-export let userRow : UserDB;
+export let userRow : UserRow;
 
 let onDelete = () => {
     show = false;

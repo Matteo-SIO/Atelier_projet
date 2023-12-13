@@ -6,10 +6,12 @@ export enum ListingPermission {
     DELETE_OWN = "delete_own",
 }
 
-export class ListingData {
+export class ListingController {
+    declare apiPath: string;
     declare permissions: string[];
 
-    constructor () {
+    constructor (apiPath : string) {
+        this.apiPath = apiPath;
         this.permissions = [];
     }
 
