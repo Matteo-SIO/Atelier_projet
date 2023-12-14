@@ -33,7 +33,7 @@ const fields_ownView = createOwnView();
 
 
 <style lang="scss">
-    @import "../../../static/common.scss";
+
 
     :global(.own-list) {
       @apply list-green;

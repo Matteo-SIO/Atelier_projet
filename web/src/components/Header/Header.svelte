@@ -25,8 +25,6 @@ export let activeLabel = "Matériel";
 </nav>
 
 <style rel="stylesheet" lang="scss">
-  @import "../../../static/common.scss";
-
     .navbar-wrapper {
         @apply bg-gray-800 text-white;
         @apply flex flex-row justify-between items-center;

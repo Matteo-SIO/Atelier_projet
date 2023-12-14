@@ -6,8 +6,6 @@
 </div>
 
 <style lang="scss">
-    @import '../../static/common.scss';
-
     :global(.slot-header) {
       @apply px-16;
     }

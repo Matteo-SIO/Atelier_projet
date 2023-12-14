@@ -26,8 +26,3 @@
         <PageSelector class="page-selector" current={1} total={32} />
     </div>
 </div>
-
-<style lang="scss">
-  @import "../../../static/common.scss";
-
-</style>
