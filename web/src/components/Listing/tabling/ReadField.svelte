@@ -4,5 +4,5 @@
 </script>
 
 <td class="view-field">
-    <p>{value}</p>
+    {value}
 </td>

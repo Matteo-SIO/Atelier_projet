@@ -13,15 +13,17 @@ export let activeLabel = "Matériel";
 
 </script>
 <nav class="navbar-wrapper slot-{$$props.slot}">
-    <ul class="navbar-links">
-        {#each navItems as navItem}
-            <li><a href={navItem.href}>{navItem.label}</a></li>
-        {/each}
-    </ul>
-    <div class="right-content">
-        <b>Bonjour, {$sessionStore?.user?.firstName}</b>
-        <Button class="button-disconnect" primary callback={headerFeedback.disconnect}>Me déconnecter</Button>
-    </div>
+    {#if $sessionStore.user}
+        <ul class="navbar-links">
+            {#each navItems as navItem}
+                <li><a href={navItem.href}>{navItem.label}</a></li>
+            {/each}
+        </ul>
+        <div class="right-content">
+            <b>Bonjour, {$sessionStore?.user?.firstName}</b>
+            <Button class="button-disconnect" primary callback={headerFeedback.disconnect}>Me déconnecter</Button>
+        </div>
+    {/if}
 </nav>
 
 <style rel="stylesheet" lang="scss">

@@ -20,12 +20,14 @@
 
 </script>
 
-<table>
-    <th>
-        {#each head as name}
-            <td>{name}</td>
-        {/each}
-    </th>
+<table class="listing-table">
+    <thead>
+        <tr>
+            {#each head as name}
+                <td>{name}</td>
+            {/each}
+        </tr>
+    </thead>
 
 
     {#each datas as data}
@@ -36,9 +38,15 @@
 </table>
 
 <style lang="scss">
-    //table > th > td {
-      //@apply px-8;
-    //}
+    .listing-table > :global(tr > td) {
+      @apply pr-8;
+    }
+
+    .listing-table > :global(tr > td) {
+      @apply py-1 my-0;
+
+      @apply border-solid border-y-4 border-red-100;
+    }
 
     /*
          padding: 0.5rem;
