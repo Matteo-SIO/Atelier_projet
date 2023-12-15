@@ -1,4 +1,4 @@
-import Config from "../../../config.js";
+import Config from "../../../api/config.js";
 
 export interface APIRequest {
     query?: object;

@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import Config from '../Config.js';
+import Config from '../config.js';
 import Tables from "../database/Tables.js";
 
 export let generateTokenFromCredentials = async (pseudo, password) => {
