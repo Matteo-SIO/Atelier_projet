@@ -15,8 +15,10 @@
   "type": "module",
   "dependencies": {
     "@fastify/cors": "^8.4.1",
+    "@ionic/core": "^7.6.1",
     "fastify": "^4.23.2",
     "fastify-cors": "^6.1.0",
+    "ionic-svelte": "^0.5.82",
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.6.1",
     "sequelize": "^6.33.0"
