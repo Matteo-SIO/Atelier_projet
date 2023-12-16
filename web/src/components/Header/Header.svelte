@@ -1,7 +1,7 @@
 <script>
 import sessionStore from "$lib/stores/SessionStore";
 import * as headerFeedback from "$lib/actions/headerFeedback";
-import Button from "../Button.svelte";
+import Button from "../Form/Button.svelte";
 
 const navItems = [
     { label: "Matériel", href: "/materiels" },
