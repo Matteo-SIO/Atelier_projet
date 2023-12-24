@@ -10,7 +10,5 @@
 
 
 <style lang="scss">
-    .list-group > :global(*) {
-        @apply py-2;
-    }
+
 </style>

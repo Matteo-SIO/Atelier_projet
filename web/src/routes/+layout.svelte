@@ -1,5 +1,6 @@
 <script>
 import Sidebar from "../components/Sidebar/Sidebar.svelte";
+import {Accordion, AccordionItem} from "flowbite-svelte";
 
 export let data;
 </script>
@@ -30,12 +31,12 @@ export let data;
   }
 
   .sidebar {
-    @apply w-full md:w-1/4;
+    @apply w-full md:w-1/6;
     @apply h-full;
     @apply bg-gray-900;
 
     // hide on mobile
-    @apply hidden md:block;
+    @apply hidden lg:block;
   }
 
 </style>

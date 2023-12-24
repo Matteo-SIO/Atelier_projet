@@ -1,60 +1,76 @@
 <script>
+
 </script>
 
 <div class="sidebar-group">
-    <button class="dropdown-btn">
-        <p class="dropdown-text">Petit bouton</p>
-        <svg id="dropdown-icon" class="transform" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M18 15L12 9L6 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-        </svg>
-    </button>
-    <div class="group-contain">
-        <a href="#">Link 1</a>
-        <a href="#">Link 2</a>
-        <a href="#">Link 3</a>
+    <div class="sidebar-group-header">
+        <button>
+            CECI EST UN HEADER
+        </button>
+    </div>
+    <div class="sidebar-group-body">
+        <div class="sidebar-item">
+            <button>Afficher la liste</button>
+        </div>
+        <div class="sidebar-item">
+            <button>Créer un élément</button>
+        </div>
+        <div class="sidebar-item">
+            <button>link 3</button>
+        </div>
     </div>
 </div>
 
 <style lang="scss">
-
-  .sidebar-group {
-    @apply p-5;
-    //@apply border border-solid border-gray-600;
-  }
-
-  // border each sidebar group
     .sidebar-group {
-        @apply divide-y;
+      @apply m-4;
     }
 
+    .sidebar-group {
+      @apply bg-gray-900;
+    }
 
-  .dropdown-btn {
-    // flex
-    @apply flex justify-between items-center;
+    .sidebar-group-header {
+      & button {
+        @apply w-full;
+        @apply text-left;
+        @apply p-2;
 
-    // colors
-    @apply text-sm leading-5 uppercase;
-    @apply text-white;
-    @apply text-left;
-    @apply bg-gray-900;
+        // remove default button style
+        @apply border-none;
+        @apply bg-gray-900;
 
-    // padding/size
-    @apply w-full;
-    @apply py-5;
-    @apply px-0;
+        // text
+        @apply text-gray-200;
+        @apply font-bold;
+        @apply uppercase;
+        @apply text-sm;
+      }
+    }
 
-    // remove default button style
-    @apply border-none;
-  }
+    .sidebar-group-body {
+      & .sidebar-item {
+        @apply m-1;
 
-  .dropdown-text {
-    @apply m-0;
-  }
+        & button {
+          @apply border-none;
+          @apply w-full;
+          @apply text-left;
 
-  .dropdown-icon {
-    //@apply bg-gray-900;
-  }
+          @apply p-1;
+          @apply pl-8;
 
 
+          @apply text-white;
+          @apply uppercase;
+          @apply text-sm;
+
+          // bg with small difference
+          @apply bg-gray-800;
+        }
+
+      }
+
+    }
 
 </style>
