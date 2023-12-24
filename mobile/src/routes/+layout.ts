@@ -6,11 +6,13 @@ export const prerender = true;
 
 import { page } from '$app/stores';
 import {get} from "svelte/store";
+import {goto} from "$app/navigation";
+import {onMount} from "svelte";
 
 export async function load () {
     if (browser) {
         const path = window.location.pathname;
-        const isNotLogged = await redirectIfNotLoggedIn();
+       // const isNotLogged = await redirectIfNotLoggedIn();
         /*if (isNotLogged && path !== '/auth') {
             throw redirect(302, '/auth');
         } else if (!isNotLogged && path === '/auth') {
@@ -18,7 +20,7 @@ export async function load () {
         }*/
 
         if (path !== '/materiels') {
-            throw redirect(302, '/materiels');
+            window.location.href = '/materiels';
         }
 
         return {
