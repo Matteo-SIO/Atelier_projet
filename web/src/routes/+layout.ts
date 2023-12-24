@@ -9,9 +9,13 @@ export async function load () {
     if (browser) {
         const path = window.location.pathname;
         const isNotLogged = await redirectIfNotLoggedIn();
-        if (isNotLogged && path !== '/auth') {
+        /*if (isNotLogged && path !== '/auth') {
             throw redirect(302, '/auth');
         } else if (!isNotLogged && path === '/auth') {
+            throw redirect(302, '/materiels');
+        }*/
+
+        if (path === '') {
             throw redirect(302, '/materiels');
         }
 

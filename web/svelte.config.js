@@ -7,6 +7,7 @@ const config = {
   // for more information about preprocessors
   preprocess: [sveltePreprocess({
     postcss: true,
+    sass: true,
     scss: {
       includePaths: ["src", "node_modules"],
     },
