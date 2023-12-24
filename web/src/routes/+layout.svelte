@@ -1,19 +1,20 @@
 <script>
 import Sidebar from "../components/Sidebar/Sidebar.svelte";
-import {Accordion, AccordionItem} from "flowbite-svelte";
+import Header from "../components/Header/Header.svelte";
 
 export let data;
 </script>
 
 
-<div class="page">
-    <!-- Sidebar -->
-    <div class="sidebar box">
-        <Sidebar></Sidebar>
-    </div>
+<div class="horizontal">
+    <Header></Header>
 
-    <div class="body box">
-        <slot></slot>
+    <div class="vertical">
+        <Sidebar></Sidebar>
+
+        <div class="body box">
+            <slot></slot>
+        </div>
     </div>
 </div>
 
@@ -25,18 +26,14 @@ export let data;
     @apply h-full;
   }
 
-  .page {
+  .vertical {
     @apply flex flex-row;
     @apply w-full h-full;
   }
 
-  .sidebar {
-    @apply w-full md:w-1/6;
-    @apply h-full;
-    @apply bg-gray-900;
-
-    // hide on mobile
-    @apply hidden lg:block;
+  .horizontal {
+    @apply flex flex-col;
+    @apply w-full h-full;
   }
 
 </style>
