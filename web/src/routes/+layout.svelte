@@ -3,14 +3,16 @@ import Sidebar from "../components/Sidebar/Sidebar.svelte";
 import Header from "../components/Header/Header.svelte";
 
 export let data;
+export let sidebar_toggle = false;
+
 </script>
 
 
 <div class="horizontal">
-    <Header></Header>
+    <Header bind:control={sidebar_toggle}></Header>
 
     <div class="vertical">
-        <Sidebar></Sidebar>
+        <Sidebar control={sidebar_toggle}></Sidebar>
 
         <div class="body box">
             <slot></slot>
