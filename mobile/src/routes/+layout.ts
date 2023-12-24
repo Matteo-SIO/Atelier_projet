@@ -17,7 +17,7 @@ export async function load () {
             throw redirect(302, '/materiels');
         }*/
 
-        if (path === '') {
+        if (path !== '/materiels') {
             throw redirect(302, '/materiels');
         }
 

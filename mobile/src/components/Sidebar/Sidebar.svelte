@@ -23,7 +23,7 @@
 
   // mobile sidebar
   .force-sidebar {
-    @apply w-full w-2/3;
+    @apply w-full;
     @apply block;
   }
 </style>

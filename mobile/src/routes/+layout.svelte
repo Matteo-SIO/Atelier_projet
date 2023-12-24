@@ -14,9 +14,11 @@ export let sidebar_toggle = false;
     <div class="vertical">
         <Sidebar control={sidebar_toggle}></Sidebar>
 
-        <div class="body box">
-            <slot></slot>
-        </div>
+        {#if !sidebar_toggle}
+            <div class="body box">
+                <slot></slot>
+            </div>
+        {/if}
     </div>
 </div>
 
