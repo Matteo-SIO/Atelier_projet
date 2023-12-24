@@ -1,12 +1,18 @@
 import adapter from '@sveltejs/adapter-static';
-import { sveltekit } from '@sveltejs/kit/vite';
+import sveltePreprocess from 'svelte-preprocess';
 
 /** @type {import('@sveltejs/kit').Config} */
 
 const config = {
 	// Consult https://kit.svelte.dev/docs/integrations#preprocessors
 	// for more information about preprocessors
-	preprocess: sveltekit(),
+	preprocess: [sveltePreprocess({
+		postcss: true,
+		sass: true,
+		scss: {
+			includePaths: ["src", "node_modules"],
+		},
+	})],
 
 	kit: {
 		// adapter-auto only supports some environments, see https://kit.svelte.dev/docs/adapter-auto for a list.
