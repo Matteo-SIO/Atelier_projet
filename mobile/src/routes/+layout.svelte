@@ -1,9 +1,13 @@
 <script>
 import Sidebar from "../components/Sidebar/Sidebar.svelte";
 import Header from "../components/Header/Header.svelte";
+import {goto} from "$app/navigation";
 
 export let data;
 export let sidebar_toggle = false;
+
+// TODO: condition by data
+goto('/materiels');
 
 </script>
 
