@@ -54,12 +54,10 @@
 
         & button {
           @apply border-none;
-          @apply w-full;
-          @apply text-left;
+          @apply w-5/6;
+          @apply text-center;
 
-          @apply p-1;
-          @apply pl-8;
-
+          @apply p-2;
 
           @apply text-white;
           @apply uppercase;

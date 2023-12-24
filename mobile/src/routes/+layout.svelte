@@ -26,6 +26,7 @@ export let sidebar_toggle = false;
   // responsive
   :global(html), :global(body) {
     @apply h-full;
+    @apply p-0 m-0;
   }
 
   .vertical {
