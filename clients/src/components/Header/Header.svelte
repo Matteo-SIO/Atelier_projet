@@ -1,8 +1,8 @@
 <script lang="ts">
-    export let control : boolean;
+    export let mobile_sidebar_toggle : boolean;
 
     function toggle () {
-        control = !control;
+        mobile_sidebar_toggle = !mobile_sidebar_toggle;
     }
 </script>
 

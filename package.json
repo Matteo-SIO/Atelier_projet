@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "node ./api/index.js",
-    "web": "cd web && npm run dev",
-    "web-build": "cd web && npm run build && npm run preview",
+    "web": "cd clients && npm run dev",
+    "web-build": "cd clients && npm run build && npm run preview",
     "create-user": "node ./api/scripts/cli_createUser.js"
   },
   "author": "Mattéo, Raimbaud",
