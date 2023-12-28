@@ -1,4 +1,7 @@
 <script lang="ts">
+
+    import {BarsSolid} from "flowbite-svelte-icons";
+    import Vertical from "../positions/Vertical.svelte";
     export let mobile_sidebar_toggle : boolean;
 
     function toggle () {
@@ -7,31 +10,42 @@
 </script>
 
 <div class="header">
-    <div class="control">
-        <button on:click={toggle}>Open/Close</button>
+    <div class="sidebar_control">
+        <button on:click={toggle}>
+            <BarsSolid></BarsSolid>
+        </button>
     </div>
     <div class="title">
-        <h2>Page title</h2>
+        <p>Gestionnaire de stock</p>
     </div>
 </div>
 
 <style lang="scss">
     .header {
-      @apply py-5;
-      @apply bg-gray-400;
+      @apply bg-gray-600;
+      @apply p-2;
 
-      & .control {
-        // align to left
-        @apply float-left;
-      }
 
-      & .title {
-        // align to center
-        @apply text-center;
-        & h2 {
-          //@apply text-2xl;
-          @apply m-0;
-        }
-      }
+      // create 2 columns (25% and 75%)
+      @apply grid grid-cols-2;
+      @apply md:grid-cols-1;
+      @apply items-center;
+    }
+
+    .sidebar_control {
+      @apply items-center;
+      @apply justify-between;
+      @apply block md:hidden; // show only on mobile
+      @apply text-2xl;
+      @apply text-white;
+    }
+
+    .title {
+      @apply text-lg md:text-2xl;
+      @apply items-center;
+      @apply justify-between;
+      @apply w-full;
+      @apply text-center;
+      @apply text-white;
     }
 </style>

@@ -17,7 +17,7 @@ goto('/materiels');
 <Horizontal>
     <Header bind:mobile_sidebar_toggle></Header>
     <Vertical>
-        <Sidebar></Sidebar>
+        <Sidebar {mobile_sidebar_toggle}></Sidebar>
         {#if !mobile_sidebar_toggle}
             <slot></slot>
         {/if}
