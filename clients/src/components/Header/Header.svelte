@@ -1,7 +1,6 @@
 <script lang="ts">
 
     import {BarsSolid} from "flowbite-svelte-icons";
-    import Vertical from "../positions/Vertical.svelte";
     export let mobile_sidebar_toggle : boolean;
 
     function toggle () {

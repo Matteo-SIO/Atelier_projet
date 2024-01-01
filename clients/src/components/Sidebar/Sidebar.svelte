@@ -4,7 +4,7 @@
     import Materials from './Materials.svelte';
     import Users from "./Users.svelte";
 
-    export let mobile_sidebar_toggle : boolean;
+    export let mobile_sidebar_toggle : boolean = false;
 
     $: mobileActive = (mobile_sidebar_toggle) ? 'mobile-active' : '';
 
@@ -37,7 +37,7 @@
 
 <style lang="scss">
     :global(.sidebar) {
-        @apply bg-gray-300;
+        @apply bg-gray-400 md:bg-gray-300;
         @apply h-full;
 
         display: none;

@@ -12,16 +12,23 @@ export let mobile_sidebar_toggle = false;
 // TODO: condition by data
 goto('/materiels');
 
+let isMobile = window.innerWidth < 768;
+
 </script>
 
 <Horizontal>
     <Header bind:mobile_sidebar_toggle></Header>
-    <Vertical>
+    {#if isMobile}
         <Sidebar {mobile_sidebar_toggle}></Sidebar>
         {#if !mobile_sidebar_toggle}
             <slot></slot>
         {/if}
-    </Vertical>
+    {:else}
+        <Vertical>
+            <Sidebar></Sidebar>
+            <slot></slot>
+        </Vertical>
+    {/if}
 </Horizontal>
 
 <style lang="scss">
@@ -29,8 +36,9 @@ goto('/materiels');
 
   // responsive
   :global(html), :global(body) {
-    @apply h-full;
+    @apply h-full w-full;
     @apply p-0 m-0;
+    word-wrap: break-word;
   }
 
 </style>

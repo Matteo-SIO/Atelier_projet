@@ -1,1 +1,7 @@
-Contenu de la page Materiel
+<script>
+
+
+</script>
+
+
+Contenu de la page Matériel
