@@ -1,48 +1,44 @@
 <script>
-import Sidebar from "../components/Sidebar/Sidebar.svelte";
+import "../app.pcss";
 import Header from "../components/Header/Header.svelte";
 import {goto} from "$app/navigation";
+import Sidebar from "../components/Sidebar/Sidebar.svelte";
+import Vertical from "../components/positions/Vertical.svelte";
+import Horizontal from "../components/positions/Horizontal.svelte";
 
 export let data;
-export let sidebar_toggle = false;
+export let mobile_sidebar_toggle = false;
 
 // TODO: condition by data
-goto('/materiels');
+goto('/utilisateurs');
 
 </script>
 
-
-<div class="horizontal">
-    <Header bind:control={sidebar_toggle}></Header>
-
-    <div class="vertical">
-        <Sidebar control={sidebar_toggle}></Sidebar>
-
-        {#if !sidebar_toggle}
-            <div class="body box">
-                <slot></slot>
-            </div>
-        {/if}
-    </div>
-</div>
+<Horizontal>
+    <Header bind:mobile_sidebar_toggle></Header>
+        <Vertical>
+            <Sidebar {mobile_sidebar_toggle}></Sidebar>
+            {#if !mobile_sidebar_toggle}
+                <div class="page">
+                    <slot></slot>
+                </div>
+            {/if}
+        </Vertical>
+</Horizontal>
 
 <style lang="scss">
   @import "../../static/common.scss";
 
   // responsive
   :global(html), :global(body) {
-    @apply h-full;
+    @apply h-full w-full;
     @apply p-0 m-0;
+    word-wrap: break-word;
   }
 
-  .vertical {
-    @apply flex flex-row;
-    @apply w-full h-full;
-  }
-
-  .horizontal {
-    @apply flex flex-col;
-    @apply w-full h-full;
+  .page {
+    @apply w-full;
+    @apply p-3 md:p-6 md:px-24;
   }
 
 </style>

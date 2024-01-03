@@ -1,6 +1,4 @@
-import {redirectIfNotLoggedIn} from "$lib/Session.ts";
-import {redirect} from "@sveltejs/kit";
-import {browser} from "$app/environment";
+
 
 export const ssr = false;
 export const prerender = true;

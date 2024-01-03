@@ -1,1 +1,1 @@
-Contenu de la page Materiel
+Content removed

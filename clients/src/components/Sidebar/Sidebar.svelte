@@ -1,29 +1,64 @@
 <script lang="ts">
-    import SidebarGroup from "./SidebarGroup.svelte";
-    export let control: boolean;
+    import { page } from '$app/stores';
+    import {Sidebar, SidebarGroup, SidebarWrapper} from 'flowbite-svelte';
+    import Materials from './Materials.svelte';
+    import Users from "./Users.svelte";
+
+    export let mobile_sidebar_toggle : boolean = false;
+
+    $: mobileActive = (mobile_sidebar_toggle) ? 'mobile-active' : '';
+
+    enum Group {
+        Materials = '/materiels',
+        Users = '/users',
+    }
+
+    let activeUrl : string = '';
+    let currentActive : Group|null = null;
+
+    $: {
+        activeUrl = $page.url.pathname;
+        if (activeUrl && activeUrl.startsWith(Group.Materials)) {
+            currentActive = Group.Materials;
+        } else if (activeUrl && activeUrl.startsWith(Group.Users)) {
+            currentActive = Group.Users;
+        }
+    }
 </script>
 
-<div class="base-sidebar" class:force-sidebar={control}>
-    <SidebarGroup></SidebarGroup>
-    <SidebarGroup></SidebarGroup>
-    <SidebarGroup></SidebarGroup>
-</div>
-
+<Sidebar {activeUrl} class="sidebar {mobileActive}">
+    <SidebarWrapper class="sidebar {mobileActive}">
+        <SidebarGroup class="sidebar-group divide-y divide-gray-400">
+            <Materials isOpen={currentActive === Group.Materials} />
+            <Users isOpen={currentActive === Group.Users} />
+        </SidebarGroup>
+    </SidebarWrapper>
+</Sidebar>
 
 <style lang="scss">
-  // desktop sidebar
-  .base-sidebar {
-    @apply w-full md:w-1/6;
-    @apply h-full;
-    @apply bg-gray-900;
+    :global(.sidebar) {
+        @apply bg-gray-300;
+        @apply h-full;
 
-    // hide on mobile
-    @apply hidden lg:block;
-  }
+        display: none;
+        @apply md:block;
+        @apply md:w-64;
+    }
 
-  // mobile sidebar
-  .force-sidebar {
-    @apply w-full;
-    @apply block;
-  }
+    :global(.mobile-active) {
+      @apply block;
+      @apply w-full;
+    }
+
+    :global(.sidebar-item) {
+        @apply w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white;
+    }
+
+    :global(.sidebar-group) {
+        @apply space-y-0.5;
+    }
+
+    :global(.sidebar-icon) {
+        @apply text-gray-500 dark:text-gray-400;
+    }
 </style>
