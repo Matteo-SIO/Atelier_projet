@@ -38,13 +38,8 @@ import {PlusSolid} from "flowbite-svelte-icons";
         <svelte:fragment slot="info-1">
             <InfoBlock />
         </svelte:fragment>
-    </Item>
-
-    <br />
-
-    <Item>
-        <svelte:fragment slot="info-1">
-            <InfoBlock />
+        <svelte:fragment slot="user-action">
+            <ButtonBlock />
         </svelte:fragment>
     </Item>
 
@@ -54,6 +49,9 @@ import {PlusSolid} from "flowbite-svelte-icons";
         <svelte:fragment slot="info-1">
             <InfoBlock />
         </svelte:fragment>
+        <svelte:fragment slot="user-action">
+            <ButtonBlock />
+        </svelte:fragment>
     </Item>
 
     <br />
@@ -61,14 +59,25 @@ import {PlusSolid} from "flowbite-svelte-icons";
     <Item>
         <svelte:fragment slot="info-1">
             <InfoBlock />
+        </svelte:fragment>
+        <svelte:fragment slot="user-action">
+            <ButtonBlock />
+        </svelte:fragment>
+    </Item>
+
+    <br />
+
+    <Item>
+        <svelte:fragment slot="info-1">
+            <InfoBlock />
+        </svelte:fragment>
+        <svelte:fragment slot="user-action">
+            <ButtonBlock />
         </svelte:fragment>
     </Item>
 </div>
 
 
 <style lang="scss">
-    .page {
-      @apply w-full;
-      @apply p-3;
-    }
+
 </style>

@@ -17,5 +17,9 @@
       @apply bg-gray-300;
       @apply text-center;
       @apply py-0.5;
+      @apply h-12;
+
+      // center y axis
+      @apply flex flex-col justify-center;
     }
 </style>

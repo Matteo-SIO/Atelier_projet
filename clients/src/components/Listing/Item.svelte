@@ -1,8 +1,8 @@
 <script lang="ts">
     import {FileEditSolid, TrashBinSolid} from "flowbite-svelte-icons";
 
-    export let title = "MSI 32Go";
-    export let tag = "[Ordinateur]";
+    export let title : string|null = null;
+    export let tag : string|null = null;
 
     export let onRemove = () => {
         console.log("remove");
@@ -16,8 +16,12 @@
 <div class="item">
     <div class="item-header">
         <div class="title">
-            <div class="tag">{tag}</div>
-            {title}
+            {#if tag}
+                <div class="tag">{tag}</div>
+            {/if}
+            {#if title}
+                <div class="text">{title}</div>
+            {/if}
         </div>
         <div class="admin-action">
             <button on:click={onRemove}>

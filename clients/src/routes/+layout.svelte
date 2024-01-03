@@ -12,23 +12,18 @@ export let mobile_sidebar_toggle = false;
 // TODO: condition by data
 goto('/materiels');
 
-let isMobile = window.innerWidth < 768;
-
 </script>
 
 <Horizontal>
     <Header bind:mobile_sidebar_toggle></Header>
-    {#if isMobile}
-        <Sidebar {mobile_sidebar_toggle}></Sidebar>
-        {#if !mobile_sidebar_toggle}
-            <slot></slot>
-        {/if}
-    {:else}
         <Vertical>
-            <Sidebar></Sidebar>
-            <slot></slot>
+            <Sidebar {mobile_sidebar_toggle}></Sidebar>
+            {#if !mobile_sidebar_toggle}
+                <div class="page">
+                    <slot></slot>
+                </div>
+            {/if}
         </Vertical>
-    {/if}
 </Horizontal>
 
 <style lang="scss">
@@ -39,6 +34,11 @@ let isMobile = window.innerWidth < 768;
     @apply h-full w-full;
     @apply p-0 m-0;
     word-wrap: break-word;
+  }
+
+  .page {
+    @apply w-full;
+    @apply p-3 md:p-6 md:px-24;
   }
 
 </style>
