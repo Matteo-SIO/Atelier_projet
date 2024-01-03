@@ -37,11 +37,12 @@
 
 <style lang="scss">
     :global(.sidebar) {
-        @apply bg-gray-400 md:bg-gray-300;
+        @apply bg-gray-300;
         @apply h-full;
 
         display: none;
         @apply md:block;
+        @apply md:w-64;
     }
 
     :global(.mobile-active) {
