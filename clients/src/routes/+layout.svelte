@@ -10,7 +10,7 @@ export let data;
 export let mobile_sidebar_toggle = false;
 
 // TODO: condition by data
-goto('/materiels');
+goto('/utilisateurs');
 
 </script>
 

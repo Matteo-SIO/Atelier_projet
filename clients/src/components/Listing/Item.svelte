@@ -34,13 +34,13 @@
     </div>
     <div class="item-content">
         <div class="info-1">
-            <slot name="info-1" />
+            <slot name="block-1" />
         </div>
         <div class="info-2">
-            <slot name="info-2" />
+            <slot name="block-2" />
         </div>
         <div class="user-action">
-            <slot name="user-action" />
+            <slot name="block-3" />
         </div>
     </div>
 </div>
@@ -96,6 +96,8 @@
       & > * {
         // @apply items-center;
         @apply md:w-1/5 w-1/3;
+
+        @apply text-xs md:text-base;
       }
     }
 </style>
