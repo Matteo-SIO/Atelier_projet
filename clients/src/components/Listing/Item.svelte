@@ -1,28 +1,43 @@
 <script lang="ts">
-
     import {FileEditSolid, TrashBinSolid} from "flowbite-svelte-icons";
+
+    export let title = "MSI 32Go";
+    export let tag = "[Ordinateur]";
+
+    export let onRemove = () => {
+        console.log("remove");
+    }
+    export let onEdit = () => {
+        console.log("edit");
+    }
 </script>
 
 
 <div class="item">
     <div class="item-header">
         <div class="title">
-            <div class="tag">
-                [Ordinateur]
-            </div>
-            MSI 32Go
+            <div class="tag">{tag}</div>
+            {title}
         </div>
         <div class="admin-action">
-            <button>
+            <button on:click={onRemove}>
                 <TrashBinSolid />
             </button>
-            <button>
+            <button on:click={onEdit}>
                 <FileEditSolid />
             </button>
         </div>
     </div>
     <div class="item-content">
-        <slot />
+        <div class="info-1">
+            <slot name="info-1" />
+        </div>
+        <div class="info-2">
+            <slot name="info-2" />
+        </div>
+        <div class="user-action">
+            <slot name="user-action" />
+        </div>
     </div>
 </div>
 
@@ -32,7 +47,6 @@
     .item {
       @apply w-full;
       @apply bg-amber-200;
-      @apply h-16;
       @apply rounded;
     }
 
@@ -69,5 +83,15 @@
     .item-content {
       @apply rounded;
       @apply px-3;
+
+      // inline
+      @apply flex;
+      @apply items-center;
+      @apply justify-between;
+
+      & > * {
+        // @apply items-center;
+        @apply md:w-1/5 w-1/3;
+      }
     }
 </style>
