@@ -1,0 +1,11 @@
+@layer truc {
+
+  .glass {
+    //@apply bg-white rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-50 border border-gray-100;
+
+    @apply bg-white/30 bg-opacity-30 backdrop-blur-3xl;
+    @apply border rounded-lg border-gray-100;
+    @apply bg-clip-padding backdrop-filter;
+  }
+
+}

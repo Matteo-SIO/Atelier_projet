@@ -10,20 +10,32 @@ export let data;
 export let mobile_sidebar_toggle = false;
 
 // TODO: condition by data
-goto('/utilisateurs');
+if (data.redirect) {
+    goto(data.redirect);
+}
+
+const page = data.redirect ?? window.location.pathname;
+let restreintMod = false;
+if (page.includes("/auth")) {
+    restreintMod = true;
+}
 
 </script>
 
 <Horizontal>
-    <Header bind:mobile_sidebar_toggle></Header>
-        <Vertical>
+    {#if !restreintMod}
+        <Header bind:mobile_sidebar_toggle></Header>
+    {/if}
+    <Vertical>
+        {#if !restreintMod}
             <Sidebar {mobile_sidebar_toggle}></Sidebar>
-            {#if !mobile_sidebar_toggle}
-                <div class="page">
-                    <slot></slot>
-                </div>
-            {/if}
-        </Vertical>
+        {/if}
+        {#if !mobile_sidebar_toggle}
+            <div class="page">
+                <slot></slot>
+            </div>
+        {/if}
+    </Vertical>
 </Horizontal>
 
 <style lang="scss">
@@ -34,6 +46,9 @@ goto('/utilisateurs');
     @apply h-full w-full;
     @apply p-0 m-0;
     word-wrap: break-word;
+
+    @apply from-red-500 to-blue-500;
+    @apply md:bg-gradient-to-r bg-gradient-to-b;
   }
 
   .page {

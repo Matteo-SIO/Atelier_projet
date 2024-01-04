@@ -1,3 +1,4 @@
+import {readLocalStorage} from "$lib/stores/utils.ts";
 
 
 export const ssr = false;
@@ -10,6 +11,15 @@ import {onMount} from "svelte";
 
 export async function load () {
         const path = window.location.pathname;
+
+        const user = readLocalStorage();
+        if (!user && path !== '/auth') {
+            return {
+                redirect: '/auth'
+            }
+        }
+
+
        // const isNotLogged = await redirectIfNotLoggedIn();
         /*if (isNotLogged && path !== '/auth') {
             throw redirect(302, '/auth');
@@ -18,6 +28,6 @@ export async function load () {
         }*/
 
         return {
-            loaded: true
+            ok: true
         }
 }
