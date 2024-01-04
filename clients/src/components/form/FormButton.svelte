@@ -7,9 +7,11 @@
 
 <style lang="scss">
     .form-button {
+        @apply py-2 px-4;
+        @apply mt-2 md:mt-4;
+
         @apply w-full;
         @apply bg-blue-500;
-        @apply py-2 px-4;
         @apply rounded;
 
         // font
@@ -18,5 +20,11 @@
 
         // glassmorphism
         @apply bg-opacity-70 backdrop-filter backdrop-blur-lg;
+
+        // hover
+        @apply hover:bg-blue-600;
+
+        // active
+        @apply active:bg-blue-700;
     }
 </style>

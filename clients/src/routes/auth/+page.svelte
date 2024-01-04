@@ -31,13 +31,5 @@
       // center reduce width on desktop
       @apply md:mx-auto;
       @apply md:w-1/3;
-
-      // padding inside
-      @apply px-6 py-12;
-      @apply md:px-12 md:py-16;
-
-      @apply glass;
     }
-
-
 </style>
