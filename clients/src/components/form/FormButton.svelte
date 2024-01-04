@@ -9,9 +9,14 @@
     .form-button {
         @apply w-full;
         @apply bg-blue-500;
+        @apply py-2 px-4;
+        @apply rounded;
+
+        // font
         @apply text-white;
         @apply font-bold;
-        @apply py-2;
-        @apply px-4;
+
+        // glassmorphism
+        @apply bg-opacity-70 backdrop-filter backdrop-blur-lg;
     }
 </style>

@@ -14,8 +14,8 @@
 </script>
 
 <Form {control} let:data>
-    <FormInput {data} key="email" name="Email" />
-    <FormInput {data} key="password" name="Mot de passe" type="password" />
+    <FormInput {data} key="email" name="Email" placeholder="hello@gmail.com" />
+    <FormInput {data} key="password" name="Mot de passe" type="password" placeholder="********" />
     <FormButton {callback} name="Envoyer" />
 </Form>
 
@@ -28,12 +28,16 @@
     }
 
     :global(.form-container) {
-      @apply px-6 py-14;
-
-      // center x axis
+      // center reduce width on desktop
       @apply md:mx-auto;
-      @apply md:w-1/2;
+      @apply md:w-1/3;
+
+      // padding inside
+      @apply px-6 py-12;
+      @apply md:px-12 md:py-16;
 
       @apply glass;
     }
+
+
 </style>
