@@ -43,11 +43,7 @@
   @import "../../../static/common.scss";
 
   :global(.sidebar-list) {
-    @apply h-full w-full;
-    @apply p-2;
-
-    // Glassmorphism effect
-    @apply glass glass-border;
+    @apply w-full;
   }
 
   :global(.group) {

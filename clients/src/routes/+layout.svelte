@@ -2,10 +2,9 @@
 import "../app.pcss";
 import Header from "../components/Header/Header.svelte";
 import {goto} from "$app/navigation";
-import Sidebar from "../components/Sidebar/Sidebar.svelte";
 import Vertical from "../components/positions/Vertical.svelte";
 import Horizontal from "../components/positions/Horizontal.svelte";
-import Sidebar2 from "$components/Sidebar/Sidebar.svelte";
+import Sidebar from "$components/Sidebar/Sidebar.svelte";
 import user from "$stores/user";
 import {getRoutes} from "$lib/Routes.ts";
 import {page} from "$app/stores";
@@ -30,7 +29,7 @@ $: isLogged = $user.profile && $page.url.pathname  !== routes.AUTH.path;
     {/if}
     <Vertical>
         {#if isLogged}
-            <Sidebar2 {mobile_sidebar_toggle}></Sidebar2>
+            <Sidebar {mobile_sidebar_toggle}></Sidebar>
         {/if}
         {#if !mobile_sidebar_toggle}
             <div class="layout">
