@@ -6,6 +6,11 @@
   @apply rounded-lg;
 }
 
+.glass-2 {
+  @apply glass;
+  @apply bg-white/0 backdrop-blur-3xl;
+}
+
 .glass-border {
   @apply border border-gray-100;
 }
