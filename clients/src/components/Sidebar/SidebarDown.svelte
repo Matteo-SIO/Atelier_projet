@@ -10,11 +10,14 @@
         goto(getRoutes().AUTH.path)
     }
 
+    $: firstName = $user.profile?.firstname;
+    $: lastName = $user.profile?.lastname;
+
 </script>
 
 <div class="sidebar-profile">
     <div class="welcome-text">
-        Bienvenue Jean Patrick
+        Bienvenue {firstName} {lastName}
     </div>
     <button class="logout-button" on:click={logout}>
         Se déconnecter

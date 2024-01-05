@@ -26,8 +26,8 @@ export default (server, BASE_PATH) => {
         let users = await Tables.User.findAll({
             offset: offsetQuery,
             limit: limitQuery,
-            attributes: ['id', 'email', 'role', 'firstName', 'lastName']
-            // return only fields 'id', 'email', 'role', 'firstName', 'lastName'
+            attributes: ['id', 'email', 'role', 'firstname', 'lastname']
+            // return only fields 'id', 'email', 'role', 'firstname', 'lastname'
             // don't return the 'password' fields
         });
 
@@ -53,8 +53,8 @@ export default (server, BASE_PATH) => {
             where: {
                 id: request.params.id
             },
-            attributes: ['id', 'email', 'role', 'firstName', 'lastName']
-            // return only fields 'id', 'email', 'role', 'firstName', 'lastName'
+            attributes: ['id', 'email', 'role', 'firstname', 'lastname']
+            // return only fields 'id', 'email', 'role', 'firstname', 'lastname'
             // don't return the 'password' fields
         });
 
@@ -85,8 +85,8 @@ export default (server, BASE_PATH) => {
             where: {
                 id: decodedToken.id
             },
-            attributes: ['id', 'email', 'role', 'firstName', 'lastName']
-            // return only fields 'id', 'email', 'role', 'firstName', 'lastName'
+            attributes: ['id', 'email', 'role', 'firstname', 'lastname']
+            // return only fields 'id', 'email', 'role', 'firstname', 'lastname'
             // don't return the 'password' and 'email' fields
         });
 
@@ -105,8 +105,8 @@ export default (server, BASE_PATH) => {
      * @api {PUT} /api/users/:id Update a user by id
      * @apiPermission admin
      * @apiParam {Number} id User id
-     * @apiParam {String} [firstName] User first name
-     * @apiParam {String} [lastName] User last name
+     * @apiParam {String} [firstname] User first name
+     * @apiParam {String} [lastname] User last name
      * @apiParam {String} [email] User email
      * @apiParam {String} [password] User password
      */
@@ -120,8 +120,8 @@ export default (server, BASE_PATH) => {
         }
 
         await Tables.User.update({
-            ...(request.body.firstName ? {firstName: request.body.firstName} : {}),
-            ...(request.body.lastName ? {lastName: request.body.lastName} : {}),
+            ...(request.body.firstname ? {firstname: request.body.firstname} : {}),
+            ...(request.body.lastname ? {lastname: request.body.lastname} : {}),
             ...(request.body.email ? {email: request.body.email} : {}),
             ...(request.body.password ? {password: request.body.password} : {}),
         }, {
@@ -163,8 +163,8 @@ export default (server, BASE_PATH) => {
     /**
      * @api {POST} /api/users/ Create a user
      * @apiPermission admin
-     * @apiParam {String} firstName User first name
-     * @apiParam {String} lastName User last name
+     * @apiParam {String} firstname User first name
+     * @apiParam {String} lastname User last name
      * @apiParam {String} email User email
      * @apiParam {String} password User password
      * @apiParam {String} role User role
@@ -180,8 +180,8 @@ export default (server, BASE_PATH) => {
 
         try {
             let user = await Tables.User.create({
-                firstName: request.body.firstName,
-                lastName: request.body.lastName,
+                firstname: request.body.firstname,
+                lastname: request.body.lastname,
                 email: request.body.email,
                 password: request.body.password,
                 role: request.body.role
