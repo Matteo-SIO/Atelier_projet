@@ -1,12 +1,22 @@
 <script lang="ts">
 
+    import {destroySession} from "$stores/user/utils.ts";
+    import user from "$stores/user";
+    import {goto} from "$app/navigation";
+    import {getRoutes} from "$lib/Routes.ts";
+
+    function logout () {
+        destroySession(user);
+        goto(getRoutes().AUTH.path)
+    }
+
 </script>
 
 <div class="sidebar-profile">
     <div class="welcome-text">
         Bienvenue Jean Patrick
     </div>
-    <button class="logout-button">
+    <button class="logout-button" on:click={logout}>
         Se déconnecter
     </button>
 

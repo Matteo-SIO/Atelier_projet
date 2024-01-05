@@ -50,6 +50,14 @@ export function defineUserProfile (store: Writable<User>, res: UserMeResponse) {
     })
 }
 
+export function destroySession (store: Writable<User>) {
+    store.set({
+        token: null,
+        profile: null
+    });
+    clearLocalStorage();
+}
+
 export function roleByName (name: string) : Role {
     switch (name) {
         case 'ADMIN':

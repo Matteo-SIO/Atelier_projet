@@ -19,21 +19,24 @@ if (data.redirect) {
 
 const routes = getRoutes();
 
-$: isLogged = $user.profile && $page.url.pathname  !== routes.AUTH.path;
+$: isLogged = $user.profile;
+$: isAuthPage = $page.url.pathname === routes.AUTH.path;
 
 </script>
 
 <Horizontal>
-    {#if isLogged}
+    {#if isLogged && !isAuthPage}
         <Header bind:mobile_sidebar_toggle></Header>
     {/if}
     <Vertical>
-        {#if isLogged}
+        {#if isLogged && !isAuthPage}
             <Sidebar {mobile_sidebar_toggle}></Sidebar>
         {/if}
         {#if !mobile_sidebar_toggle}
             <div class="layout">
-                <slot></slot>
+                {#if isLogged || isAuthPage}
+                    <slot></slot>
+                {/if}
             </div>
         {/if}
     </Vertical>
