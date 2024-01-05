@@ -95,7 +95,7 @@
 
       & > * {
         // @apply items-center;
-        @apply md:w-1/5 w-1/3;
+        @apply md:w-1/4 w-1/3;
 
         @apply text-xs md:text-base;
       }
