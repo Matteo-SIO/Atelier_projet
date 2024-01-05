@@ -47,6 +47,7 @@ $: isLogged = $user.profile && $page.url.pathname  !== routes.AUTH.path;
   :global(html), :global(body) {
     @apply h-full w-full;
     @apply p-0 m-0;
+    @apply md:p-2;
     word-wrap: break-word;
 
     @apply from-red-500 to-blue-500;
@@ -55,7 +56,7 @@ $: isLogged = $user.profile && $page.url.pathname  !== routes.AUTH.path;
 
   .layout {
     @apply w-full;
-    @apply p-3 md:p-6 md:px-24;
+    @apply m-4 mt-0;
   }
 
 </style>

@@ -47,7 +47,6 @@
 
   :global(.sidebar-wp) {
     @apply pb-5;
-    @apply hidden;
     @apply md:block;
     @apply md:w-64;
     @apply h-full;
@@ -57,7 +56,8 @@
   }
 
   :global(.sidebar-container) {
-    @apply m-5;
+    @apply m-4 mt-0;
+    @apply hidden md:block;
   }
 
   :global(.mobile-active) {
