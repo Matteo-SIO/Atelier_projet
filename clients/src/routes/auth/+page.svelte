@@ -8,6 +8,7 @@
     import {defineUserCredentials, defineUserProfile} from "$stores/user/utils.ts";
     import user, {Role} from "$stores/user";
     import {goto} from "$app/navigation";
+    import {getRoutes} from "$lib/Routes.ts";
 
     const control = createFormControl();
 
@@ -41,7 +42,7 @@
             defineUserCredentials(user, resToken);
             defineUserProfile(user, resMe)
 
-            await goto('/materiels')
+            await goto(getRoutes().MATERIALS.path)
         } catch (e) {
             console.log(e)
             control.setError("email", "Email incorrect");
@@ -60,8 +61,6 @@
 </div>
 
 <style lang="scss">
-    // TODO: need to replace to .page
-    // And, fixe property
     .page {
         @apply w-full h-full;
         @apply flex flex-col justify-center;
