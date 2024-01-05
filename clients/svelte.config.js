@@ -31,6 +31,13 @@ const config = {
       precompress: false,
       strict: true,
     }),
+
+    alias: {
+      $lib: "./src/lib",
+      $components: "./src/components",
+      $stores: "./src/lib/stores",
+      $types: "./src/lib/@types",
+    },
   },
 };
 

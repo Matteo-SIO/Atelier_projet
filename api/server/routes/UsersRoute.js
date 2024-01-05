@@ -26,8 +26,8 @@ export default (server, BASE_PATH) => {
         let users = await Tables.User.findAll({
             offset: offsetQuery,
             limit: limitQuery,
-            attributes: ['id', 'pseudo', 'role', 'firstName', 'lastName']
-            // return only fields 'id', 'pseudo', 'role', 'firstName', 'lastName'
+            attributes: ['id', 'email', 'role', 'firstName', 'lastName']
+            // return only fields 'id', 'email', 'role', 'firstName', 'lastName'
             // don't return the 'password' fields
         });
 
@@ -53,8 +53,8 @@ export default (server, BASE_PATH) => {
             where: {
                 id: request.params.id
             },
-            attributes: ['id', 'pseudo', 'role', 'firstName', 'lastName']
-            // return only fields 'id', 'pseudo', 'role', 'firstName', 'lastName'
+            attributes: ['id', 'email', 'role', 'firstName', 'lastName']
+            // return only fields 'id', 'email', 'role', 'firstName', 'lastName'
             // don't return the 'password' fields
         });
 
@@ -85,8 +85,8 @@ export default (server, BASE_PATH) => {
             where: {
                 id: decodedToken.id
             },
-            attributes: ['id', 'pseudo', 'role', 'firstName', 'lastName']
-            // return only fields 'id', 'pseudo', 'role', 'firstName', 'lastName'
+            attributes: ['id', 'email', 'role', 'firstName', 'lastName']
+            // return only fields 'id', 'email', 'role', 'firstName', 'lastName'
             // don't return the 'password' and 'email' fields
         });
 

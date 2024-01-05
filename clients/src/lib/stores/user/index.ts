@@ -6,9 +6,19 @@ export enum Role {
     ADMIN
 }
 
-export type User = {
+export type Credentials = {
     token: string;
+}
+
+export type Profile = {
     role: Role;
+    firstname: string;
+    lastname: string;
+}
+
+export type User = {
+    token: string|null;
+    profile: Profile|null;
 }
 
 function createUserStore () {

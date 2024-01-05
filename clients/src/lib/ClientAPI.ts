@@ -8,12 +8,17 @@ enum RequestType {
     GET = 'GET',
 }
 
-class RequestAPI {
+export type RequestError = {
+    code: number;
+    message: string;
+}
+
+class RequestAPI <Req> {
     private declare readonly path: string;
-    private declare readonly content: {[key: string]: any};
+    private declare readonly content: Req;
     private declare readonly type: RequestType;
     private declare token?: string | null;
-    constructor (path : string, content: object, type: RequestType) {
+    constructor (path : string, content: Req, type: RequestType) {
         this.path = path;
         this.content = content;
         this.type = type;
@@ -30,13 +35,13 @@ class RequestAPI {
         if (this.isQueryRequest()) {
             for (const key in this.content) {
                 if (this.content[key] !== undefined) {
-                    const value = JSON.stringify(this.content[key]);
+                    const value = this.content[key] as unknown as string;
                     urlBuilder.searchParams.append(key, value);
                 }
             }
         }
 
-        const url = BASE_URL + this.path;
+        const url = urlBuilder.toString();
         const options = {
             method: this.type,
             headers: {
@@ -45,8 +50,18 @@ class RequestAPI {
             },
             body: this.isQueryRequest() ? undefined : JSON.stringify(this.content),
         };
+
         const response = await fetch(url, options);
-        return await response.json();
+        const json = await response.json();
+
+        if (response.status >= 400) {
+            throw {
+                code: response.status,
+                message: json.error ?? 'Unknown error',
+            }
+        }
+
+        return json;
     }
 
     private isQueryRequest () {
@@ -54,22 +69,22 @@ class RequestAPI {
     }
 }
 
-export function POST (path: string, body: object) {
-    return new RequestAPI(path, body, RequestType.POST);
+export function POST <Req> (path: string, body: Req) {
+    return new RequestAPI<Req>(path, body, RequestType.POST);
 }
 
-export function PUT (path: string, body: object) {
-    return new RequestAPI(path, body, RequestType.PUT);
+export function PUT <Req> (path: string, body: Req) {
+    return new RequestAPI<Req>(path, body, RequestType.PUT);
 }
 
-export function PATCH (path: string, body: object) {
-    return new RequestAPI(path, body, RequestType.PATCH);
+export function PATCH <Req> (path: string, body: Req) {
+    return new RequestAPI<Req>(path, body, RequestType.PATCH);
 }
 
-export function DELETE (path: string, params: object) {
-    return new RequestAPI(path, params, RequestType.DELETE);
+export function DELETE <Req> (path: string, params: Req) {
+    return new RequestAPI<Req>(path, params, RequestType.DELETE);
 }
 
-export function GET (path: string, params: object) {
-    return new RequestAPI(path, params, RequestType.GET);
+export function GET <Req> (path: string, params: Req) {
+    return new RequestAPI<Req>(path, params, RequestType.GET);
 }

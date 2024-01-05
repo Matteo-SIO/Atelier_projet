@@ -5,7 +5,8 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "server": "node index.js"
+        "server": "node index.js",
+        "create-user": "node ./scripts/cli_createUser.js"
     },
     "repository": {
         "type": "git",

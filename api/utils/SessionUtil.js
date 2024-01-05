@@ -2,10 +2,10 @@ import jwt from 'jsonwebtoken';
 import Config from '../config.js';
 import Tables from "../database/Tables.js";
 
-export let generateTokenFromCredentials = async (pseudo, password) => {
+export let generateTokenFromCredentials = async (email, password) => {
     let user = await Tables.User.findOne({
         where: {
-            pseudo: pseudo,
+            email: email,
             password: password
         }
     });
@@ -13,7 +13,7 @@ export let generateTokenFromCredentials = async (pseudo, password) => {
     if (user) {
         return jwt.sign({
             id: user.id,
-            pseudo: user.pseudo,
+            email: user.email,
             role: user.role
         }, Config.JWK_TOKEN, {
             expiresIn: '7d'

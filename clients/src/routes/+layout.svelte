@@ -31,7 +31,7 @@ if (page.includes("/auth")) {
             <Sidebar {mobile_sidebar_toggle}></Sidebar>
         {/if}
         {#if !mobile_sidebar_toggle}
-            <div class="page">
+            <div class="layout">
                 <slot></slot>
             </div>
         {/if}
@@ -51,7 +51,7 @@ if (page.includes("/auth")) {
     @apply md:bg-gradient-to-r bg-gradient-to-b;
   }
 
-  .page {
+  .layout {
     @apply w-full;
     @apply p-3 md:p-6 md:px-24;
   }

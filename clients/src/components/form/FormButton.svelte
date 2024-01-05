@@ -19,12 +19,12 @@
         @apply font-bold;
 
         // glassmorphism
-        @apply bg-opacity-70 backdrop-filter backdrop-blur-lg;
+        @apply bg-opacity-60 backdrop-filter backdrop-blur-lg;
 
         // hover
-        @apply hover:bg-blue-600;
+        @apply hover:bg-blue-500;
 
         // active
-        @apply active:bg-blue-700;
+        @apply active:bg-blue-600;
     }
 </style>

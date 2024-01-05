@@ -18,6 +18,6 @@
 
       // padding inside
       @apply px-6 py-12;
-      @apply md:px-12 md:py-16;
+      @apply md:px-12 md:py-14;
     }
 </style>

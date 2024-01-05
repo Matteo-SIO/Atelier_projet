@@ -70,7 +70,7 @@ function unsetError (data: Writable<FormData>, fieldKey: string) {
 
 function unsetAll (data: Writable<FormData>) {
     data.update((dataSync) => {
-        for (const key in data) {
+        for (const key in dataSync) {
             dataSync[key].value = undefined;
             dataSync[key].error = undefined;
         }
