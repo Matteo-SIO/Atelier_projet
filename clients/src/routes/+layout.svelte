@@ -5,6 +5,7 @@ import {goto} from "$app/navigation";
 import Sidebar from "../components/Sidebar/Sidebar.svelte";
 import Vertical from "../components/positions/Vertical.svelte";
 import Horizontal from "../components/positions/Horizontal.svelte";
+import Sidebar2 from "$components/Sidebar/Sidebar.svelte";
 
 export let data;
 export let mobile_sidebar_toggle = false;
@@ -28,7 +29,7 @@ if (page.includes("/auth")) {
     {/if}
     <Vertical>
         {#if !restreintMod}
-            <Sidebar {mobile_sidebar_toggle}></Sidebar>
+            <Sidebar2 {mobile_sidebar_toggle}></Sidebar2>
         {/if}
         {#if !mobile_sidebar_toggle}
             <div class="layout">

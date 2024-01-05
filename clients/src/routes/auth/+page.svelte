@@ -62,8 +62,8 @@
 <style lang="scss">
     // TODO: need to replace to .page
     // And, fixe property
-    :global(.layout) {
-        @apply w-full;
+    .page {
+        @apply w-full h-full;
         @apply flex flex-col justify-center;
     }
 
