@@ -22,15 +22,15 @@
 
 </script>
 
-<Sidebar {activeUrl} class="sidebar {mobileActive}">
-    <SidebarWrapper class="sidebar {mobileActive}">
+<Sidebar {activeUrl} class="sidebar-container {mobileActive}">
+    <SidebarWrapper class="sidebar-wp {mobileActive}">
 
         {#each sidebarContent.groups as group}
-            <SidebarGroup class="sidebar-group divide-y divide-gray-400">
-                <SidebarDropdownWrapper label={group.display} isOpen={isActive(group)}>
+            <SidebarGroup class="sidebar-group">
+                <SidebarDropdownWrapper class="group-button" label={group.display} isOpen={isActive(group)}>
                     <svelte:fragment slot="icon">
                         {#if group.icon}
-                            <svelte:component class="sidebar-item" this={group.icon} />
+                            <svelte:component this={group.icon} />
                         {/if}
                     </svelte:fragment>
                     <SidebarItems content={group.content} />
@@ -43,13 +43,21 @@
 </Sidebar>
 
 <style lang="scss">
-  :global(.sidebar) {
-    @apply bg-gray-300;
-    @apply h-full;
+  @import "../../../static/common.scss";
 
-    display: none;
+  :global(.sidebar-wp) {
+    @apply pb-5;
     @apply md:block;
     @apply md:w-64;
+    @apply h-full;
+
+    // Glassmorphism effect
+    @apply glass glass-border;
+  }
+
+  :global(.sidebar-container) {
+    @apply m-4 mt-0;
+    @apply hidden md:block;
   }
 
   :global(.mobile-active) {
@@ -63,9 +71,12 @@
 
   :global(.sidebar-group) {
     @apply space-y-0.5;
+    @apply glass;
+    @apply my-2;
   }
 
-  :global(.sidebar-icon) {
-    @apply text-gray-500 dark:text-gray-400;
+  :global(.group-button) {
+    @apply glass;
+    @apply px-3;
   }
 </style>

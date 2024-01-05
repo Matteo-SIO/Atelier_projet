@@ -32,5 +32,10 @@
 
 
 <style lang="scss">
+    @import "../../../static/common.scss";
+    .page {
+      // Glassmorphism effect
 
+      @apply glass glass-border;
+    }
 </style>

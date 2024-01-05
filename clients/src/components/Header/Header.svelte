@@ -20,15 +20,15 @@
 </div>
 
 <style lang="scss">
+    @import "../../../static/common.scss";
+
     .header {
       @apply bg-gray-600;
-      @apply p-2;
+      @apply p-2 m-4 mb-6;
+      @apply flex items-center;
 
-
-      // create 2 columns (25% and 75%)
-      @apply grid grid-cols-2;
-      @apply md:grid-cols-1;
-      @apply items-center;
+      // Glassmorphism effect
+      @apply glass;
     }
 
     .sidebar_control {
