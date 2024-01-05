@@ -86,6 +86,7 @@
         @apply text-red-500;
         @apply text-sm;
         @apply font-mono;
+        @apply text-center;
         & > .error-span {
           @apply font-bold;
         }

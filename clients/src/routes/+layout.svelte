@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import "../app.pcss";
 import Header from "../components/Header/Header.svelte";
 import {goto} from "$app/navigation";
@@ -6,6 +6,9 @@ import Sidebar from "../components/Sidebar/Sidebar.svelte";
 import Vertical from "../components/positions/Vertical.svelte";
 import Horizontal from "../components/positions/Horizontal.svelte";
 import Sidebar2 from "$components/Sidebar/Sidebar.svelte";
+import user from "$stores/user";
+import {getRoutes} from "$lib/Routes.ts";
+import {page} from "$app/stores";
 
 export let data;
 export let mobile_sidebar_toggle = false;
@@ -15,20 +18,18 @@ if (data.redirect) {
     goto(data.redirect);
 }
 
-const page = data.redirect ?? window.location.pathname;
-let restreintMod = false;
-if (page.includes("/auth")) {
-    restreintMod = true;
-}
+const routes = getRoutes();
+
+$: isLogged = $user.profile && $page.url.pathname  !== routes.AUTH.path;
 
 </script>
 
 <Horizontal>
-    {#if !restreintMod}
+    {#if isLogged}
         <Header bind:mobile_sidebar_toggle></Header>
     {/if}
     <Vertical>
-        {#if !restreintMod}
+        {#if isLogged}
             <Sidebar2 {mobile_sidebar_toggle}></Sidebar2>
         {/if}
         {#if !mobile_sidebar_toggle}
