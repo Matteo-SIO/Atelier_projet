@@ -1,4 +1,5 @@
-const BASE_URL = 'http://localhost:3000/api/';
+let BASE_URL = 'http://localhost:3000/api/';
+const FALLBACK_URL = 'http://192.168.1.115:16384/api/';
 
 enum RequestType {
     POST = 'POST',
@@ -66,6 +67,17 @@ class RequestAPI <Req> {
 
     private isQueryRequest () {
         return this.type === RequestType.GET || this.type === RequestType.DELETE;
+    }
+}
+
+export async function checkBaseUrl () {
+    try {
+        await fetch(BASE_URL, {
+            method: 'GET'
+        })
+    } catch (e) {
+        console.error('Failed to connect to API, fallback to', FALLBACK_URL);
+        BASE_URL = FALLBACK_URL;
     }
 }
 

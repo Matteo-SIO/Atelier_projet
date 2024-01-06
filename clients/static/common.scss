@@ -14,3 +14,31 @@
 .glass-border {
   @apply border border-gray-100;
 }
+
+
+// color list var
+$colors: (
+    gray: 'gray-400',
+    red: 'red-400',
+    white: 'white',
+);
+
+// generate classes
+
+@for $i from 1 through 5 {
+  // each color
+    @each $color, $value in $colors {
+      // create class
+      .glass-#{$color}-#{$i} {
+        @apply bg-#{$value}/#{$i * 20};
+
+        @apply bg-opacity-30 backdrop-blur-3xl;
+        @apply bg-clip-padding backdrop-filter;
+        @apply rounded-lg;
+      }
+
+      .glass-#{$color} {
+        @apply glass-#{$color}-1;
+      }
+    }
+}
