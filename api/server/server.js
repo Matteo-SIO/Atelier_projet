@@ -20,7 +20,10 @@ export let start = async ({port, debug}) => {
     await defineRoutes(server);
 
     // start the server
-    await server.listen(port, (err, address) => {
+    await server.listen({
+        port: port,
+        host: '0.0.0.0'
+    }, (err, address) => {
         if (err) {
             console.error(err)
             process.exit(1)

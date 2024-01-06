@@ -11,15 +11,12 @@
         @apply mt-2 md:mt-4;
 
         @apply w-full;
-        @apply bg-blue-500;
+        @apply bg-blue-600/80;
         @apply rounded;
 
         // font
         @apply text-white;
         @apply font-bold;
-
-        // glassmorphism
-        @apply bg-opacity-60 backdrop-filter backdrop-blur-lg;
 
         // hover
         @apply hover:bg-blue-500;

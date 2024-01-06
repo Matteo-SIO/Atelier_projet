@@ -49,9 +49,10 @@ $: isAuthPage = $page.url.pathname === routes.AUTH.path;
   :global(html), :global(body) {
     @apply h-full w-full;
     @apply p-0 m-0;
-    @apply md:p-2;
+    //@apply md:p-2;
     word-wrap: break-word;
 
+    //@apply from-cyan-900 to-blue-800;
     @apply from-red-500 to-blue-500;
     @apply md:bg-gradient-to-r bg-gradient-to-b;
   }

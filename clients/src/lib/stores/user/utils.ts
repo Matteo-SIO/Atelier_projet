@@ -1,45 +1,50 @@
-import user, {type Credentials, Role, type User} from "$stores/user/index.ts";
+import user, {Role, type User} from "$stores/user/index.ts";
 import {get, type Writable} from "svelte/store";
 import type {CreateTokenResponse, UserMeResponse} from "$types/requests";
 import {GET} from "$lib/ClientAPI.ts";
 
-const LOCAL_STORAGE_KEY = 'user_data'
+import { Preferences } from '@capacitor/preferences';
+import { Capacitor } from '@capacitor/core';
 
-export function readLocalStorage (store: Writable<User>)  {
+const LOCAL_STORAGE_KEY = 'user_token'
+
+export async function readStorage (store: Writable<User>) {
     let token = null;
-
-    const rawStorage = localStorage.getItem(LOCAL_STORAGE_KEY);
-    if (rawStorage) {
-        const storage : Credentials = JSON.parse(rawStorage);
-        token = storage.token;
+    if (Capacitor.isNative) {
+        token = (await Preferences.get({ key: LOCAL_STORAGE_KEY })).value;
+    } else {
+        token = localStorage.getItem(LOCAL_STORAGE_KEY);
     }
-
     store.set({
         token: token,
         profile: null
-    })
+    });
 }
 
-export function writeLocalStorage (store: Writable<User>) {
+export async function writeStorage (store: Writable<User>) {
     const syncStore = get(store);
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify({
-        token: syncStore.token
-    }));
+    const token = syncStore.token as string;
+    if (Capacitor.isNative) {
+        await Preferences.set({ key: LOCAL_STORAGE_KEY, value: token });
+    } else {
+        localStorage.setItem(LOCAL_STORAGE_KEY, token);
+    }
+
 }
 
 export function clearLocalStorage () {
     localStorage.removeItem(LOCAL_STORAGE_KEY);
 }
 
-export function defineUserCredentials (store: Writable<User>, res: CreateTokenResponse) {
+export async function defineUserCredentials (store: Writable<User>, res: CreateTokenResponse) {
     store.set({
         token: res.token,
         profile: null
     });
-    writeLocalStorage(store);
+    await writeStorage(store);
 }
 
-export function defineUserProfile (store: Writable<User>, res: UserMeResponse) {
+export async function defineUserProfile (store: Writable<User>, res: UserMeResponse) {
     store.update(data => {
         data.profile = {
             role: roleByName(res.role),
@@ -71,7 +76,7 @@ export function roleByName (name: string) : Role {
 
 export async function checkLogin (store: Writable<User>) : Promise<boolean> {
     return new Promise(async (resolve) => {
-        readLocalStorage(user);
+        await readStorage(user);
         let syncUser = get(user);
 
         if (!syncUser?.token) {
@@ -82,7 +87,7 @@ export async function checkLogin (store: Writable<User>) : Promise<boolean> {
         try {
             const reqMe = GET('users/me', {}).withToken(syncUser.token)
             const resMe : UserMeResponse = await reqMe.send();
-            defineUserProfile(store, resMe);
+            await defineUserProfile(store, resMe);
             resolve(true);
         } catch (e) {
             resolve(false);

@@ -57,7 +57,7 @@
 
       // Active
       &:focus, .active {
-        @apply glass-2;
+        //@apply glass-2;
         @apply rounded-md;
       }
 
@@ -65,7 +65,7 @@
   }
 
   .active {
-    @apply glass-2;
+    //@apply glass-2;
     @apply rounded-md;
   }
 </style>

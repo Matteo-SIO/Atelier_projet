@@ -17,7 +17,7 @@
 
 <div class="sidebar-profile">
     <div class="welcome-text">
-        Bienvenue {firstName} {lastName}
+        Bienvenue <b>{firstName} {lastName}</b>
     </div>
     <button class="logout-button" on:click={logout}>
         Se déconnecter
@@ -31,23 +31,25 @@
     .sidebar-profile {
       //@apply h-32;
       @apply m-0 p-2;
-      @apply glass;
+      @apply glass-white-1;
       @apply space-y-2;
 
       .welcome-text {
         @apply text-center;
         @apply text-base;
         @apply py-3;
-        @apply glass;
+        //@apply glass;
       }
 
       .logout-button {
-        @apply bg-red-500;
+        @apply bg-red-500/90;
         @apply text-white;
         @apply text-center;
+        @apply font-bold;
         @apply w-full;
         @apply h-12;
         @apply rounded-md;
+        //@apply glass-red-5;
       }
 
 

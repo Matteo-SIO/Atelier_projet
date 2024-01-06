@@ -48,15 +48,21 @@
 
 
 <style lang="scss">
+    @import "../../../static/common.scss";
+
     .item {
       @apply w-full;
-      @apply bg-amber-200;
+      //@apply bg-amber-200;
+      @apply glass-white-1;
       @apply rounded;
+      @apply my-4;
+      @apply p-2;
     }
 
     .item-header {
         @apply flex items-center justify-between;
-        @apply bg-amber-300;
+        //@apply bg-amber-300;
+        @apply glass-white-1;
         @apply h-10;
         @apply px-3;
         @apply rounded;
@@ -86,7 +92,7 @@
 
     .item-content {
       @apply rounded;
-      @apply px-3;
+      //@apply px-3;
 
       // inline
       @apply flex;

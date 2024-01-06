@@ -1,5 +1,5 @@
 <script lang="ts">
-    import SidebarItems from "$components/Sidebar/SidebarGroup.svelte";
+    import SidebarItems from "$components/Sidebar/SidebarLinks.svelte";
     import {page} from "$app/stores";
     import {getSidebarContent} from "$components/Sidebar/Sidebar.ts";
     import type {SidebarGroupType} from "$components/Sidebar/Sidebar.ts";
@@ -48,13 +48,14 @@
 
   :global(.group) {
     @apply mb-5;
-    @apply glass;
+    @apply glass-white-1;
 
     :global(.group-head) {
       @apply flex flex-row items-center;
       @apply p-2 w-full;
 
-      @apply glass-2;
+      //@apply glass-2;
+      @apply glass-white-1;
 
       :global(.head-icon) {
         @apply w-10;
