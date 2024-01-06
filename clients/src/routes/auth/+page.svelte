@@ -39,8 +39,8 @@
             const reqMe = GET('users/me', {}).withToken(resToken.token)
             const resMe : UserMeResponse = await reqMe.send();
 
-            defineUserCredentials(user, resToken);
-            defineUserProfile(user, resMe)
+            await defineUserCredentials(user, resToken);
+            await defineUserProfile(user, resMe)
 
             await goto(getRoutes().MATERIALS.path)
         } catch (e) {

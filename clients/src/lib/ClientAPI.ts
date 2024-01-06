@@ -1,5 +1,5 @@
 let BASE_URL = 'http://localhost:3000/api/';
-const FALLBACK_URL = 'http://192.168.1.115:16384/api/';
+const FALLBACK_URL = 'http://192.168.1.115:3000/api/';
 
 enum RequestType {
     POST = 'POST',
@@ -59,7 +59,7 @@ class RequestAPI <Req> {
             throw {
                 code: response.status,
                 message: json.error ?? 'Unknown error',
-            }
+            } as RequestError;
         }
 
         return json;

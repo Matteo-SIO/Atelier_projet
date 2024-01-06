@@ -12,9 +12,12 @@
 </div>
 
 <style lang="scss">
+    @import "../../../static/common.scss";
+
     .info-block {
       @apply my-2 rounded-lg;
-      @apply bg-gray-300;
+      //@apply bg-gray-300;
+      @apply glass-white-1;
       @apply text-center;
       @apply py-0.5;
       @apply h-12;

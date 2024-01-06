@@ -1,4 +1,4 @@
-import {checkLogin, readLocalStorage} from "$stores/user/utils.ts";
+import {checkLogin} from "$stores/user/utils.ts";
 
 
 export const ssr = false;
