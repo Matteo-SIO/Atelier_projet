@@ -37,5 +37,6 @@
     .page {
       // Glassmorphism effect
       //@apply glass glass-border;
+      @apply h-full overflow-y-scroll;
     }
 </style>
