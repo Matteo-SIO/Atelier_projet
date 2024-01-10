@@ -3,10 +3,13 @@
 
     import Item from "../../components/Listing/Item.svelte";
     import InfoBlock from "../../components/Listing/InfoBlock.svelte";
-
+    import Modal from "$components/Modal/Modal.svelte";
 
     const iter = [1,2,3,4,5,6,7,8,9,10];
 </script>
+
+
+<Modal />
 
 <div class="page">
 
@@ -41,7 +44,7 @@
       // Glassmorphism effect
       @apply glass-white;
       @apply h-full overflow-y-scroll;
-      @apply px-3 md:p-4;
+      @apply px-3 md:px-4;
 
       // Custom scrollbar
         &::-webkit-scrollbar {
@@ -56,7 +59,7 @@
         }
 
       & :global(> *) {
-        @apply mb-4;
+        @apply my-3 md:my-4;
       }
     }
 </style>

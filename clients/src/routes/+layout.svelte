@@ -24,6 +24,7 @@ $: isAuthPage = $page.url.pathname === routes.AUTH.path;
 
 </script>
 
+
 <Horizontal>
     {#if isLogged && !isAuthPage}
         <Header bind:mobile_sidebar_toggle></Header>
@@ -35,12 +36,15 @@ $: isAuthPage = $page.url.pathname === routes.AUTH.path;
         {#if !mobile_sidebar_toggle}
             <div class="layout">
                 {#if isLogged || isAuthPage}
-                    <slot></slot>
+                    <slot />
                 {/if}
             </div>
         {/if}
     </Vertical>
 </Horizontal>
+
+
+
 
 <style lang="scss">
   @import "../../static/common.scss";

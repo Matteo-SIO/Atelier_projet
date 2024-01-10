@@ -36,7 +36,7 @@
 
       .welcome-text {
         @apply text-center;
-        @apply text-base;
+        @apply text-sm xl:text-base;
         @apply py-3;
         //@apply glass;
       }

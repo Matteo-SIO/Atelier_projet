@@ -1,6 +1,6 @@
 <script lang="ts">
 
-    import type {FormControl} from "./FormUtils.ts";
+    import type {FormControl} from "../FormUtils.ts";
 
     export let control : FormControl;
 
@@ -11,7 +11,7 @@
 </div>
 
 <style lang="scss">
-    @import "../../../static/common.scss";
+    @import "../../../../static/common";
 
     .form-container {
       @apply glass-white-1;

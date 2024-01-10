@@ -1,6 +1,6 @@
 <script lang="ts">
     import type {Writable} from "svelte/store";
-    import type {FormData} from "./FormUtils.ts";
+    import type {FormData} from "../FormUtils.ts";
 
     export let data: Writable<FormData>;
     export let key: string;
