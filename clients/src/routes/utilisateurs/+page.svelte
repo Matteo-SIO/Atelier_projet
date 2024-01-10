@@ -3,16 +3,14 @@
 
     import Item from "../../components/Listing/Item.svelte";
     import InfoBlock from "../../components/Listing/InfoBlock.svelte";
-    import Modal from "$components/Modal/Modal.svelte";
+    import Create from "./modals/CreateModal.svelte";
 
     const iter = [1,2,3,4,5,6,7,8,9,10];
 </script>
 
-
-<Modal />
+<Create />
 
 <div class="page">
-
     {#each iter as i (i)}
         <Item title="bidule@gmail.com">
             <svelte:fragment slot="block-1">
@@ -32,9 +30,6 @@
             </svelte:fragment>
         </Item>
     {/each}
-
-
-
 </div>
 
 
