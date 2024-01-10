@@ -37,7 +37,7 @@
     @import "../../../static/common.scss";
     .page {
       // Glassmorphism effect
-      @apply glass-white;
+     // @apply glass-white;
       @apply h-full overflow-y-scroll;
       @apply px-3 md:px-4;
 
