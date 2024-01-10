@@ -20,6 +20,7 @@
 $colors: (
     gray: 'gray-400',
     red: 'red-400',
+    blue: 'blue-400',
     white: 'white',
 );
 
@@ -32,7 +33,8 @@ $colors: (
       .glass-#{$color}-#{$i} {
         @apply bg-#{$value}/#{$i * 20};
 
-        @apply bg-opacity-30 backdrop-blur-3xl;
+        //@apply bg-opacity-80;
+        // @apply backdrop-blur-3xl;
         @apply bg-clip-padding backdrop-filter;
         @apply rounded-lg;
       }

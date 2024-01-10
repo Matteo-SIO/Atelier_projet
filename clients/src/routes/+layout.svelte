@@ -48,7 +48,7 @@ $: isAuthPage = $page.url.pathname === routes.AUTH.path;
   // responsive
   :global(html), :global(body) {
     @apply h-full w-full;
-    @apply p-0 m-0;
+    @apply p-0 m-0 md:px-8;
     //@apply md:p-2;
     word-wrap: break-word;
 

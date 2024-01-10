@@ -55,8 +55,8 @@
       //@apply bg-amber-200;
       @apply glass-white-1;
       @apply rounded;
-      @apply my-4;
-      @apply p-2;
+      //@apply my-4;
+      //@apply p-2;
     }
 
     .item-header {
@@ -92,7 +92,7 @@
 
     .item-content {
       @apply rounded;
-      //@apply px-3;
+      @apply mx-3;
 
       // inline
       @apply flex;

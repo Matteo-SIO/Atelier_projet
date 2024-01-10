@@ -3,11 +3,14 @@
 
     import Item from "../../components/Listing/Item.svelte";
     import InfoBlock from "../../components/Listing/InfoBlock.svelte";
+
+
+    const iter = [1,2,3,4,5,6,7,8,9,10];
 </script>
 
 <div class="page">
 
-    {#each [1,2,3,4,5] as i}
+    {#each iter as i (i)}
         <Item title="bidule@gmail.com">
             <svelte:fragment slot="block-1">
                 <InfoBlock>
@@ -36,7 +39,24 @@
     @import "../../../static/common.scss";
     .page {
       // Glassmorphism effect
-      //@apply glass glass-border;
+      @apply glass-white;
       @apply h-full overflow-y-scroll;
+      @apply px-3 md:p-4;
+
+      // Custom scrollbar
+        &::-webkit-scrollbar {
+            @apply w-2;
+        }
+        &::-webkit-scrollbar-track {
+            @apply bg-transparent;
+        }
+        &::-webkit-scrollbar-thumb {
+            @apply bg-gray-300;
+            @apply rounded-full;
+        }
+
+      & :global(> *) {
+        @apply mb-4;
+      }
     }
 </style>

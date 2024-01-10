@@ -14,7 +14,7 @@
     @import "../../../static/common.scss";
 
     .form-container {
-      @apply glass;
+      @apply glass-white-1;
 
       // padding inside
       @apply px-6 py-12;

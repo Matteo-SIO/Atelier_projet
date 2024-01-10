@@ -31,7 +31,7 @@
     .sidebar-profile {
       //@apply h-32;
       @apply m-0 p-2;
-      @apply glass-white-1;
+      @apply glass-white-2;
       @apply space-y-2;
 
       .welcome-text {

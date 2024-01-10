@@ -48,14 +48,14 @@
 
   :global(.group) {
     @apply mb-5;
-    @apply glass-white-1;
+    @apply glass-white-2;
 
     :global(.group-head) {
       @apply flex flex-row items-center;
       @apply p-2 w-full;
 
       //@apply glass-2;
-      @apply glass-white-1;
+      @apply glass-white-2;
 
       :global(.head-icon) {
         @apply w-10;

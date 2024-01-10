@@ -3,7 +3,7 @@ export default {
     DB: {
         debug: true,
         host: '127.0.0.1',
-        post: 3306,
+        post: 3307,
         user: 'root',
         pass: '',
         dbName: 'atelier_projet'

@@ -27,7 +27,7 @@
     // space-between top and down
 
     // Glassmorphism effect
-    @apply glass;
+    @apply glass-white;
   }
 
   .mobile-active {
