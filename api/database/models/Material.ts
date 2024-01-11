@@ -1,7 +1,7 @@
-import {DataTypes} from 'sequelize';
+import {DataTypes, Sequelize} from 'sequelize';
 
 // Define the table Materials
-export const init = (bdd) => {
+export function init (bdd: Sequelize) {
     return bdd.define('materials', {
         // - Make relation to TypeMaterial
         id_typeMaterial: {

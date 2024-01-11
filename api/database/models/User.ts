@@ -1,7 +1,7 @@
-import {DataTypes} from 'sequelize';
+import {DataTypes, Sequelize} from 'sequelize';
 
 // Define the table Users
-export const init = (bdd) => {
+export function init (bdd: Sequelize) {
     return bdd.define('users', {
         email: {
             type: DataTypes.STRING,

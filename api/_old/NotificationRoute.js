@@ -1,6 +1,6 @@
-import {verifyToken} from "../../utils/SessionUtil.js";
-import {addNotification, registerHook} from "../../utils/Notification.js";
-import Config from "../../config.js";
+import {verifyToken} from "../utils/SessionUtil.ts";
+import {addNotification, registerHook} from "./Notification.js";
+import Config from "../config.ts";
 
 
 export default (server, BASE_PATH) => {

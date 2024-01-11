@@ -2,10 +2,10 @@
   "name": "atelier_projet",
   "version": "1.0.0",
   "description": "",
-  "main": "api/index.js",
+  "main": "api/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "node ./api/index.js",
+    "server": "node api/index.ts",
     "web": "cd clients && npm run dev",
     "web-build": "cd clients && npm run build && npm run preview"
   },

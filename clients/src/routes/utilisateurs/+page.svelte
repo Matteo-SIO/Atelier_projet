@@ -1,6 +1,6 @@
 <script lang="ts">
 
-    import Create from "./modals/CreateModal.svelte";
+    import Create from "$components/templates/modals/CreateUserModal.svelte";
     import UsersListing from "$components/templates/UsersListing.svelte";
 
     let openModal: () => void;

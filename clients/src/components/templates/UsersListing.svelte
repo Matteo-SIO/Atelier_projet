@@ -3,6 +3,9 @@
     import InfoBlock from "$components/Listing/InfoBlock.svelte";
 
     const iter = [1,2,3,4,5,6,7,8,9,10];
+
+    const data = [];
+
 </script>
 
 {#each iter as i (i)}

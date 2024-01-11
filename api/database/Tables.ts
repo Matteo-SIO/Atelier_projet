@@ -1,7 +1,10 @@
-const Tables = {};
+import {ModelCtor} from "sequelize/types/model";
+import {Sequelize} from "sequelize";
+
+const Tables: {[key: string]: ModelCtor<any>} = {};
 export default Tables;
 
-export async function defineTables (bdd) {
+export async function defineTables (bdd: Sequelize) {
     // Import all the tables
     Tables.User = (await import('./models/User.js')).init(bdd);
 

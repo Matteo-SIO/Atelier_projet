@@ -1,7 +1,15 @@
-import {verifyToken} from "../../utils/SessionUtil.js";
+import {verifyToken} from "../../utils/SessionUtil";
 import Tables from "../../database/Tables.js";
+import {
+    CreateUserRequest, DeleteUserResponse, GetOneUserResponse,
+    GetUsersRequest,
+    GetUsersResponse,
+    UpdateUserRequest, UpdateUserResponse,
+    UserMeResponse
+} from "../../../@types/requests/users";
+import {FastifyInstance} from "fastify";
 
-export default (server, BASE_PATH) => {
+export default function (server: FastifyInstance, BASE_PATH: string) {
 
     /**
      * @api {GET} /api/users/ List all the users
@@ -18,10 +26,12 @@ export default (server, BASE_PATH) => {
             return;
         }
 
+        let reqData = request.query as GetUsersRequest;
+
         // pagination, get lines from [offset]° to [offset + limit]°
         // example: get [0, 20]° lines, then [20, 40]° lines, etc...
-        let offsetQuery = Number(request.query.offset ?? 0);
-        let limitQuery = Number(request.query.limit ?? 20);
+        let offsetQuery = Number(reqData.offset ?? 0);
+        let limitQuery = Number(reqData.limit ?? 20);
 
         let users = await Tables.User.findAll({
             offset: offsetQuery,
@@ -31,8 +41,19 @@ export default (server, BASE_PATH) => {
             // don't return the 'password' fields
         });
 
+        let resData: GetUsersResponse = []
+        for (let user of users) {
+            resData.push({
+                id: user.id,
+                email: user.email,
+                firstname: user.firstname,
+                lastname: user.lastname,
+                role: user.role
+            } as GetOneUserResponse)
+        }
+
         reply.code(200);
-        reply.send(users);
+        reply.send(resData as GetUsersResponse);
     });
 
 
@@ -49,9 +70,11 @@ export default (server, BASE_PATH) => {
             return;
         }
 
+        let reqParams = request.params as any;
+
         let user = await Tables.User.findOne({
             where: {
-                id: request.params.id
+                id: reqParams.id
             },
             attributes: ['id', 'email', 'role', 'firstname', 'lastname']
             // return only fields 'id', 'email', 'role', 'firstname', 'lastname'
@@ -65,7 +88,13 @@ export default (server, BASE_PATH) => {
         }
 
         reply.code(200);
-        reply.send(user);
+        reply.send({
+            id: user.id,
+            email: user.email,
+            firstname: user.firstname,
+            lastname: user.lastname,
+            role: user.role
+        } as GetOneUserResponse);
     });
 
     /**
@@ -81,23 +110,34 @@ export default (server, BASE_PATH) => {
             return;
         }
 
-        let user = await Tables.User.findOne({
-            where: {
-                id: decodedToken.id
-            },
-            attributes: ['id', 'email', 'role', 'firstname', 'lastname']
-            // return only fields 'id', 'email', 'role', 'firstname', 'lastname'
-            // don't return the 'password' and 'email' fields
-        });
+        try {
+            let user = await Tables.User.findOne({
+                where: {
+                    id: decodedToken.id
+                },
+                attributes: ['id', 'email', 'role', 'firstname', 'lastname']
+                // return only fields 'id', 'email', 'role', 'firstname', 'lastname'
+                // don't return the 'password' and 'email' fields
+            });
 
-        if (!user) {
-            reply.code(404);
-            reply.send({error: 'Not Found'});
-            return;
+            if (!user) {
+                reply.code(404);
+                reply.send({error: 'Not Found'});
+                return;
+            }
+
+            reply.code(200);
+            reply.send({
+                id: user.id,
+                email: user.email,
+                firstname: user.firstname,
+                lastname: user.lastname,
+                role: user.role
+            } as UserMeResponse);
+        } catch (e: any) {
+            reply.code(400);
+            reply.send({error: e.message});
         }
-
-        reply.code(200);
-        reply.send(user);
     });
 
 
@@ -119,19 +159,29 @@ export default (server, BASE_PATH) => {
             return;
         }
 
-        await Tables.User.update({
-            ...(request.body.firstname ? {firstname: request.body.firstname} : {}),
-            ...(request.body.lastname ? {lastname: request.body.lastname} : {}),
-            ...(request.body.email ? {email: request.body.email} : {}),
-            ...(request.body.password ? {password: request.body.password} : {}),
-        }, {
-            where: {
-                id: request.params.id
-            }
-        });
+        let reqParams = request.params as any;
+        let reqData = request.body as UpdateUserRequest;
 
-        reply.code(200);
-        reply.send({success: true});
+        try {
+            await Tables.User.update({
+                ...(reqData.firstname ? {firstname: reqData.firstname} : {}),
+                ...(reqData.lastname ? {lastname: reqData.lastname} : {}),
+                ...(reqData.email ? {email: reqData.email} : {}),
+                ...(reqData.password ? {password: reqData.password} : {}),
+            }, {
+                where: {
+                    id: reqParams.id
+                }
+            });
+
+            reply.code(200);
+            reply.send({
+                success: true
+            } as UpdateUserResponse);
+        } catch (e: any) {
+            reply.code(400);
+            reply.send({error: e.message});
+        }
     });
 
 
@@ -149,14 +199,23 @@ export default (server, BASE_PATH) => {
             return;
         }
 
-        await Tables.User.destroy({
-            where: {
-                id: request.params.id
-            }
-        });
+        let reqParams = request.params as any;
 
-        reply.code(200);
-        reply.send({success: true});
+        try {
+            await Tables.User.destroy({
+                where: {
+                    id: reqParams.id
+                }
+            });
+
+            reply.code(200);
+            reply.send({
+                success: true
+            } as DeleteUserResponse);
+        } catch (e: any) {
+            reply.code(400);
+            reply.send({error: e.message});
+        }
     });
 
 
@@ -178,18 +237,22 @@ export default (server, BASE_PATH) => {
             return;
         }
 
+        let reqData = request.body as CreateUserRequest;
+
         try {
-            let user = await Tables.User.create({
-                firstname: request.body.firstname,
-                lastname: request.body.lastname,
-                email: request.body.email,
-                password: request.body.password,
-                role: request.body.role
+            await Tables.User.create({
+                firstname: reqData.firstname,
+                lastname: reqData.lastname,
+                email: reqData.email,
+                password: reqData.password,
+                role: reqData.role
             });
 
             reply.code(200);
-            reply.send(user);
-        } catch (e) {
+            reply.send({
+                success: true,
+            });
+        } catch (e: any) {
             reply.code(400);
             reply.send({error: e.message});
         }

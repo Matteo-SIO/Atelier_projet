@@ -1,30 +1,35 @@
-import {DataTypes} from 'sequelize';
+import {DataTypes, Sequelize} from 'sequelize';
 
-// Define the table Orders
-export const init = (bdd) => {
-    return bdd.define('orders', {
-        // - Make relation to User
+// Define the table Usages
+export function init (bdd: Sequelize) {
+    return bdd.define('usages', {
+        // - make relation to User
         id_user: {
             type: DataTypes.INTEGER,
-            allowNull: false,
             references: {
                 model: 'users',
             }
         },
 
-        // - Make relation to Material
+        // - make relation to Material
         id_material: {
             type: DataTypes.INTEGER,
-            allowNull: false,
             references: {
                 model: 'materials',
             }
         },
 
         // Simple attributes
-        description: {
-            type: DataTypes.STRING,
+        date_start: {
+            type: DataTypes.DATE,
             allowNull: false,
+            // @ts-ignore
+            required: true
+        },
+        date_end: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            // @ts-ignore
             required: true
         },
         state: {

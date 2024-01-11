@@ -1,26 +1,22 @@
 import {Sequelize, Op} from 'sequelize';
-import * as tables from "./Tables.js";
+import * as tables from "./Tables";
+import {DbConfig} from "../../@types/api/config";
 
 /**
  * Connect to the database
  * Define the tables if they don't exist
  *
- * @param host
- * @param post
- * @param user
- * @param pass
- * @param dbName
- * @param debug
+ * @param {DbConfig} config
  * @returns {Promise<unknown>}
  */
-export let connect = async ({host, post, user, pass, dbName, debug = false}) => {
-    let sequelize = new Sequelize(dbName, user, pass, {
-        host: host,
-        port: post,
+export async function connect (config: DbConfig) {
+    let sequelize = new Sequelize(config.dbName, config.user, config.pass, {
+        host: config.host,
+        port: config.post,
         dialect: 'mysql',
-        username: user,
-        password: pass,
-        logging: debug,
+        username: config.user,
+        password: config.pass,
+        logging: config.debug,
 
         // aliases operators
         operatorsAliases: {

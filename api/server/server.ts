@@ -2,10 +2,15 @@ import fastify from 'fastify'
 import fastifyCors from '@fastify/cors'
 
 import {defineRoutes} from "./routes.js";
+import {ServerConfig} from "../../@types/api/config";
 
-export let start = async ({port, debug}) => {
+/**
+ * Start the server
+ * @param {ServerConfig} config
+ */
+export async function start (config: ServerConfig) {
     let server = fastify({
-        logger: debug,
+        logger: config.debug,
         ignoreTrailingSlash: true
     });
 
@@ -20,8 +25,8 @@ export let start = async ({port, debug}) => {
     await defineRoutes(server);
 
     // start the server
-    await server.listen({
-        port: port,
+    server.listen({
+        port: config.port,
         host: '0.0.0.0'
     }, (err, address) => {
         if (err) {

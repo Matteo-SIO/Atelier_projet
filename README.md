@@ -4,7 +4,7 @@
 
 # Installation:
 ## API:
-- configurer le fichier `/api/config.js`
+- configurer le fichier `/api/config.ts`
 - avoir sa base de donnée disponible
 - `cd api` : se placer dans le dossier api
 - `npm install` : installer les dépendances

@@ -1,7 +1,7 @@
-import {DataTypes} from 'sequelize';
+import {DataTypes, Sequelize} from 'sequelize';
 
 // Define the table Incident
-export const init = (bdd) => {
+export function init (bdd: Sequelize) {
     return bdd.define('incidents', {
         // - Make relation to User
         id_user: {
@@ -25,6 +25,7 @@ export const init = (bdd) => {
         description: {
             type: DataTypes.STRING,
             allowNull: false,
+            // @ts-ignore
             required: true
         },
         state: {
