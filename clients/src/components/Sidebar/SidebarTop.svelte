@@ -2,8 +2,8 @@
     import SidebarItems from "$components/Sidebar/SidebarLinks.svelte";
     import {page} from "$app/stores";
     import {getSidebarContent} from "$components/Sidebar/Sidebar.ts";
-    import type {SidebarGroupType} from "$components/Sidebar/Sidebar.ts";
     import user from "$stores/user";
+    import type {SidebarGroupType} from "$types/sidebar";
 
     $: activeUrl = $page.url.pathname;
 

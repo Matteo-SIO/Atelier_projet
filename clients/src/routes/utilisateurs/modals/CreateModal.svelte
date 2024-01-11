@@ -1,24 +1,27 @@
-<script>
+<script lang="ts">
 import ModalClose from "$components/Modal/ModalClose.svelte";
 import ModalBodyText from "$components/Modal/ModalBodyText.svelte";
 import Modal from "$components/Modal/Modal.svelte";
 import ModalTitle from "$components/Modal/ModalTitle.svelte";
 import ModalButton from "$components/Modal/ModalButton.svelte";
 
-let isOpen = true;
+export let isOpen = true;
 
-function toggleModal() {
-    isOpen = !isOpen;
+export function closeModal () {
+    isOpen = false;
 }
 
+export function openModal () {
+    isOpen = true;
+}
 </script>
 
 <Modal {isOpen}>
     <svelte:fragment slot="close">
-        <ModalClose callback={toggleModal} />
+        <ModalClose callback={closeModal} />
     </svelte:fragment>
     <svelte:fragment slot="title">
-        <ModalTitle>User details</ModalTitle>
+        <ModalTitle>Créer un utilisateur</ModalTitle>
     </svelte:fragment>
     <svelte:fragment slot="body">
         <ModalBodyText>

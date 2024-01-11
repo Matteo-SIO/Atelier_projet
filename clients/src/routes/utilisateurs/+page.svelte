@@ -1,60 +1,75 @@
 <script lang="ts">
 
-
-    import Item from "../../components/Listing/Item.svelte";
-    import InfoBlock from "../../components/Listing/InfoBlock.svelte";
     import Create from "./modals/CreateModal.svelte";
+    import UsersListing from "$components/templates/UsersListing.svelte";
 
-    const iter = [1,2,3,4,5,6,7,8,9,10];
+    let openModal: () => void;
+
 </script>
 
-<Create />
+
+<Create isOpen={false} bind:openModal />
+
 
 <div class="page">
-    {#each iter as i (i)}
-        <Item title="bidule@gmail.com">
-            <svelte:fragment slot="block-1">
-                <InfoBlock>
-                    <svelte:fragment slot="title">Role:</svelte:fragment>
-                    <svelte:fragment slot="content">Manager</svelte:fragment>
-                </InfoBlock>
-            </svelte:fragment>
+    <div class="listing-header">
+        <button class="create-button" on:click={openModal}>
+            Créer un utilisateur
+        </button>
+    </div>
 
-            <svelte:fragment slot="block-3">
-                <InfoBlock>
-                    <svelte:fragment slot="title">Registered since:</svelte:fragment>
-                    <svelte:fragment slot="content">
-                        <code>02/01/2024</code>
-                    </svelte:fragment>
-                </InfoBlock>
-            </svelte:fragment>
-        </Item>
-    {/each}
+    <div class="listing">
+        <UsersListing />
+    </div>
 </div>
+
+
 
 
 <style lang="scss">
     @import "../../../static/common.scss";
+
     .page {
-      // Glassmorphism effect
-     // @apply glass-white;
-      @apply h-full overflow-y-scroll;
+      @apply h-full;
+      @apply flex flex-col;
+    }
+
+    .listing-header {
+      @apply flex justify-end;
       @apply px-3 md:px-4;
+      @apply pb-5 md:pb-5;
+
+      & > .create-button {
+        @apply glass-white-2;
+        @apply text-white;
+        @apply rounded-2xl;
+        @apply px-3 md:px-4;
+        @apply py-2 md:py-3;
+      }
+    }
+
+    :global(.listing) {
+      // Glassmorphism effect
+      // @apply glass-white;
+
+      @apply px-3 md:px-4;
+      @apply h-full overflow-y-scroll;
 
       // Custom scrollbar
-        &::-webkit-scrollbar {
-            @apply w-2;
-        }
-        &::-webkit-scrollbar-track {
-            @apply bg-transparent;
-        }
-        &::-webkit-scrollbar-thumb {
-            @apply bg-gray-300;
-            @apply rounded-full;
-        }
+      &::-webkit-scrollbar {
+          @apply w-2;
+      }
+      &::-webkit-scrollbar-track {
+          @apply bg-transparent;
+      }
+      &::-webkit-scrollbar-thumb {
+          @apply bg-gray-300;
+          @apply rounded-full;
+      }
 
+      // space between items
       & :global(> *) {
-        @apply my-3 md:my-4;
+          @apply mb-3 md:mb-4;
       }
     }
 </style>
