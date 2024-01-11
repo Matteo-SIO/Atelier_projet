@@ -11,8 +11,6 @@ import {checkBaseUrl} from "$lib/ClientAPI.ts";
 export async function load () {
         const path = window.location.pathname;
 
-        await checkBaseUrl();
-
         const isLogged= await checkLogin(user);
         if (!isLogged && path !== '/auth') {
             return {

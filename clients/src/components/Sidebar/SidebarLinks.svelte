@@ -1,8 +1,8 @@
 <script lang="ts">
     import user, {Role} from "$stores/user/index.js";
-    import type {SidebarLinkType} from "$components/Sidebar/Sidebar.ts";
     import {page} from "$app/stores";
     import {goto} from "$app/navigation";
+    import type {SidebarLinkType} from "$types/sidebar";
     export let content: SidebarLinkType[];
 
     function navigate (link: SidebarLinkType) {

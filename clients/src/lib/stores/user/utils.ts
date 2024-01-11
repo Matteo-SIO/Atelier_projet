@@ -1,6 +1,6 @@
 import user, {Role, type User} from "$stores/user/index.ts";
 import {get, type Writable} from "svelte/store";
-import type {CreateTokenResponse, UserMeResponse} from "$types/requests";
+import type {CreateTokenResponse, UserMeResponse} from "../../../../../@types/requests/auth.ts";
 import {GET} from "$lib/ClientAPI.ts";
 
 import { Preferences } from '@capacitor/preferences';

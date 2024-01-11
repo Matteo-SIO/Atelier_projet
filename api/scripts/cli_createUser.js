@@ -1,6 +1,6 @@
-import * as DB from '../database/db.js';
-import Config from "../config.js";
-import Tables from "../database/Tables.js";
+import * as DB from '../database/db.ts';
+import Config from "../config.ts";
+import Tables from "../database/Tables.ts";
 
 if (process.argv.length < 3) {
     console.log('Usage: node cli_createUser.js key1=value1 key2=value2 ...');

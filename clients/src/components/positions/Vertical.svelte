@@ -14,6 +14,8 @@
 <style lang="scss">
   .vertical {
     @apply flex flex-row;
-    @apply w-full h-full;
+    @apply w-full;
+    height: calc(100vh - 90px);
+    // bug fixer: anti-scroll
   }
 </style>

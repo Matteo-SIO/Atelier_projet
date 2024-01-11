@@ -24,6 +24,7 @@ $: isAuthPage = $page.url.pathname === routes.AUTH.path;
 
 </script>
 
+
 <Horizontal>
     {#if isLogged && !isAuthPage}
         <Header bind:mobile_sidebar_toggle></Header>
@@ -35,12 +36,15 @@ $: isAuthPage = $page.url.pathname === routes.AUTH.path;
         {#if !mobile_sidebar_toggle}
             <div class="layout">
                 {#if isLogged || isAuthPage}
-                    <slot></slot>
+                    <slot />
                 {/if}
             </div>
         {/if}
     </Vertical>
 </Horizontal>
+
+
+
 
 <style lang="scss">
   @import "../../static/common.scss";
@@ -48,7 +52,7 @@ $: isAuthPage = $page.url.pathname === routes.AUTH.path;
   // responsive
   :global(html), :global(body) {
     @apply h-full w-full;
-    @apply p-0 m-0;
+    @apply p-0 m-0 md:px-8;
     //@apply md:p-2;
     word-wrap: break-word;
 

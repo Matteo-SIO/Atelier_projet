@@ -1,10 +1,10 @@
 <script lang="ts">
-    import FormInput from "$components/form/FormInput.svelte";
-    import Form from "$components/form/Form.svelte";
-    import {createFormControl} from "$components/form/FormUtils.ts";
-    import FormButton from "$components/form/FormButton.svelte";
+    import FormInput from "$components/Form/Simple/FormInput.svelte";
+    import Form from "$components/Form/Simple/Form.svelte";
+    import {createFormControl} from "$components/Form/FormUtils.ts";
+    import FormButton from "$components/Form/Simple/FormButton.svelte";
     import {GET} from "$lib/ClientAPI.ts";
-    import type {CreateTokenRequest, CreateTokenResponse, UserMeResponse} from "$lib/@types/requests";
+    import type {CreateTokenRequest, CreateTokenResponse, UserMeResponse} from "../../../../@types/requests/auth.ts";
     import {defineUserCredentials, defineUserProfile} from "$stores/user/utils.ts";
     import user, {Role} from "$stores/user";
     import {goto} from "$app/navigation";

@@ -31,12 +31,12 @@
     .sidebar-profile {
       //@apply h-32;
       @apply m-0 p-2;
-      @apply glass-white-1;
+      @apply glass-white-2;
       @apply space-y-2;
 
       .welcome-text {
         @apply text-center;
-        @apply text-base;
+        @apply text-sm xl:text-base;
         @apply py-3;
         //@apply glass;
       }
