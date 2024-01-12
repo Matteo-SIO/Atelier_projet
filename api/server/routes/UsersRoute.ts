@@ -5,7 +5,7 @@ import {
     GetUsersRequest,
     GetUsersResponse,
     UpdateUserRequest, UpdateUserResponse,
-    UserMeResponse
+    UserMeResponse, UserRowResponse
 } from "../../../@types/requests/users";
 import {FastifyInstance} from "fastify";
 
@@ -36,20 +36,19 @@ export default function (server: FastifyInstance, BASE_PATH: string) {
         let users = await Tables.User.findAll({
             offset: offsetQuery,
             limit: limitQuery,
-            attributes: ['id', 'email', 'role', 'firstname', 'lastname']
-            // return only fields 'id', 'email', 'role', 'firstname', 'lastname'
-            // don't return the 'password' fields
         });
 
         let resData: GetUsersResponse = []
         for (let user of users) {
-            resData.push({
+            let itemData: UserRowResponse = {
                 id: user.id,
                 email: user.email,
+                role: user.role,
                 firstname: user.firstname,
                 lastname: user.lastname,
-                role: user.role
-            } as GetOneUserResponse)
+                createdAt: user.createdAt.getTime()
+            }
+            resData.push(itemData)
         }
 
         reply.code(200);

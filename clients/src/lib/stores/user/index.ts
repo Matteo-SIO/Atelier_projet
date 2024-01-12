@@ -18,7 +18,7 @@ export type Profile = {
 }
 
 export type User = {
-    token: string|null;
+    token: string|undefined;
     profile: Profile|null;
 }
 

@@ -1,6 +1,7 @@
 import user, {Role, type User} from "$stores/user/index.ts";
 import {get, type Writable} from "svelte/store";
-import type {CreateTokenResponse, UserMeResponse} from "../../../../../@types/requests/auth.ts";
+import type {CreateTokenResponse} from "../../../../../@types/requests/auth.ts";
+import type {UserMeResponse} from "../../../../../@types/requests/users.ts";
 import {GET} from "$lib/ClientAPI.ts";
 
 import { Preferences } from '@capacitor/preferences';
@@ -9,11 +10,11 @@ import { Capacitor } from '@capacitor/core';
 const LOCAL_STORAGE_KEY = 'user_token'
 
 export async function readStorage (store: Writable<User>) {
-    let token = null;
+    let token = undefined;
     if (Capacitor.isNative) {
-        token = (await Preferences.get({ key: LOCAL_STORAGE_KEY })).value;
+        token = (await Preferences.get({ key: LOCAL_STORAGE_KEY })).value as string;
     } else {
-        token = localStorage.getItem(LOCAL_STORAGE_KEY);
+        token = localStorage.getItem(LOCAL_STORAGE_KEY) as string;
     }
     store.set({
         token: token,
@@ -57,7 +58,7 @@ export async function defineUserProfile (store: Writable<User>, res: UserMeRespo
 
 export function destroySession (store: Writable<User>) {
     store.set({
-        token: null,
+        token: undefined,
         profile: null
     });
     clearLocalStorage();
