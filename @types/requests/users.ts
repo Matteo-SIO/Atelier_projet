@@ -17,6 +17,7 @@ export type UserRowResponse = {
     role: string;
     firstname: string;
     lastname: string;
+    createdAt: number;
 }
 
 export type GetUsersResponse = UserRowResponse[]

@@ -26,7 +26,7 @@ class RequestAPI <Req> {
         this.token = null;
     }
 
-    withToken (token: string) {
+    withToken (token?: string) {
         this.token = token;
         return this;
     }

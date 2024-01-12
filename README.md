@@ -21,10 +21,16 @@
 # Lancement:
 ## API:
 - `cd api` : se placer dans le dossier api
+- avoir build l'API backend
 - `npm run server` : lancer le serveur
+- 
+  Pour build:
+- `npm run build` : build l'API backend
 
 ## Client web:
 - `cd clients` : se placer dans le dossier clients
+- avoir build le client web
+- avoir lancé l'API backend
 - `npm run dev` : lancer le client web (mode développement)
 
 Pour build:

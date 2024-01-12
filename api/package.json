@@ -7,7 +7,8 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "build": "tsc",
         "server": "node ./build/api/index.js",
-        "create-user": "node ./scripts/cli_createUser.js"
+        "create-user": "node ./scripts/cli_createUser.js",
+        "start-win": "cmd /k \"npm run build && npm run server\""
     },
     "repository": {
         "type": "git",

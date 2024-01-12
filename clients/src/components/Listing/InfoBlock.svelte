@@ -25,4 +25,9 @@
       // center y axis
       @apply flex flex-col justify-center;
     }
+
+    .line1 {
+      @apply text-lg;
+      @apply underline;
+    }
 </style>
