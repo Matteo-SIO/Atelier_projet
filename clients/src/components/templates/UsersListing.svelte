@@ -1,74 +1,56 @@
 <script lang="ts">
     import Item from "$components/Listing/Item.svelte";
-    import InfoBlock from "$components/Listing/InfoBlock.svelte";
-    import {GET} from "$lib/ClientAPI.js";
     import {
-        type GetUsersRequest,
-        type GetUsersResponse,
+        type GetUsersRequest, type GetUsersResponse,
         type UserRowResponse
     } from "../../../../@types/requests/users.js";
     import user from "$stores/user";
+    import Listing from "$components/Listing/Listing.svelte";
+    import {GET} from "$lib/ClientAPI.ts";
+    import type {Block} from "$types/listing";
+    import {TrashBinSolid} from "flowbite-svelte-icons";
 
-    const iter = [1,2,3,4,5,6,7,8,9,10];
+    export let data: UserRowResponse[] = [];
+    const pageSize = 10;
 
-    let data: UserRowResponse[] = [];
+    async function fetcher (page: number) {
+        let req = GET<GetUsersRequest>("users", {
+            offset: pageSize * page,
+            limit: pageSize,
+        }).withToken($user.token)
+        let res: GetUsersResponse = await req.send();
+        return res;
+    }
 
-    let currentPage = 0;
-    let pageSize = 10;
-
-    function parseDate (date: number): string {
+    function parseDate (date: number) {
         let d = new Date(date);
         return `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`;
     }
 
-    async function doRequest () {
-        try {
-            let req = GET<GetUsersRequest>("users", {
-                offset: pageSize * currentPage,
-                limit: pageSize,
-            }).withToken($user.token)
-            let res: GetUsersResponse = await req.send();
-            data = [...data, ...res];
-            if (res.length === pageSize) {
-                currentPage++;
-                await doRequest();
+    function generateBlocks (row: any) : Block[] {
+        return [
+            {
+                type: 'info',
+                title: 'Email',
+                text: row.email
+            },
+            {
+                type: 'info',
+                title: 'Role',
+                text: row.role
+            },
+            {
+                type: 'info',
+                title: 'Date d\'inscription',
+                text: parseDate(row.createdAt)
             }
-        } catch (e) {
-            console.error(e);
-        }
+        ]
     }
-
-    doRequest();
-
 </script>
 
-{#each data as user (user.id)}
-    <Item title="{user.firstname} {user.lastname}">
-        <svelte:fragment slot="block-1">
-            <InfoBlock>
-                <svelte:fragment slot="title">Email:</svelte:fragment>
-                <svelte:fragment slot="content">
-                    <code>{user.email}</code>
-                </svelte:fragment>
-            </InfoBlock>
-        </svelte:fragment>
 
-        <svelte:fragment slot="block-2">
-            <InfoBlock>
-                <svelte:fragment slot="title">Role:</svelte:fragment>
-                <svelte:fragment slot="content">
-                    <code>{user.role}</code>
-                </svelte:fragment>
-            </InfoBlock>
-        </svelte:fragment>
-
-        <svelte:fragment slot="block-3">
-            <InfoBlock>
-                <svelte:fragment slot="title">Date d'inscription:</svelte:fragment>
-                <svelte:fragment slot="content">
-                    <code>{parseDate(user.createdAt)}</code>
-                </svelte:fragment>
-            </InfoBlock>
-        </svelte:fragment>
-    </Item>
-{/each}
+<Listing {fetcher} {pageSize} bind:data>
+    <svelte:fragment slot="item" let:row>
+        <Item title="{row.firstname} {row.lastname}" blocks={generateBlocks(row)} />
+    </svelte:fragment>
+</Listing>

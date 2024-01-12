@@ -19,11 +19,11 @@ export let disabled: boolean = false;
 <style lang="scss">
   .button {
     @apply my-2 rounded-lg;
-    @apply bg-blue-300;
+    @apply bg-blue-400;
 
     @apply flex flex-row items-center justify-center;
-    @apply w-full h-full;
-    @apply w-full h-12;
+    // @apply w-full h-full;
+    @apply w-full h-14;
 
     @apply p-2;
 
