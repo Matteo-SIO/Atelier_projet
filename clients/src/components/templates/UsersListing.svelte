@@ -56,14 +56,18 @@
         <svelte:fragment slot="block-2">
             <InfoBlock>
                 <svelte:fragment slot="title">Role:</svelte:fragment>
-                <svelte:fragment slot="content">{user.role}</svelte:fragment>
+                <svelte:fragment slot="content">
+                    <code>{user.role}</code>
+                </svelte:fragment>
             </InfoBlock>
         </svelte:fragment>
 
         <svelte:fragment slot="block-3">
             <InfoBlock>
                 <svelte:fragment slot="title">Date d'inscription:</svelte:fragment>
-                <svelte:fragment slot="content">{parseDate(user.createdAt)}</svelte:fragment>
+                <svelte:fragment slot="content">
+                    <code>{parseDate(user.createdAt)}</code>
+                </svelte:fragment>
             </InfoBlock>
         </svelte:fragment>
     </Item>

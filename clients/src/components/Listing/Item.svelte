@@ -62,7 +62,7 @@
     .item-header {
         @apply flex items-center justify-between;
         //@apply bg-amber-300;
-        @apply glass-white-1;
+        @apply glass-white-2;
         @apply h-10;
         @apply px-3;
         @apply rounded;
