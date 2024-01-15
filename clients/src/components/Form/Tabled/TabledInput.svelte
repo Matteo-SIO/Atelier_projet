@@ -8,6 +8,7 @@
 
     export let type: string = 'text';
     export let placeholder: string = '';
+    export let choices: string[] = [];
 
     // Fix for svelte (can't bidirectional bind an input)
     function typeAction(node : HTMLInputElement) {
@@ -32,7 +33,14 @@
         {name}
     </td>
     <td class="field-column">
-        <input class="field-input" class:field-input-error={hasError} id={key} {placeholder} bind:value={$data[key].value} use:typeAction />
+
+        {#if !choices?.length}
+            <input class="field-input" class:field-input-error={hasError} id={key} {placeholder} bind:value={$data[key].value} use:typeAction />
+        {:else}
+            TODO
+        {/if}
+
+
         {#if $data[key].error}
             <p class='error'>
                 <span class="error-span">Erreur: </span>
@@ -51,6 +59,7 @@
     // grid
     @apply grid grid-cols-3;
     @apply items-center;
+    @apply space-y-0.5;
   }
 
   .field-input {
@@ -77,6 +86,8 @@
 
   .label-column {
     @apply col-span-1;
+    // small on mobile
+    @apply text-sm md:text-base;
   }
 
   .field-column {

@@ -51,7 +51,7 @@
 
     /* Header */
     .modal-header {
-      @apply p-4 md:p-8;
+      @apply p-4 md:p-8 md:py-6;
       @apply flex items-center;
       @apply border-b rounded-t;
 
@@ -67,13 +67,13 @@
 
     /* Body */
     .modal-body {
-      @apply p-4 md:p-8;
+      @apply p-4 md:p-8 md:py-6;
     }
 
     /* Footer */
     :global(.modal-footer) {
       @apply flex items-center;
-      @apply p-4 md:p-8;
+      @apply p-4 md:p-8 md:py-6;
       @apply border-t border-gray-200 rounded-b;
     }
 </style>
