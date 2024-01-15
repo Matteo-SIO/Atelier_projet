@@ -1,10 +1,11 @@
 <script lang="ts">
     export let isOpen = false;
+    export let id = '';
 </script>
 
 {#if isOpen}
     <!-- Main modal -->
-    <div tabindex="-1" aria-hidden="true" class="modal-container">
+    <div tabindex="-1" aria-hidden="true" class="modal-container" {id}>
         <div class="modal">
             <!-- Modal content -->
             <div class="modal-content">
@@ -50,21 +51,29 @@
 
     /* Header */
     .modal-header {
-      @apply flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600;
+      @apply p-4 md:p-8;
+      @apply flex items-center;
+      @apply border-b rounded-t;
+
+      & > :global(.header-text) {
+        @apply w-full;
+      }
+
+      & > :global(.close-button) {
+        @apply w-2/12;
+      }
+
     }
 
     /* Body */
     .modal-body {
-      @apply p-4 md:p-5;
+      @apply p-4 md:p-8;
     }
 
     /* Footer */
     :global(.modal-footer) {
       @apply flex items-center;
-      @apply p-4 md:p-5 border-t border-gray-200 rounded-b;
-      @apply justify-end;
-      & > :global(*) {
-        @apply ms-3;
-      }
+      @apply p-4 md:p-8;
+      @apply border-t border-gray-200 rounded-b;
     }
 </style>

@@ -4,9 +4,10 @@
     import {createFormControl} from "$components/Form/FormUtils.ts";
     import FormButton from "$components/Form/Simple/FormButton.svelte";
     import {GET} from "$lib/ClientAPI.ts";
-    import type {CreateTokenRequest, CreateTokenResponse, UserMeResponse} from "../../../../@types/requests/auth.ts";
+    import type {CreateTokenRequest, CreateTokenResponse} from "../../../../@types/requests/auth.ts";
+    import type {UserMeResponse} from "../../../../@types/requests/users.ts";
     import {defineUserCredentials, defineUserProfile} from "$stores/user/utils.ts";
-    import user, {Role} from "$stores/user";
+    import user from "$stores/user";
     import {goto} from "$app/navigation";
     import {getRoutes} from "$lib/Routes.ts";
 
