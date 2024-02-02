@@ -1,8 +1,5 @@
 <script lang="ts">
-    import FormInput from "$components/Form/Simple/FormInput.svelte";
-    import Form from "$components/Form/Simple/Form.svelte";
     import {createFormControl} from "$components/Form/FormUtils.ts";
-    import FormButton from "$components/Form/Simple/FormButton.svelte";
     import {GET} from "$lib/ClientAPI.ts";
     import type {CreateTokenRequest, CreateTokenResponse} from "../../../../@types/requests/auth.ts";
     import type {UserMeResponse} from "../../../../@types/requests/users.ts";
@@ -10,6 +7,9 @@
     import user from "$stores/user";
     import {goto} from "$app/navigation";
     import {getRoutes} from "$lib/Routes.ts";
+    import Form from "$components/Form/Form.svelte";
+    import FormField from "$components/Form/FormField.svelte";
+    import FormButton from "$components/Form/FormButton.svelte";
 
     const control = createFormControl();
 
@@ -54,9 +54,9 @@
 </script>
 
 <div class="page">
-    <Form {control} let:data>
-        <FormInput {data} key="email" name="Email" placeholder="hello@gmail.com" />
-        <FormInput {data} key="password" name="Mot de passe" type="password" placeholder="********" />
+    <Form {control}>
+        <FormField key="email" label="Email" placeholder="hello@gmail.com" />
+        <FormField key="password" label="Mot de passe" type="password" placeholder="********" />
         <FormButton {callback} name="Se connecter" />
     </Form>
 </div>
@@ -67,7 +67,7 @@
         @apply flex flex-col justify-center;
     }
 
-    :global(.form-container) {
+    :global(.Form) {
       // center reduce width on desktop
       @apply md:mx-auto;
       @apply md:w-1/3;

@@ -3,10 +3,9 @@ import ModalClose from "$components/Modal/ModalClose.svelte";
 import Modal from "$components/Modal/Modal.svelte";
 import ModalTitle from "$components/Modal/ModalTitle.svelte";
 import ModalButton from "$components/Modal/ModalButton.svelte";
-import TabledForm from "$components/Form/Tabled/TabledForm.svelte";
-import TabledInput from "$components/Form/Tabled/TabledInput.svelte";
 import {createFormControl} from "$components/Form/FormUtils.ts";
-import {Role} from "$stores/user";
+import Form from "$components/Form/Form.svelte";
+import FormField from "$components/Form/FormField.svelte";
 
 export let isOpen = true;
 
@@ -40,16 +39,16 @@ const roles = ["ADMIN", "MANAGER", "EMPLOYEE"];
         <ModalTitle>Créer un utilisateur</ModalTitle>
     </svelte:fragment>
     <svelte:fragment slot="body">
-        <TabledForm {control} let:data id="debugList">
-            <TabledInput {data} key="email" name="Email" placeholder="hello@gmail.com" />
-            <TabledInput {data} key="password" name="Mot de passe" placeholder="abc" type="password" />
+        <Form {control} simple={false}>
+            <FormField key="email" label="Email" placeholder="hello@gmail.com" />
+            <FormField key="password" label="Mot de passe" placeholder="abc" type="password" />
 
-            <TabledInput {data} key="firstname" name="Prénom" placeholder="Jean" />
-            <TabledInput {data} key="lastname" name="Nom" placeholder="Dupont" />
+            <FormField key="firstname" label="Prénom" placeholder="Jean" />
+            <FormField key="lastname" label="Nom" placeholder="Dupont" />
 
 <!--            <TabledInput {data} key="role" name="Role" placeholder="abc" type="radio" choices={roles} />-->
 
-        </TabledForm>
+        </Form>
     </svelte:fragment>
     <svelte:fragment slot="footer">
         <ModalButton id="createButton" callback={createCallback}>Créer l'utilisateur</ModalButton>

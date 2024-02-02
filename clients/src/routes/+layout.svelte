@@ -57,7 +57,9 @@ $: isAuthPage = $page.url.pathname === routes.AUTH.path;
     word-wrap: break-word;
 
     //@apply from-cyan-900 to-blue-800;
-    @apply from-red-500 to-blue-500;
+    @apply from-red-900;
+    @apply via-cyan-900 via-50%;
+    @apply to-slate-900;
     @apply md:bg-gradient-to-tr bg-gradient-to-b;
 
     // diagonal gradient background

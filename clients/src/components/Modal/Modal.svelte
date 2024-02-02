@@ -5,10 +5,10 @@
 
 {#if isOpen}
     <!-- Main modal -->
-    <div tabindex="-1" aria-hidden="true" class="modal-container" {id}>
-        <div class="modal">
+    <div tabindex="-1" aria-hidden="true" class="Modal" {id}>
+        <div class="ModalWrapper">
             <!-- Modal content -->
-            <div class="modal-content">
+            <div class="ModalContent">
                 <!-- Modal header -->
                 <div class="modal-header">
                     <slot name="title" />
@@ -28,7 +28,8 @@
 {/if}
 
 <style lang="scss">
-    .modal-container {
+  @import '../static/common.scss';
+    .Modal {
       @apply h-full max-h-full;
 
       // center the modal
@@ -41,11 +42,15 @@
       @apply bg-gray-900 bg-opacity-50;
     }
 
-    .modal {
+    .ModalWrapper {
       @apply relative p-4 w-full max-w-2xl max-h-full;
 
-      .modal-content {
-        @apply relative bg-white rounded-lg shadow dark:bg-gray-700;
+      .ModalContent {
+        @apply relative rounded-lg shadow;
+
+        /* background */
+        @apply bg-gray-50/50;
+        @apply backdrop-filter backdrop-blur-lg bg-opacity-60;
       }
     }
 

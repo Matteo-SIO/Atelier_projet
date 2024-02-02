@@ -8,7 +8,6 @@
     import Listing from "$components/Listing/Listing.svelte";
     import {GET} from "$lib/ClientAPI.ts";
     import type {Block} from "$types/listing";
-    import {TrashBinSolid} from "flowbite-svelte-icons";
 
     export let data: UserRowResponse[] = [];
     const pageSize = 10;

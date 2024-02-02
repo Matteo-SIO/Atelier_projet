@@ -10,7 +10,6 @@ export type FormData = {
 }
 
 export type FormControl = {
-    registerField: (fieldKey: string) => any;
     readField: (fieldKey: string) => any;
     setField: (fieldKey: string, value: any) => void;
     setError: (fieldKey: string, error: string) => void;
@@ -22,7 +21,6 @@ export type FormControl = {
 export function createFormControl () : FormControl {
     let _data = writable<FormData>({})
     return {
-        registerField: registerField.bind(null, _data),
         readField: readField.bind(null, _data),
         setField: setField.bind(null, _data),
         setError: setError.bind(null, _data),
@@ -30,16 +28,6 @@ export function createFormControl () : FormControl {
         unsetAll: unsetAll.bind(null, _data),
         _data: _data,
     }
-}
-
-function registerField (data: Writable<FormData>, fieldKey: string) {
-    data.update((dataSync) => {
-        dataSync[fieldKey] = {
-            value: undefined,
-            error: undefined,
-        };
-        return dataSync;
-    });
 }
 
 function readField (data: Writable<FormData>, fieldKey: string) {
