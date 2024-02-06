@@ -1,8 +1,4 @@
 <script lang="ts">
-import UsersListing from "$components/templates/UsersListing.svelte";
-import InfoBlock from "$components/Listing/InfoBlock.svelte";
-import Item from "$components/Listing/Item.svelte";
-
 export let fetcher: (page: number) => Promise<any[]>;
 
 export let data: any[];

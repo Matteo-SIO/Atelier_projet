@@ -1,8 +1,16 @@
 <script lang="ts">
     import SidebarTop from "$components/Sidebar/SidebarTop.svelte";
     import SidebarDown from "$components/Sidebar/SidebarDown.svelte";
+    import {setContext} from "svelte";
 
     export let mobile_sidebar_toggle : boolean = false;
+
+    function hideSidebar() {
+        mobile_sidebar_toggle = false;
+    }
+
+    // Define context
+    setContext("hideSidebar", hideSidebar);
 </script>
 
 <div class="sidebar-container" class:mobile-active={mobile_sidebar_toggle}>

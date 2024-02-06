@@ -1,14 +1,14 @@
 <script lang="ts">
 
-    import Create from "$components/templates/modals/CreateUserModal.svelte";
-    import UsersListing from "$components/templates/UsersListing.svelte";
+    import CreateUserModal from "$components/templates/modals/CreateUserModal.svelte";
+    import UsersListing from "$components/templates/listings/UsersListing.svelte";
 
     let openModal: () => void;
     let data: any[] = [];
 </script>
 
 
-<Create isOpen={false} bind:openModal />
+<CreateUserModal isOpen={false} bind:openModal />
 
 
 <div class="page">
