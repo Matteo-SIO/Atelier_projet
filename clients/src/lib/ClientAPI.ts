@@ -1,11 +1,5 @@
 let BASE_URL = 'http://localhost:3000/api/';
 
-// get environment variables
-let envURL = process.env.API_URL;
-if (envURL) {
-    BASE_URL = envURL;
-}
-
 import {CapacitorHttp, type HttpOptions} from '@capacitor/core';
 
 enum RequestType {
