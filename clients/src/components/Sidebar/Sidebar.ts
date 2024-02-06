@@ -1,6 +1,9 @@
-import {getRoutes, type RouteData} from "$lib/Routes.ts";
+import {getRoutes} from "$lib/Routes.ts";
 
-import * as Icons from "flowbite-svelte-icons";
+import KeyboardSolid from "flowbite-svelte-icons/KeyboardSolid.svelte";
+import UserSolid from "flowbite-svelte-icons/UserSolid.svelte";
+import ListSolid from "flowbite-svelte-icons/ListSolid.svelte";
+
 import type {SidebarContentType, SidebarLinkType} from "$types/sidebar";
 
 const routes = getRoutes();
@@ -9,11 +12,11 @@ export function getSidebarContent () : SidebarContentType {
     return {
         groups: [
             {
-                icon: Icons.KeyboardSolid,
+                icon: KeyboardSolid,
                 display: 'Materiels',
                 content: materialsGroup()
             }, {
-                icon: Icons.UserSolid,
+                icon: UserSolid,
                 display: 'Utilisateurs',
                 content: usersGroup()
             }
@@ -28,7 +31,7 @@ export function getSidebarContent () : SidebarContentType {
 function materialsGroup () : SidebarLinkType[] {
     return [
         {
-            icon: Icons.ListSolid,
+            icon: ListSolid,
             display: 'Liste des matériels',
             route: routes.MATERIALS
         }
@@ -38,7 +41,7 @@ function materialsGroup () : SidebarLinkType[] {
 function usersGroup () : SidebarLinkType[] {
     return [
         {
-            icon: Icons.ListSolid,
+            icon: ListSolid,
             display: 'Liste des utilisateurs',
             route: routes.USERS
         }

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {CloseSolid} from "flowbite-svelte-icons";
+    import CloseSolid from "flowbite-svelte-icons/CloseSolid.svelte";
 
     export let callback: () => void;
 </script>

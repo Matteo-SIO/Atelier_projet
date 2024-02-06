@@ -1,5 +1,7 @@
 <script lang="ts">
-    import {FileEditSolid, TrashBinSolid} from "flowbite-svelte-icons";
+    import FileEditSolid from "flowbite-svelte-icons/FileEditSolid.svelte";
+    import TrashBinSolid from "flowbite-svelte-icons/TrashBinSolid.svelte";
+
     import type {Block} from "$types/listing";
     import InfoBlock from "$components/Listing/InfoBlock.svelte";
     import ButtonBlock from "$components/Listing/ButtonBlock.svelte";

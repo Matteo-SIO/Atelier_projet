@@ -1,6 +1,6 @@
 <script lang="ts">
 
-    import {BarsSolid} from "flowbite-svelte-icons";
+    import BarsSolid from "flowbite-svelte-icons/BarsSolid.svelte";
     export let mobile_sidebar_toggle : boolean;
 
     function toggle () {

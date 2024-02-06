@@ -1,7 +1,7 @@
 <script lang="ts">
 
     import Create from "$components/templates/modals/CreateUserModal.svelte";
-    import UsersListing from "$components/templates/UsersListing.svelte";
+    import UsersListing from "$components/templates/listings/UsersListing.svelte";
 
     let openModal: () => void;
     let data: any[] = [];

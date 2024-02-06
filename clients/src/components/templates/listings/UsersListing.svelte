@@ -3,7 +3,7 @@
     import {
         type GetUsersRequest, type GetUsersResponse,
         type UserRowResponse
-    } from "../../../../@types/requests/users.js";
+    } from "../../../../../@types/requests/users.js";
     import user from "$stores/user";
     import Listing from "$components/Listing/Listing.svelte";
     import {GET} from "$lib/ClientAPI.ts";
@@ -45,11 +45,19 @@
             }
         ]
     }
+
+    function onEdit (row: UserRowResponse) {
+        console.log(row);
+    }
+
+    function onDelete (row: UserRowResponse) {
+        console.log(row);
+    }
 </script>
 
 
 <Listing {fetcher} {pageSize} bind:data>
     <svelte:fragment slot="item" let:row>
-        <Item title="{row.firstname} {row.lastname}" blocks={generateBlocks(row)} />
+        <Item title="{row.firstname} {row.lastname}" blocks={generateBlocks(row)} {onEdit} {onDelete} />
     </svelte:fragment>
 </Listing>
