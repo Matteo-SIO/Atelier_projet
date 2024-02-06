@@ -3,10 +3,15 @@
     import {page} from "$app/stores";
     import {goto} from "$app/navigation";
     import type {SidebarLinkType} from "$types/sidebar";
+    import {getContext} from "svelte";
     export let content: SidebarLinkType[];
+
+    // Get context defined in Sidebar
+    const hideSidebar: () => void = getContext('hideSidebar');
 
     function navigate (link: SidebarLinkType) {
         goto(link.route.path);
+        hideSidebar();
     }
 </script>
 

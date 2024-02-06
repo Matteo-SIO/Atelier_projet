@@ -31,7 +31,7 @@ $: isAuthPage = $page.url.pathname === routes.AUTH.path;
     {/if}
     <Vertical fixScroll={isLogged && !isAuthPage}>
         {#if isLogged && !isAuthPage}
-            <Sidebar {mobile_sidebar_toggle}></Sidebar>
+            <Sidebar bind:mobile_sidebar_toggle></Sidebar>
         {/if}
         {#if !mobile_sidebar_toggle}
             <div class="layout">
