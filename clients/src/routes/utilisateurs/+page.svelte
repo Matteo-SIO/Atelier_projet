@@ -4,7 +4,7 @@
     import UsersListing from "$components/templates/UsersListing.svelte";
 
     let openModal: () => void;
-
+    let data: any[] = [];
 </script>
 
 
@@ -18,9 +18,8 @@
         </button>
     </div>
 
-    <div class="listing">
-        <UsersListing />
-    </div>
+    <UsersListing bind:data />
+
 </div>
 
 
@@ -45,31 +44,6 @@
         @apply rounded-2xl;
         @apply px-3 md:px-4;
         @apply py-2 md:py-3;
-      }
-    }
-
-    :global(.listing) {
-      // Glassmorphism effect
-      // @apply glass-white;
-
-      @apply px-3 md:px-4;
-      @apply h-full overflow-y-scroll;
-
-      // Custom scrollbar
-      &::-webkit-scrollbar {
-          @apply w-2;
-      }
-      &::-webkit-scrollbar-track {
-          @apply bg-transparent;
-      }
-      &::-webkit-scrollbar-thumb {
-          @apply bg-gray-300;
-          @apply rounded-full;
-      }
-
-      // space between items
-      & :global(> *) {
-          @apply mb-3 md:mb-4;
       }
     }
 </style>

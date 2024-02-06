@@ -1,22 +1,37 @@
 <script lang="ts">
 import ModalClose from "$components/Modal/ModalClose.svelte";
-import ModalBodyText from "$components/Modal/ModalBodyText.svelte";
 import Modal from "$components/Modal/Modal.svelte";
 import ModalTitle from "$components/Modal/ModalTitle.svelte";
 import ModalButton from "$components/Modal/ModalButton.svelte";
+import {createFormControl} from "$components/Form/FormUtils.ts";
+import Form from "$components/Form/Form.svelte";
+import FormField from "$components/Form/FormField.svelte";
 
 export let isOpen = true;
 
 export function closeModal () {
     isOpen = false;
+    control.unsetAll();
 }
 
 export function openModal () {
     isOpen = true;
 }
+
+function createCallback () {
+    console.log(control.readField("email"));
+    console.log(control.readField("password"));
+    closeModal();
+}
+
+const control = createFormControl();
+
+const roles = ["ADMIN", "MANAGER", "EMPLOYEE"];
+
 </script>
 
-<Modal {isOpen}>
+<Modal bind:isOpen>
+
     <svelte:fragment slot="close">
         <ModalClose callback={closeModal} />
     </svelte:fragment>
@@ -24,31 +39,27 @@ export function openModal () {
         <ModalTitle>Créer un utilisateur</ModalTitle>
     </svelte:fragment>
     <svelte:fragment slot="body">
-        <ModalBodyText>
-            With less than a month to go before the European Union enacts new consumer privacy laws for its citizens, companies around the world are updating their terms of service agreements to comply.
-        </ModalBodyText>
-        <ModalBodyText>
-            The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is meant to ensure a common set of data rights in the European Union. It requires organizations to notify users as soon as possible of high-risk data breaches that could personally affect them.
-        </ModalBodyText>
+        <Form {control} simple={false}>
+            <FormField key="email" label="Email" placeholder="hello@gmail.com" />
+            <FormField key="password" label="Mot de passe" placeholder="abc" type="password" />
+
+            <FormField key="firstname" label="Prénom" placeholder="Jean" />
+            <FormField key="lastname" label="Nom" placeholder="Dupont" />
+
+<!--            <TabledInput {data} key="role" name="Role" placeholder="abc" type="radio" choices={roles} />-->
+
+        </Form>
     </svelte:fragment>
     <svelte:fragment slot="footer">
-        <ModalButton id="accept" callback={() => {}}>
-            Accept
-        </ModalButton>
-        <ModalButton id="deny" callback={() => {}}>
-            Deny
-        </ModalButton>
+        <ModalButton id="createButton" callback={createCallback}>Créer l'utilisateur</ModalButton>
     </svelte:fragment>
+
 </Modal>
 
-<style lang="scss">
-    :global(#accept) {
-      @apply bg-green-500 hover:bg-green-600;
-      @apply text-white;
-    }
 
-    :global(#deny) {
-      @apply bg-red-500 hover:bg-red-600;
-      @apply text-white;
-    }
+<style lang="scss">
+  :global(#createButton) {
+    @apply bg-blue-500 hover:bg-blue-600;
+    @apply text-white;
+  }
 </style>

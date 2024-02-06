@@ -4,6 +4,6 @@
 
 <style lang="scss">
     .header-text {
-      @apply text-xl font-semibold text-gray-900 dark:text-white;
+      @apply text-xl font-semibold text-gray-900;
     }
 </style>

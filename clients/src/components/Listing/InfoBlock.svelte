@@ -7,7 +7,9 @@
         <slot name="title" />
     </div>
     <div class="line2">
-        <slot name="content" />
+        <code>
+            <slot name="content" />
+        </code>
     </div>
 </div>
 
@@ -16,18 +18,20 @@
 
     .info-block {
       @apply my-2 rounded-lg;
-      //@apply bg-gray-300;
       @apply glass-white-1;
       @apply text-center;
-      @apply py-0.5;
-      @apply h-12;
+      @apply h-14;
 
       // center y axis
       @apply flex flex-col justify-center;
     }
 
     .line1 {
-      @apply text-lg;
+      @apply text-xs md:text-base lg:text-lg;
       @apply underline;
+    }
+
+    .line2 {
+      @apply text-xs md:text-sm lg:text-base;
     }
 </style>

@@ -1,9 +1,6 @@
 <script lang="ts">
-
     import type {FormControl} from "../FormUtils.ts";
-
     export let control : FormControl;
-
 </script>
 
 <div class="form-container">

@@ -1,8 +1,13 @@
 <script lang="ts">
     import {FileEditSolid, TrashBinSolid} from "flowbite-svelte-icons";
+    import type {Block} from "$types/listing";
+    import InfoBlock from "$components/Listing/InfoBlock.svelte";
+    import ButtonBlock from "$components/Listing/ButtonBlock.svelte";
 
     export let title : string|null = null;
     export let tag : string|null = null;
+
+    export let blocks: Block[] = []
 
     export let onRemove = () => {
         console.log("remove");
@@ -33,15 +38,33 @@
         </div>
     </div>
     <div class="item-content">
-        <div class="info-1">
-            <slot name="block-1" />
-        </div>
-        <div class="info-2">
-            <slot name="block-2" />
-        </div>
-        <div class="user-action">
-            <slot name="block-3" />
-        </div>
+
+
+        {#each [1,2,3] as key}
+            {@const block = blocks[key-1] }
+            {#if block}
+                <div class="info-{key}">
+                    {#if block.type === 'info'}
+                        <InfoBlock>
+                            <svelte:fragment slot="title">{block.title}</svelte:fragment>
+                            <svelte:fragment slot="content">
+                                {block.text}
+                            </svelte:fragment>
+                        </InfoBlock>
+                    {/if}
+                    {#if block.type === 'button'}
+                        <ButtonBlock disabled={block.disabled} onClick={block.onClick}>
+                            <svelte:fragment slot="icon">
+                                {#if block.icon}
+                                    <svelte:component this={block.icon} />
+                                {/if}
+                            </svelte:fragment>
+                            <svelte:fragment slot="text">{block.text}</svelte:fragment>
+                        </ButtonBlock>
+                    {/if}
+                </div>
+            {/if}
+        {/each}
     </div>
 </div>
 
@@ -52,16 +75,12 @@
 
     .item {
       @apply w-full;
-      //@apply bg-amber-200;
       @apply glass-white-1;
       @apply rounded;
-      //@apply my-4;
-      //@apply p-2;
     }
 
     .item-header {
         @apply flex items-center justify-between;
-        //@apply bg-amber-300;
         @apply glass-white-2;
         @apply h-10;
         @apply px-3;
@@ -101,8 +120,7 @@
 
       & > * {
         // @apply items-center;
-        @apply md:w-1/4 w-1/3;
-
+        @apply w-1/3 px-1 md:w-1/4 md:px-0;
         @apply text-xs md:text-base;
       }
     }

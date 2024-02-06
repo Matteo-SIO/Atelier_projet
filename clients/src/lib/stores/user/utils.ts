@@ -33,8 +33,12 @@ export async function writeStorage (store: Writable<User>) {
 
 }
 
-export function clearLocalStorage () {
-    localStorage.removeItem(LOCAL_STORAGE_KEY);
+export async function clearLocalStorage () {
+    if (Capacitor.isNative) {
+        await Preferences.remove({ key: LOCAL_STORAGE_KEY })
+    } else {
+        localStorage.removeItem(LOCAL_STORAGE_KEY);
+    }
 }
 
 export async function defineUserCredentials (store: Writable<User>, res: CreateTokenResponse) {
@@ -56,12 +60,12 @@ export async function defineUserProfile (store: Writable<User>, res: UserMeRespo
     })
 }
 
-export function destroySession (store: Writable<User>) {
+export async function destroySession (store: Writable<User>) {
     store.set({
         token: undefined,
         profile: null
     });
-    clearLocalStorage();
+    await clearLocalStorage();
 }
 
 export function roleByName (name: string) : Role {

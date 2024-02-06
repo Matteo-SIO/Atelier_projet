@@ -29,7 +29,7 @@ $: isAuthPage = $page.url.pathname === routes.AUTH.path;
     {#if isLogged && !isAuthPage}
         <Header bind:mobile_sidebar_toggle></Header>
     {/if}
-    <Vertical>
+    <Vertical fixScroll={isLogged && !isAuthPage}>
         {#if isLogged && !isAuthPage}
             <Sidebar {mobile_sidebar_toggle}></Sidebar>
         {/if}
@@ -56,9 +56,15 @@ $: isAuthPage = $page.url.pathname === routes.AUTH.path;
     //@apply md:p-2;
     word-wrap: break-word;
 
-    //@apply from-cyan-900 to-blue-800;
     @apply from-red-500 to-blue-500;
-    @apply md:bg-gradient-to-r bg-gradient-to-b;
+    @apply md:bg-gradient-to-tr bg-gradient-to-b;
+
+    //@apply from-red-900;
+    //@apply via-cyan-900 via-50%;
+    //@apply to-slate-900;
+    //@apply md:bg-gradient-to-tr bg-gradient-to-b;
+
+    // diagonal gradient background
   }
 
   .layout {

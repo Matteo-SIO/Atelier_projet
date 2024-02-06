@@ -6,15 +6,16 @@ export const prerender = true;
 
 import {get} from "svelte/store";
 import user from "$stores/user";
-import {checkBaseUrl} from "$lib/ClientAPI.ts";
+import * as Routes from "$lib/Routes.ts";
 
 export async function load () {
+        const routes = Routes.getRoutes();
         const path = window.location.pathname;
 
         const isLogged= await checkLogin(user);
-        if (!isLogged && path !== '/auth') {
+        if (!isLogged && path !== routes.AUTH.path) {
             return {
-                redirect: '/auth'
+                redirect: routes.AUTH.path
             }
         }
 
