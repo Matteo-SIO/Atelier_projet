@@ -5,7 +5,7 @@ const config: CapacitorConfig = {
   appName: 'Gestion des stocks',
   webDir: 'build',
   server: {
-    androidScheme: 'https'
+    cleartext: true
   }
 };
 

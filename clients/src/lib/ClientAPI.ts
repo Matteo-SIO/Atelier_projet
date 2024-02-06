@@ -1,5 +1,12 @@
 let BASE_URL = 'http://localhost:3000/api/';
-const FALLBACK_URL = 'http://192.168.1.115:3000/api/';
+
+// get environment variables
+let envURL = process.env.API_URL;
+if (envURL) {
+    BASE_URL = envURL;
+}
+
+import {CapacitorHttp, type HttpOptions} from '@capacitor/core';
 
 enum RequestType {
     POST = 'POST',
@@ -32,52 +39,29 @@ class RequestAPI <Req> {
     }
 
     async send <Type> () : Promise<Type> {
-        const urlBuilder = new URL(BASE_URL + this.path);
-        if (this.isQueryRequest()) {
-            for (const key in this.content) {
-                if (this.content[key] !== undefined) {
-                    const value = this.content[key] as unknown as string;
-                    urlBuilder.searchParams.append(key, value);
-                }
-            }
-        }
-
-        const url = urlBuilder.toString();
-        const options = {
-            method: this.type,
+        // access dynamically to the method of the CapacitorHttp plugin
+        let methodFunc = CapacitorHttp[this.type.toLowerCase() as 'get' | 'post' | 'put' | 'patch' | 'delete'];
+        const response = await methodFunc({
+            url: BASE_URL + this.path,
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `${this.token}`,
             },
-            body: this.isQueryRequest() ? undefined : JSON.stringify(this.content),
-        };
-
-        const response = await fetch(url, options);
-        const json = await response.json();
+            ... (this.isQueryRequest() ? {params: this.content} : {data: this.content})
+        } as HttpOptions);
 
         if (response.status >= 400) {
             throw {
                 code: response.status,
-                message: json.error ?? 'Unknown error',
+                message: response.data.error ?? 'Unknown error',
             } as RequestError;
         }
 
-        return json;
+        return response.data;
     }
 
     private isQueryRequest () {
         return this.type === RequestType.GET || this.type === RequestType.DELETE;
-    }
-}
-
-export async function checkBaseUrl () {
-    try {
-        await fetch(BASE_URL, {
-            method: 'GET'
-        })
-    } catch (e) {
-        console.error('Failed to connect to API, fallback to', FALLBACK_URL);
-        BASE_URL = FALLBACK_URL;
     }
 }
 

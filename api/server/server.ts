@@ -16,7 +16,7 @@ export async function start (config: ServerConfig) {
 
     // register cors
     await server.register(fastifyCors, {
-        origin: '*',
+        origin: true,
         methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
         allowedHeaders: ['Content-Type', 'Authorization']
     });
